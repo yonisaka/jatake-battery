@@ -8,6 +8,7 @@
 
         <!-- Styles -->
         <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+        @yield('head')
     </head>
     <body>
         <div class="bg-light">
@@ -21,7 +22,7 @@
                         </div>
                     </nav>
                 </header>
-                <div class="container">
+                <div class="container" id="@yield('contentId')">
                     @yield('content')
                 </div>
                 <footer class="container-fluid text-white">

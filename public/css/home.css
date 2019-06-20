@@ -1,0 +1,66 @@
+#home {}
+
+#sc-category .list-group-item {
+    border: none;
+    border-bottom: 2px solid #aaa;
+    border-radius: 0;
+    background: none;
+    padding: 0.5rem 1rem;
+    padding-left: 0;
+    margin: 0;
+}
+
+#sc-category .list-group-item.active {
+    border-color: #a0121c
+}
+
+#sc-category .list-group-item a {
+    color: #999;
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+#sc-category .list-group-item a>* {
+    vertical-align: middle;
+}
+
+#sc-category .list-group-item.active a {
+    color: #a0121c;
+    font-weight: 900;
+}
+
+#sc-category #search>.fa-search {
+    font-size: 0.75rem
+}
+
+#sc-banner .card-img-overlay {
+    color: #fff;
+    font-weight: 900
+}
+
+#sc-banner .banner-title,
+#sc-banner .product-name,
+#sc-banner .product-price,
+#sc-banner .buy-now {
+    font-weight: 900
+}
+
+#sc-banner .banner-title {
+    color: yellow;
+}
+
+#sc-banner .product-name {
+    text-transform: uppercase;
+}
+
+
+#sc-banner .buy-now {
+    position: absolute;
+    bottom: 0;
+    font-size: 2rem;
+    right: 0;
+    background: #384e77;
+    color: #fff;
+    padding: 1rem 3rem;
+    border-radius: 3rem 0 0;
+}
