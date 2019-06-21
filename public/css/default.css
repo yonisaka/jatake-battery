@@ -15,11 +15,57 @@ h4,
 h5,
 h6,
 b {
-    font-weight: 600;
+    padding: 0;
+    margin: 0;
+    font-weight: 700;
 }
+
+a {
+    transition: 0.1s all ease
+}
+
+/*
+color scheme:
+    main-blue: #384e77
+    main-red: #dc4444
+*/
 
 img {
     max-width: 100%;
+}
+
+.text-blue {
+    color: #384e77;
+}
+
+.font-light {
+    font-weight: 200
+}
+
+.font-sbold {
+    font-weight: 700;
+}
+
+.font-bold {
+    font-weight: 800
+}
+
+.font-xbold {
+    font-weight: 900;
+}
+
+.btn.btn-primary {
+    background: none;
+    color: #384e77;
+    padding: 0.75rem 2rem;
+    border-color: #636b6f;
+    font-weight: 800;
+    font-size: 1.25rem
+}
+
+.btn.btn-primary:hover {
+    background: #384e77;
+    color: #fff;
 }
 
 .full-height {
@@ -64,27 +110,26 @@ img {
     margin-bottom: 30px;
 }
 
-.logo {
+header .logo {
     margin: 1rem 0;
 }
 
-.logo img {
+header .logo img {
     height: 100px;
-}
-
-#sc-products {
-    padding: 2rem 0;
-}
-
-#sc-products .card {
-    max-width: 350px;
-    margin: 1rem 0;
-}
-
-.card .card-img img {
-    max-width: 100%;
 }
 
 footer {
     background-color: #384e77;
+}
+
+footer .logo {
+    height: 100px;
+}
+
+footer a {
+    color: #fff;
+}
+
+footer a:hover {
+    color: #ddd;
 }

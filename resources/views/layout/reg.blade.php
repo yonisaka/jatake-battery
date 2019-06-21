@@ -30,7 +30,7 @@
                         <div class="row py-5">
                             <div class="col-md-4">
                                 <a href="{{ url('') }}">
-                                    <img src="{{ url('/assets/logo_white.png') }}" class="img" alt="Jatake Battery">
+                                    <img src="{{ url('/assets/logo_white.png') }}" class="logo" alt="Jatake Battery">
                                 </a>
                             </div>
                             <div class="col-md-4">
@@ -77,7 +77,7 @@
                         <div class="py-2 bg-dark">
                             <div class="container">
                                 <div class="text-right">
-                                    <b>Jatake.LeaProjects{{ "@".date('Y') }}</b>
+                                    <b>Jatake.LeaProjects&copy;{{ date('Y') }}</b>
                                 </div>
                             </div>
                         </div>

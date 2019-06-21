@@ -10,14 +10,20 @@
     margin: 0;
 }
 
+#sc-category .list-group-item:hover,
 #sc-category .list-group-item.active {
-    border-color: #a0121c
+    border-color: #a0121c;
 }
 
 #sc-category .list-group-item a {
     color: #999;
     font-weight: 600;
     font-size: 1.25rem;
+}
+
+#sc-category .list-group-item a:hover {
+    text-decoration: none;
+    color: #666;
 }
 
 #sc-category .list-group-item a>* {
@@ -30,19 +36,27 @@
 }
 
 #sc-category #search>.fa-search {
-    font-size: 0.75rem
+    font-size: 1rem;
+}
+
+#sc-banner .card {
+    min-height: 400px;
+    overflow: hidden;
 }
 
 #sc-banner .card-img-overlay {
     color: #fff;
-    font-weight: 900
+    font-weight: 900;
 }
 
-#sc-banner .banner-title,
 #sc-banner .product-name,
-#sc-banner .product-price,
+#sc-banner .banner-title,
 #sc-banner .buy-now {
-    font-weight: 900
+    font-weight: 800;
+}
+
+#sc-banner .product-price {
+    font-weight: 400;
 }
 
 #sc-banner .banner-title {
@@ -53,7 +67,6 @@
     text-transform: uppercase;
 }
 
-
 #sc-banner .buy-now {
     position: absolute;
     bottom: 0;
@@ -63,4 +76,62 @@
     color: #fff;
     padding: 1rem 3rem;
     border-radius: 3rem 0 0;
+}
+
+#sc-products {
+    padding: 2rem 0;
+}
+
+#sc-products h5 {
+    margin: 0;
+}
+
+#sc-products .card {
+    max-width: 350px;
+    margin: 1rem 0;
+    border: 1.25px solid;
+    border-radius: 10px;
+}
+
+.card .card-img img {
+    max-width: 100%;
+}
+
+#sc-products .card-img {
+    max-width: 75%;
+    margin: auto;
+}
+
+#sc-products .card-header {
+    background: none;
+    padding: 1rem 1.25rem;
+}
+
+#sc-products .product-price {
+    font-size: 1rem;
+}
+
+#sc-products .card:first-child h5 {
+    color: #a0121c;
+}
+
+/* RESPONSIVE STYLES */
+@media screen and (max-width: 62rem) {
+    #sc-banner .card-img {
+        height: 100%;
+        position: absolute;
+        width: unset;
+        margin-left: -350px;
+        max-width: unset;
+    }
+
+    #sc-banner .banner-title {
+        font-size: 1.75rem;
+    }
+
+    #sc-banner .product-name,
+    #sc-banner .product-price,
+    #sc-banner .buy-now {
+        font-size: 1.5rem;
+    }
 }
