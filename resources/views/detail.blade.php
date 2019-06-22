@@ -11,7 +11,11 @@
                                     <div class="card-body">
                                         <p class="card-title text-muted" style="font-display: montserrat">Accu Title</p>
                                         <h4 class="card-text pb-3 text-muted" style="border-bottom: 2px solid #707070">Accu merk</h4>
-                                        
+                                        <img src="assets/Group 3.png" title="Gratis Pemasangan" width="30" height="30">
+                                        <img src="assets/Group 6.png" title="Tukar Tambah" width="30" height="30">
+                                        <img src="assets/Group 5.png" title="Produk Terbaru" width="30" height="30">
+                                        <img src="assets/checked.png" title="Jaminan Barang Asli" width="30" height="30">
+                                        <img src="assets/Group 4.png" title="Produk Bekas" width="30" height="30">                
                                     </div>
                                 </div> 
                             </div>
