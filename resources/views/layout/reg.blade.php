@@ -25,7 +25,7 @@
                 <div class="container" id="@yield('contentId')">
                     @yield('content')
                 </div>
-                <footer class="container-fluid text-white">
+                <footer class="container-fluid text-white p-0">
                     <div class="container">
                         <div class="row py-5">
                             <div class="col-md-4">
