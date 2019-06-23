@@ -55,9 +55,9 @@
                         </h3>
                     </div>
                 </div>
-                <div class="btn buy-now">
+                <a href="#" class="btn buy-now">
                     Beli Sekarang <i class="fas fa-chevron-circle-right"></i>
-                </div>
+                </a>
             </div>
         </div>
     </div>
@@ -67,42 +67,42 @@
 <div id="sc-products">
     <div class="card-wrapper container">
         <div class="row justify-content-md-between">
-            <div class="card col-md-4 col-sm-3">
-                <div class="card-img">
-                    <a href="#">
-                        <img src="{{ asset('/assets/Motobatt__MTZ-2.png') }}">
-                    </a>
+            <a href="#">
+                <div class="card col-md-4 col-sm-3">
+                    <div class="card-img">
+                            <img src="{{ asset('/assets/Motobatt__MTZ-2.png') }}">
+                    </div>
+                    <div class="card-header text-left">
+                        <h5 class="product-name font-xbold mb-1">BOSCH</h5>
+                        <h5 class="product-author font-weight-normal mb-3">ACCU BOSCH M8GL</h5>
+                        <h6 class="product-price font-bold text-blue">Rp. 100.000,00</h5>
+                    </div>
                 </div>
-                <div class="card-header text-left">
-                    <h5 class="product-name font-xbold mb-1">BOSCH</h5>
-                    <h5 class="product-author font-weight-normal mb-3">ACCU BOSCH M8GL</h5>
-                    <h6 class="product-price font-bold text-blue">Rp. 100.000,00</h5>
+            </a>
+            <a href="#">
+                <div class="card col-md-4 col-sm-3">
+                    <div class="card-img">
+                            <img src="{{ asset('/assets/Motobatt__MTZ-2.png') }}">
+                    </div>
+                    <div class="card-header text-left">
+                        <h5 class="product-name font-xbold mb-1">BOSCH</h5>
+                        <h5 class="product-author font-weight-normal mb-3">ACCU BOSCH M8GL</h5>
+                        <h6 class="product-price font-bold text-blue">Rp. 100.000,00</h5>
+                    </div>
                 </div>
-            </div>
-            <div class="card col-md-4 col-sm-3">
-                <div class="card-img">
-                    <a href="#">
-                        <img src="{{ asset('/assets/Motobatt__MTZ-2.png') }}">
-                    </a>
+            </a>
+            <a href="#">
+                <div class="card col-md-4 col-sm-3">
+                    <div class="card-img">
+                            <img src="{{ asset('/assets/Motobatt__MTZ-2.png') }}">
+                    </div>
+                    <div class="card-header text-left">
+                        <h5 class="product-name font-xbold mb-1">BOSCH</h5>
+                        <h5 class="product-author font-weight-normal mb-3">ACCU BOSCH M8GL</h5>
+                        <h6 class="product-price font-bold text-blue">Rp. 100.000,00</h5>
+                    </div>
                 </div>
-                <div class="card-header text-left">
-                    <h5 class="product-name font-xbold mb-1">BOSCH</h5>
-                    <h5 class="product-author font-weight-normal mb-3">ACCU BOSCH M8GL</h5>
-                    <h6 class="product-price font-bold text-blue">Rp. 100.000,00</h5>
-                </div>
-            </div>
-            <div class="card col-md-4 col-sm-3">
-                <div class="card-img">
-                    <a href="#">
-                        <img src="{{ asset('/assets/Motobatt__MTZ-2.png') }}">
-                    </a>
-                </div>
-                <div class="card-header text-left">
-                    <h5 class="product-name font-xbold mb-1">BOSCH</h5>
-                    <h5 class="product-author font-weight-normal mb-3">ACCU BOSCH M8GL</h5>
-                    <h6 class="product-price font-bold text-blue">Rp. 100.000,00</h5>
-                </div>
-            </div>
+            </a>
         </div>
     </div>
     <div class="container my-5">

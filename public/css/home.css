@@ -78,6 +78,10 @@
     border-radius: 3rem 0 0;
 }
 
+#sc-banner .buy-now:hover {
+    background: #2b3a55;
+}
+
 #sc-products {
     padding: 2rem 0;
 }
@@ -86,14 +90,28 @@
     margin: 0;
 }
 
+#sc-products a {
+    color: unset;
+    text-decoration: none;
+}
+
 #sc-products .card {
     max-width: 350px;
     margin: 1rem 0;
-    border: 1.25px solid;
     border-radius: 10px;
+    transition: 0.2s all ease-in-out;
 }
 
-.card .card-img img {
+#sc-products .card:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    transform: scale(1.01);
+}
+
+#sc-products .card:hover h5 {
+    color: #a0121c;
+}
+
+#sc-products .card .card-img img {
     max-width: 100%;
 }
 
@@ -109,10 +127,6 @@
 
 #sc-products .product-price {
     font-size: 1rem;
-}
-
-#sc-products .card:first-child h5 {
-    color: #a0121c;
 }
 
 /* RESPONSIVE STYLES */

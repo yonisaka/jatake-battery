@@ -41,7 +41,7 @@
                                         </h4>
                                         <ul class="list-unstyled">
                                             <li>
-                                                <a href="#">
+                                                <a href="{{ url('extra-pages/term-condition') }}">
                                                     Syarat & Ketentuan
                                                 </a>
                                             </li>
@@ -56,7 +56,7 @@
 
                                         <ul class="list-unstyled">
                                             <li>
-                                                <a href="#">
+                                                <a href="https://goo.gl/maps/frLfpp1cpPZJsbaQ6" target="_blank">
                                                     Jl. Raya Gatot Subroto Km. 8 (sebelah indomaret) 
                                                     Kec. Jatiuwung, Kota/Kab. Tangerang 
                                                     Banten, 15134
@@ -68,7 +68,7 @@
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <a href="#">
+                                <a href="https://goo.gl/maps/frLfpp1cpPZJsbaQ6" target="_blank">
                                     <img src="{{ asset('assets/maps.PNG') }}" alt="" srcset="">
                                 </a>
                             </div>
