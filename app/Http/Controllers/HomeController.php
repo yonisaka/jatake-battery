@@ -6,15 +6,14 @@ use Illuminate\Http\Request;
 
 use App\Products;
 
-class Home extends Controller
+class HomeController extends Controller
 {
     //
     public function index()
     {
 
-        $products = new Products();
-        dd($products->first());
-        return view("index");
+        $data['products'] = Products::orderBy('code')->get();
+        return view("index",$data);
     }
 
 }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ExtraPages extends Controller
+class ExtraPagesController extends Controller
 {
     //
     public function page($page)

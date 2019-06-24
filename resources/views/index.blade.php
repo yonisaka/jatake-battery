@@ -7,17 +7,17 @@
 {{-- section content: category list --}}
 <div id="sc-category" class="list-group list-group-horizontal">
     <div class="list-group-item active">
-        <a href="#">
+        <a href="#" data-type='all'>
                 All<small class="ml-3 mr-1"><i class="fas fa-chevron-right"></i></small>
         </a>
     </div>
     <div class="list-group-item">
-        <a href="#">
+        <a href="#" data-type='MOTOR'>
                 Motor<small class="ml-3 mr-1"><i class="fas fa-chevron-right"></i></small>
         </a>
     </div>
     <div class="list-group-item">
-        <a href="#">
+        <a href="#" data-type='MOBIL'>
                 Mobil<small class="ml-3 mr-1"><i class="fas fa-chevron-right"></i></small>
         </a>
     </div>
@@ -41,21 +41,28 @@
                         </h1>
                     </div>
                 </div>
-                <div class="row my-4">
+                <div class="row my-0">
+                    <div class="col-md-7">
+                        <h2 class="product-merk">
+                            {{ $products[0]->merk }}
+                        </h2>
+                    </div>
+                </div>
+                <div class="row mb-4 mt-0">
                     <div class="col-md-7">
                         <h2 class="product-name">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            {{ $products[0]->name }}
                         </h2>
                     </div>
                 </div>
                 <div class="row my-4">
                     <div class="col-md-7">
                         <h3 class="product-price">
-                            Rp. 235.000,00
+                            {{ formating($products[0]->price,'price') }}
                         </h3>
                     </div>
                 </div>
-                <a href="#" class="btn buy-now">
+                <a href="{{ url('products/detail/'.$products[0]->code) }}" class="btn buy-now">
                     Beli Sekarang <i class="fas fa-chevron-circle-right"></i>
                 </a>
             </div>
@@ -66,21 +73,41 @@
 {{-- section content: products list --}}
 <div id="sc-products">
     <div class="card-wrapper container">
-        <div class="row justify-content-md-between">
-            <a href="#">
+        <div class="row">
+            @php
+                foreach ($products as $k => $d) {
+
+            @endphp
+            <a class="products-card" href="{{ url('products/detail/'.$d->code) }}" data-type="{{ $d->type }}">
                 <div class="card col-md-4 col-sm-3">
                     <div class="card-img">
-                            <img src="{{ asset('/assets/Motobatt__MTZ-2.png') }}">
+                            <img src="{{ $d->img[0] }}">
                     </div>
                     <div class="card-header text-left">
-                        <h5 class="product-name font-xbold mb-1">BOSCH</h5>
-                        <h5 class="product-author font-weight-normal mb-3">ACCU BOSCH M8GL
+                        <h5 class="product-name font-xbold mb-1">{{ $d->merk }}</h5>
+                        <h5 class="product-author font-weight-normal">{{ $d->name }}</h5>
+                        <h5 class="products-type mb-2">
+                            @php
+                                if($d->type == "MOTOR"){
+                            @endphp
                             <i class="fas fa-motorcycle"></i>
+                            @php
+                                }
+                                else{
+                            @endphp
+                            <i class="fas fa-car"></i>
+                            @php
+                        }
+                            @endphp
                         </h5>
-                        <h6 class="product-price font-bold text-blue">Rp. 100.000,00</h5>
+                        <h6 class="product-price font-bold text-blue">{{ formating($d->price,'price') }}</h5>
                     </div>
                 </div>
             </a>
+            @php
+
+            }
+            @endphp
         </div>
     </div>
     <div class="container my-5">

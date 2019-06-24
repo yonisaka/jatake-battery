@@ -12,14 +12,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'Home@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::prefix('/extra-pages')->group(function()
 {
-    Route::get('/{page}','ExtraPages@page')->name("extra");
+    Route::get('/{page}','ExtraPagesController@page')->name("extra");
 });
 
 Route::prefix('/products')->group(function()
 {
-    Route::get('/{page}','Products@page')->name("extra");
+    Route::get('/','ProductsController@index')->name("products");
+    Route::get('/detail/{code}','ProductsController@detail')->name("products.detail");
 });

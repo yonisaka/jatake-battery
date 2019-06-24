@@ -49,6 +49,10 @@
     font-weight: 900;
 }
 
+#sc-banner .product-merk {
+    font-weight: 700;
+}
+
 #sc-banner .product-name,
 #sc-banner .banner-title,
 #sc-banner .buy-now {
@@ -88,6 +92,10 @@
 
 #sc-products h5 {
     margin: 0;
+}
+
+.products-card {
+    margin: 0 10px;
 }
 
 #sc-products a {

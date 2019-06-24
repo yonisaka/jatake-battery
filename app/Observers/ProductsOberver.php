@@ -9,6 +9,7 @@ class ProductsOberver
 
     public function creating(Products $product)
     {
+        $product->dimention = json_encode($product->dimention);
         $product->img = json_encode($product->img);
     }
 

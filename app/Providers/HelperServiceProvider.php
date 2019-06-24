@@ -3,11 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Products;
-use Illuminate\Support\Facades\Schema;
 
-
-class ProductsModelServiceProvider extends ServiceProvider
+class HelperServiceProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -16,6 +13,7 @@ class ProductsModelServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        require_once app_path('Helpers/helpers.php');
         //
     }
 
@@ -27,7 +25,5 @@ class ProductsModelServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-        Schema::defaultStringLength(191); //NEW: Increase StringLength
-        Products::observe(\App\Observers\ProductsOberver::class);
     }
 }
