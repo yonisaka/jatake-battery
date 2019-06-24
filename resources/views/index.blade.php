@@ -74,31 +74,9 @@
                     </div>
                     <div class="card-header text-left">
                         <h5 class="product-name font-xbold mb-1">BOSCH</h5>
-                        <h5 class="product-author font-weight-normal mb-3">ACCU BOSCH M8GL</h5>
-                        <h6 class="product-price font-bold text-blue">Rp. 100.000,00</h5>
-                    </div>
-                </div>
-            </a>
-            <a href="#">
-                <div class="card col-md-4 col-sm-3">
-                    <div class="card-img">
-                            <img src="{{ asset('/assets/Motobatt__MTZ-2.png') }}">
-                    </div>
-                    <div class="card-header text-left">
-                        <h5 class="product-name font-xbold mb-1">BOSCH</h5>
-                        <h5 class="product-author font-weight-normal mb-3">ACCU BOSCH M8GL</h5>
-                        <h6 class="product-price font-bold text-blue">Rp. 100.000,00</h5>
-                    </div>
-                </div>
-            </a>
-            <a href="#">
-                <div class="card col-md-4 col-sm-3">
-                    <div class="card-img">
-                            <img src="{{ asset('/assets/Motobatt__MTZ-2.png') }}">
-                    </div>
-                    <div class="card-header text-left">
-                        <h5 class="product-name font-xbold mb-1">BOSCH</h5>
-                        <h5 class="product-author font-weight-normal mb-3">ACCU BOSCH M8GL</h5>
+                        <h5 class="product-author font-weight-normal mb-3">ACCU BOSCH M8GL
+                            <i class="fas fa-motorcycle"></i>
+                        </h5>
                         <h6 class="product-price font-bold text-blue">Rp. 100.000,00</h5>
                     </div>
                 </div>

@@ -14,6 +14,9 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+
+        // if(config('app.env') === "staging")
+            $this->app->register(\Okipa\LaravelModelJsonStorage\ModelJsonStorageServiceProvider::class);
     }
 
     /**

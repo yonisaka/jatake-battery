@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -11,8 +12,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
+Route::get('/', 'Home@index')->name('home');
+
+Route::prefix('/extra-pages')->group(function()
+{
+    Route::get('/{page}','ExtraPages@page')->name("extra");
 });
 
-Route::any('/extra-pages/{page}','ExtraPages@page');
+Route::prefix('/products')->group(function()
+{
+    Route::get('/{page}','Products@page')->name("extra");
+});
