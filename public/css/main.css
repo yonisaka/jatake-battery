@@ -1,0 +1,10 @@
+/* fonts */
+@import "https://fonts.googleapis.com/css?family=Nunito:200,400,700,800,900";
+
+/* modules */
+@import "../modules/bootstrap-4.3.1/css/bootstrap.min.css";
+@import "../modules/bootstrap-4.3.1/css/bootstrap-reboot.min.css";
+@import "../modules/fontawesome/css/all.min.css";
+
+/* styles */
+@import "./default.css";

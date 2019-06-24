@@ -1,0 +1,136 @@
+html,
+body {
+    background-color: #fff;
+    color: #636b6f;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+    height: 100vh;
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+b {
+    padding: 0;
+    margin: 0;
+    font-weight: 700;
+}
+
+a {
+    transition: 0.1s all ease
+}
+
+/*
+color scheme:
+    main-black: #2b3a55
+    main-blue: #384e77
+    main-red: #dc4444
+*/
+
+img {
+    max-width: 100%;
+}
+
+.text-blue {
+    color: #384e77;
+}
+
+.font-light {
+    font-weight: 200
+}
+
+.font-sbold {
+    font-weight: 700;
+}
+
+.font-bold {
+    font-weight: 800
+}
+
+.font-xbold {
+    font-weight: 900;
+}
+
+.btn.btn-primary {
+    background: none;
+    color: #384e77;
+    padding: 0.75rem 2rem;
+    border-color: #636b6f;
+    font-weight: 800;
+    font-size: 1.25rem
+}
+
+.btn.btn-primary:hover {
+    background: #384e77;
+    color: #fff;
+}
+
+.full-height {
+    height: 100vh;
+}
+
+.flex-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.position-ref {
+    position: relative;
+}
+
+.top-right {
+    position: absolute;
+    right: 10px;
+    top: 18px;
+}
+
+.content {
+    text-align: center;
+}
+
+.title {
+    font-size: 84px;
+}
+
+.links>a {
+    color: #636b6f;
+    padding: 0 25px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.m-b-md {
+    margin-bottom: 30px;
+}
+
+header .logo {
+    margin: 1rem 0;
+}
+
+header .logo img {
+    height: 100px;
+}
+
+footer {
+    background-color: #384e77;
+}
+
+footer .logo {
+    height: 100px;
+}
+
+footer a {
+    color: #fff;
+}
+
+footer a:hover {
+    color: #ddd;
+}
