@@ -79,3 +79,11 @@
                     </div>
                 </div>
             </div>
+
+            <!--script-->
+        <script>
+            document.querySelector("#buton").onclick = function(){
+                document.querySelector("#inp").select();
+                document.execCommand('copy');
+            }
+        </script>
