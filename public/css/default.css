@@ -55,6 +55,15 @@ img {
     font-weight: 900;
 }
 
+.btn.btn-success {
+    background: #3ac47d;
+    border-color: currentColor
+}
+
+.btn.btn-success:hover {
+    background: #3c9768;
+}
+
 .btn.btn-primary {
     background: none;
     color: #384e77;
@@ -98,8 +107,12 @@ img {
     top: 18px;
 }
 
+.main-wrapper {
+    min-height: 100vh;
+}
+
 .content {
-    text-align: center;
+    min-height: 100vh;
 }
 
 .title {
@@ -129,6 +142,8 @@ header .logo img {
 }
 
 footer {
+    position: relative;
+    bottom: 0;
     background-color: #384e77;
 }
 

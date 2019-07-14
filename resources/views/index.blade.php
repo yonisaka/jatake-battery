@@ -1,6 +1,6 @@
-@extends('layout.reg')
+@extends('layout.main')
 @section('head')
-    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+<link rel="stylesheet" href="{{ asset('css/home.css') }}">
 @endsection
 @section('contentId',"home")
 @section('content')
@@ -8,17 +8,17 @@
 <div id="sc-category" class="list-group list-group-horizontal">
     <div class="list-group-item active">
         <a href="#" data-type='all'>
-                All<small class="ml-3 mr-1"><i class="fas fa-chevron-right"></i></small>
+            All<small class="ml-3 mr-1"><i class="fas fa-chevron-right"></i></small>
         </a>
     </div>
     <div class="list-group-item">
         <a href="#" data-type='MOTOR'>
-                Motor<small class="ml-3 mr-1"><i class="fas fa-chevron-right"></i></small>
+            Motor<small class="ml-3 mr-1"><i class="fas fa-chevron-right"></i></small>
         </a>
     </div>
     <div class="list-group-item">
         <a href="#" data-type='MOBIL'>
-                Mobil<small class="ml-3 mr-1"><i class="fas fa-chevron-right"></i></small>
+            Mobil<small class="ml-3 mr-1"><i class="fas fa-chevron-right"></i></small>
         </a>
     </div>
     <div class="list-group-item">
@@ -75,29 +75,29 @@
     <div class="card-wrapper container">
         <div class="row">
             @php
-                foreach ($products as $k => $d) {
+            foreach ($products as $k => $d) {
 
             @endphp
             <a class="products-card" href="{{ url('products/detail/'.$d->code) }}" data-type="{{ $d->type }}">
                 <div class="card col-md-4 col-sm-3">
                     <div class="card-img">
-                            <img src="{{ $d->img[0] }}">
+                        <img src="{{ $d->img[0] }}">
                     </div>
                     <div class="card-header text-left">
                         <h5 class="product-name font-xbold mb-1">{{ $d->merk }}</h5>
                         <h5 class="product-author font-weight-normal">{{ $d->name }}</h5>
                         <h5 class="products-type mb-2">
                             @php
-                                if($d->type == "MOTOR"){
+                            if($d->type == "MOTOR"){
                             @endphp
                             <i class="fas fa-motorcycle"></i>
                             @php
-                                }
-                                else{
+                            }
+                            else{
                             @endphp
                             <i class="fas fa-car"></i>
                             @php
-                        }
+                            }
                             @endphp
                         </h5>
                         <h6 class="product-price font-bold text-blue">{{ formating($d->price,'price') }}</h5>

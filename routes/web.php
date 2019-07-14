@@ -24,3 +24,8 @@ Route::prefix('/products')->group(function()
     Route::get('/','ProductsController@index')->name("products");
     Route::get('/detail/{code}','ProductsController@detail')->name("products.detail");
 });
+
+Route::prefix('/admin')->group(function()
+{
+    Route::get('/','AdminController@index')->name('admin');
+});

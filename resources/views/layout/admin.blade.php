@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Jatake Battery - Administrator </title>
+
+    <!-- Styles -->
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
+    <script src="{{ asset('/modules/jquery-3.4.1/jquery-3.4.1.min.js') }}"></script>
+    <script src="{{ asset('/modules/bootstrap-4.3.1/js/bootstrap.min.js') }}"></script>
+    @yield('head')
+</head>
+
+<body>
+    <div class="bg-light">
+        <div id="admin" class="main-wrapper">
+            <header>
+                <nav class="navbar-expand-md navbar navbar-light">
+                    <div class="container">
+                        <div id="logo" class="navbar-header">
+                            <div class="navbar-brand" id="mainlogo">
+                                <a href="{{ url('/') }}"><img src="{{ asset('/assets/logo.png') }}" alt="" srcset="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="navbar-collapse">
+                            <div class="navbar-nav mr-auto"></div>
+                            <div class="navbar-nav float-right">
+                                <div class="mt-1 mr-4">
+                                    <h5>Hello Admin!</h5>
+                                </div>
+                                <div class="">
+                                    <button class="btn btn-sm btn-danger"><i
+                                            class="fas fa-sign-out-alt"></i>Logout</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+            <div class="container content" id="@yield('contentId')">
+                @yield('content')
+            </div>
+            <footer class="container-fluid text-white p-0">
+
+                <div class="py-2 bg-dark">
+                    <div class="container">
+                        <div class="text-right">
+                            <b>Jatake.LeaProjects&copy;{{ date('Y') }}</b>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+
+<script src="{{ asset('/modules/fontawesome/js/all.min.js') }}"></script>
+<script src="{{ asset('js/main.js') }}"></script>
+
+</html>
