@@ -1,16 +1,17 @@
 @extends('layout.admin')
 @section('content')
-<div class="container">
+<div class="row">
     <h3 class="mt-5 mb-2">Product Manager</h3>
     <div class="col p-3 main">
         <div class="d-block text-right">
-            <button class="btn btn-success my-2">Add Product</button></div>
+            <button class="btn btn-success my-2" onclick="$('#add-product-modal').modal()">Add Product</button>
+        </div>
         <div class="card">
-            <div class="table-responsive">
-                <table class="align-middle mb-0 table table-hover">
+            <div class="container px-2 py-4">
+                <table class="align-middle mb-0 table table-bordered display" id="products-table">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
+                            <th scope="col">ID/Short</th>
                             <th scope="col">Nama</th>
                             <th scope="col">Merk</th>
                             <th scope="col">Tipe</th>
@@ -18,41 +19,13 @@
                             <th scope="col">Qty</th>
                             <th scope="col">Harga</th>
                             <th scope="col">Deskripsi</th>
-                            <th scope="col">Gambar</th>
+                            <th scope="col" class="text-center">Gambar</th>
                             <th scope="col">Link ke Toko</th>
                             <th scope="col" class="text-center">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>MTZ52</td>
-                            <td>MOTOBATT</td>
-                            <td><i class="fas fa-motorcycle"></i></td>
-                            <td><i class="fas fa-check mx-1"></i><i class="fas fa-recycle mx-1"></i><i
-                                    class="fas fa-newspaper mx-1"></i></td>
-                            <td>12</td>
-                            <td>Rp. 200.000</td>
-                            <td>Lorem ipsum,...</td>
-                            <td>
-                                <div class="img-product">
-                                    <img src="http://jatakebattery.local/assets/Motobatt__MTZ-2.png">
-                                    <img src="http://jatakebattery.local/assets/Motobatt__MTZ-2.png">
-                                    <img src="http://jatakebattery.local/assets/Motobatt__MTZ-2.png">
-                                </div>
-                            </td>
-                            <td>
-                                <div class="d-block">Wa : 08123123</div>
-                                <div class="d-block">Bukalapak: bukalapak.com</div>
-                                <div class="d-block">Tokopedia: bukalapak.com</div>
-                            </td>
-                            <td class="text-center">
-                                <button class="btn my-1 mx-1 btn-sm btn-warning"><i
-                                        class="fas fa-pencil-alt mr-1"></i>Edit</button>
-                                <button class="btn my-1 mx-1 btn-sm btn-danger"><i
-                                        class="fas fa-trash mr-1"></i>Hapus</button>
-                            </td>
-                        </tr>
+                        @include('products-table',['data'=>$products])
                     </tbody>
                 </table>
             </div>
@@ -67,7 +40,7 @@
                 <h4 class="modal-title">Add Product</h4>
             </div>
             <div class="modal-body">
-                <form action="" class="">
+                <form action="" class="" id="form-product">
                     <div class="form-row">
                         <div class="col-md">
                             <div class="form-group">
@@ -83,66 +56,114 @@
                         </div>
                         <div class="col-md">
                             <div class="form-group">
+                                <label for="">Shortener Product</label>
+                                <input type="text" id="short-product" class="form-control" name='short'
+                                    placeholder="(Optional)">
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="form-group">
                                 <label for="">Type</label>
                                 <select name="type" id="type-product" class="form-control">
-                                    <option value="">Motor</option>
-                                    <option value="">Mobil</option>
+                                    <option value="motor" selected>Motor</option>
+                                    <option value="mobil">Mobil</option>
                                 </select>
                             </div>
                         </div>
                     </div>
                     <div class="form-row">
-                        <div class="col-md">
-                            <div class="form-group">
+                        <div class="col-md-6">
+                            <div class="position-relative form-group" id="label-product">
                                 <label for="">
                                     Label
                                 </label>
                                 <br>
-                                <input class="ml-2" type="checkbox" name="label1" id="">label1<i
-                                    class="fas fa-check"></i>
-                                <input class="ml-2" type="checkbox" name="label1" id="">label1<i
-                                    class="fas fa-check"></i>
-                                <br>
-                                <input class="ml-2" type="checkbox" name="label1" id="">label1<i
-                                    class="fas fa-check"></i>
-                                <input class="ml-2" type="checkbox" name="label1" id="">label1<i
-                                    class="fas fa-check"></i>
+                                <div class="row">
+                                    <div class="col">
+                                        <input class="ml-2" type="checkbox" data-name="gratis" id="lbl-gratis"
+                                            value="fa-check" data-info="Gratis Pasang">
+                                        <i class="fas fa-check"></i>
+                                        Gratis Pasang
+                                    </div>
+                                    <div class="col">
+                                        <input class="ml-2" type="checkbox" data-name="tukar" id="lbl-tukar"
+                                            value="fa-check" data-info="Tukar Tambah">
+                                        <i class="fas fa-check"></i>
+                                        Tukar Tambah
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <input class="ml-2" type="checkbox" data-name="asli" id="lbl-asli"
+                                            value="fa-check" data-info="Produk Asli">
+                                        <i class="fas fa-check"></i>
+                                        Produk Asli
+                                    </div>
+                                    <div class="col">
+                                        <input class="ml-2" type="checkbox" data-name="baru" id="lbl-baru"
+                                            value="fa-check" data-info="Barang Baru">
+                                        <i class="fas fa-check"></i>
+                                        Barang Baru
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <input class="ml-2" type="checkbox" data-name="bekas" id="lbl-bekas"
+                                            value="fa-check" data-info="Barang Bekas">
+                                        <i class="fas fa-check"></i>
+                                        Barang Bekas
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md">
+                        <div class="col-md-2">
                             <div class="form-group">
                                 <label for="">Qty</label>
-                                <input type="number" class="form-control" name="qty" id="">
+                                <input type="number" class="form-control" name="qty" id="qty-product">
                             </div>
                         </div>
                         <div class="col-md">
                             <div class="form-group">
                                 <label for="">Harga</label>
-                                <input type="number" class="form-control" name="qty" id="">
+                                <input type="number" class="form-control" name="price" id="price-product">
                             </div>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col">
-                            <div class="form-group">
+                            <div class="form-group" id="img-product">
                                 <label for="">Gambar</label>
-                                <input type="text" class="mb-1 form-control" name="qty" id=""
-                                    placeholder="Link Gambar 1">
-                                <input type="text" class="mb-1 form-control" name="qty" id=""
-                                    placeholder="Link Gambar 2">
-                                <input type="text" class="mb-1 form-control" name="qty" id=""
-                                    placeholder="Link Gambar 3">
+                                <input type="text" class="mb-1 form-control" placeholder="Link Gambar 1">
+                                <input type="text" class="mb-1 form-control" placeholder="Link Gambar 2">
+                                <input type="text" class="mb-1 form-control" placeholder="Link Gambar 3">
                             </div>
                         </div>
                         <div class="col">
-                            <div class="form-group">
+                            <div class="form-group" id="link-product">
                                 <label for="">Link Toko</label>
-                                <input type="text" class="mb-1 form-control" name="qty" id=""
-                                    placeholder="Link Gambar 1">
-                                <input type="text" class="mb-1 form-control" name="qty" id=""
-                                    placeholder="Link Gambar 2">
-                                <input type="text" class="mb-1 form-control" name="qty" id=""
-                                    placeholder="Link Gambar 3">
+                                <input type="text" class="mb-1 form-control" data-name="wa" id="wa-product"
+                                    placeholder="Nomor WA">
+                                <input type="text" class="mb-1 form-control" data-name="tp" id="tp-product"
+                                    placeholder="Link ke Tokopedia">
+                                <input type="text" class="mb-1 form-control" data-name="bl" id="bl-product"
+                                    placeholder="Link ke Bukalapak">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Deskripsi</label>
+                        <textarea class='form-control' name="deskripsi" id="desc-product" cols="30"
+                            rows="10"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col text-left">
+                                <button class="btn btn-secondary">Bingung <i
+                                        class="fas fa-question-circle"></i></button>
+                            </div>
+                            <div class="col text-right">
+                                <button class="btn btn-warning">Reset</button>
+                                <button class="btn btn-success save-product">Simpan</button>
                             </div>
                         </div>
                     </div>
@@ -151,8 +172,306 @@
         </div>
     </div>
 </div>
+
+<div class="modal modalbox" id="edit-product-modal">
+    <div class="modal-lg mx-auto mt-5">
+        <div class="shadow-lv2 overflow-hidden rounded modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Ubah Product</h4>
+            </div>
+            <div class="modal-body">
+                <form action="" class="" id="form-product">
+                    @method('PUT')
+                    <input type="hidden" name="id-product" id='id-product'>
+                    <div class="form-row">
+                        <div class="col-md">
+                            <div class="form-group">
+                                <label for="">Nama Product</label>
+                                <input type="text" id="name-product" class="form-control" name='name'>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="form-group">
+                                <label for="">Merk Product</label>
+                                <input type="text" id="merk-product" class="form-control" name='merk'>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="form-group">
+                                <label for="">Shortener Product</label>
+                                <input type="text" id="short-product" class="form-control" name='short'
+                                    placeholder="(Optional)">
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="form-group">
+                                <label for="">Type</label>
+                                <select name="type" id="type-product" class="form-control">
+                                    <option value="motor" selected>Motor</option>
+                                    <option value="mobil">Mobil</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <div class="position-relative form-group" id="label-product">
+                                <label for="">
+                                    Label
+                                </label>
+                                <br>
+                                <div class="row">
+                                    <div class="col">
+                                        <input class="ml-2" type="checkbox" data-name="gratis" id="lbl-gratis"
+                                            value="fa-check" data-info="Gratis Pasang">
+                                        <i class="fas fa-check"></i>
+                                        Gratis Pasang
+                                    </div>
+                                    <div class="col">
+                                        <input class="ml-2" type="checkbox" data-name="tukar" id="lbl-tukar"
+                                            value="fa-check" data-info="Tukar Tambah">
+                                        <i class="fas fa-check"></i>
+                                        Tukar Tambah
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <input class="ml-2" type="checkbox" data-name="asli" id="lbl-asli"
+                                            value="fa-check" data-info="Produk Asli">
+                                        <i class="fas fa-check"></i>
+                                        Produk Asli
+                                    </div>
+                                    <div class="col">
+                                        <input class="ml-2" type="checkbox" data-name="baru" id="lbl-baru"
+                                            value="fa-check" data-info="Barang Baru">
+                                        <i class="fas fa-check"></i>
+                                        Barang Baru
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <input class="ml-2" type="checkbox" data-name="bekas" id="lbl-bekas"
+                                            value="fa-check" data-info="Barang Bekas">
+                                        <i class="fas fa-check"></i>
+                                        Barang Bekas
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="">Qty</label>
+                                <input type="number" class="form-control" name="qty" id="qty-product">
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="form-group">
+                                <label for="">Harga</label>
+                                <input type="number" class="form-control" name="price" id="price-product">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <div class="form-group" id="img-product">
+                                <label for="">Gambar</label>
+                                <input type="text" class="mb-1 form-control" placeholder="Link Gambar 1">
+                                <input type="text" class="mb-1 form-control" placeholder="Link Gambar 2">
+                                <input type="text" class="mb-1 form-control" placeholder="Link Gambar 3">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group" id="link-product">
+                                <label for="">Link Toko</label>
+                                <input type="text" class="mb-1 form-control" data-name="wa" id="wa-product"
+                                    placeholder="Nomor WA">
+                                <input type="text" class="mb-1 form-control" data-name="tp" id="tp-product"
+                                    placeholder="Link ke Tokopedia">
+                                <input type="text" class="mb-1 form-control" data-name="bl" id="bl-product"
+                                    placeholder="Link ke Bukalapak">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Deskripsi</label>
+                        <textarea class='form-control' name="deskripsi" id="desc-product" cols="30"
+                            rows="10"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col text-left">
+                                <button class="btn btn-secondary">Bingung <i
+                                        class="fas fa-question-circle"></i></button>
+                            </div>
+                            <div class="col text-right">
+                                <button class="btn btn-warning">Reset</button>
+                                <button class="btn btn-success save-product">Simpan</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
-    $('#add-product-modal').modal()
+    let settings = {}
+    $("#products-table").DataTable(settings)
+    let serializeModal = function($modal)
+    {
+        let formData = $modal.find('#form-product').serializeArray();
+        // push label to array
+        let label = [];
+        $modal.find("#label-product input").each((i,el)=>{
+            $(el).prop('checked') ? label.push({
+                name:$(el).data('name'),
+                value:$(el).val(),
+                info:$(el).data('info')
+            }) : false
+        })
+        formData.push({name:'label',value:label})
+
+        // push label to array
+        let img = [];
+        $modal.find("#img-product input").each((i,el)=>{
+            $(el).val() ? img.push($(el).val()) : false
+        })
+        formData.push({name:'img',value:img})
+
+        // push label to array
+        let link = [];
+        $modal.find("#link-product input").each((i,el)=>{
+            $(el).val() ? link[$(el).data('name')] = $(el).val() : false})
+        formData.push({name:'link',value:link})
+
+        // filter null data
+        formData = formData.filter(arr=>{
+            return arr.value
+        })
+        return objectifyForm(formData)
+    }
+    let editModal = function($data)
+    {
+        if(!$data)
+            return false
+        let $modal = $("#edit-product-modal")
+
+        $modal.find('#id-product').val($data.id);
+        $modal.find('#name-product').val($data.name);
+        $modal.find('#merk-product').val($data.merk)
+        $modal.find('#short-product').val($data.short)
+        $modal.find('#type-product').val($data.type)
+        $modal.find('#qty-product').val($data.qty)
+        $modal.find('#price-product').val($data.price)
+        if($data.label)
+        $.each($data.label, (i, v) => {
+            $modal.find('input[data-name='+v.name+']').prop('checked',true);
+        });
+        if($data.img)
+            $modal.find('#img-product input').each((i,el)=>{
+                $(el).val($data.img[i])
+            })
+        if($data.link){
+            $modal.find('#wa-product').val($data.link.wa)
+            $modal.find('#tp-product').val($data.link.tp)
+            $modal.find('#bl-product').val($data.link.bl)
+        }
+        $modal.find('#desc-product').val($data.deskripsi)
+        $modal.find('.save-product').click(function(e){
+            e.preventDefault()
+            let json = serializeModal($modal)
+
+            $.post({
+                url: "{{ url('/products/') }}/"+$data.id,
+                dataType: 'json',
+                data: json
+            })
+            .done((res)=>{
+                if(!res.data)
+                    swal.fire('Gagal Menyimpan','Coba lagi','error')
+                else
+                    swal.fire('Berhasil Menyimpan!','Data telah tersimpan','success')
+                    .then(()=>{
+                        window.location.reload()
+                    })
+            })
+            .fail((res)=>{
+                console.log(res)
+                swal.fire('Gagal Menyimpan',res.responseJSON.message,'error')
+            })
+        })
+        $modal.modal()
+    }
+
+    $(".edit-product").click(function(e)
+    {
+        e.preventDefault();
+        let $btn = $(this)
+        $.get('{{ url("/products/json/get") }}/'+$btn.data('id'))
+        .done((res)=>{
+            editModal(res.data)
+        })
+        .fail((err)=>{
+            console.log(err)
+            swal.fire('Gagal Memuat data',err.responseJSON.message,'error')
+        })
+    })
+    $(".delete-product").click(function(e)
+    {
+        e.preventDefault();
+        let $btn = $(this)
+        swal.fire({
+            title: 'Hapus data?',
+            text: "Data akan dihapus dari database!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, hapus!'
+            }).then((result) => {
+            if (result.value) {
+                $.ajax({
+                    method: 'DELETE',
+                    url: '{{ url("/products") }}/'+$btn.data('id')
+                })
+                .done((res)=>{
+                    swal.fire('Berhasil Menghapus data','','success')
+                    .then(()=>{
+                        window.location.reload()
+                    })
+                })
+                .fail((err)=>{
+                    console.log(err)
+                    swal.fire('Gagal Menghapus data',err.responseJSON.message,'error')
+                })
+            }
+            })
+    })
+
+
+    $('#add-product-modal .save-product').click(function(e){
+        e.preventDefault();
+        let json = serializeModal($('#add-product-modal'))
+        $.post({
+            url: "{{ url('/products') }}",
+            dataType: 'json',
+            data: json
+        })
+        .done((res)=>{
+            if(!res.data)
+                swal.fire('Gagal Menyimpan','Coba lagi','error')
+            else
+                swal.fire('Berhasil Menyimpan!','Data telah tersimpan','success')
+                .then(()=>{
+                    window.location.reload()
+                })
+        })
+        .fail((res)=>{
+            console.log(res)
+            swal.fire('Gagal Menyimpan',res.responseJSON.message,'error')
+        })
+    })
 </script>
 </div>
 @endsection

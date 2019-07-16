@@ -27,7 +27,10 @@
         </a>
     </div>
 </div>
-
+@php
+if(!empty($products))
+{
+@endphp
 {{-- section content: banner --}}
 <div id="sc-banner" class="mt-5">
     <div class="card banner-wrapper">
@@ -62,23 +65,32 @@
                         </h3>
                     </div>
                 </div>
-                <a href="{{ url('products/detail/'.$products[0]->code) }}" class="btn buy-now">
+                <a href="{{ url('products/'.$products[0]->code) }}" class="btn buy-now">
                     Beli Sekarang <i class="fas fa-chevron-circle-right"></i>
                 </a>
             </div>
         </div>
     </div>
 </div>
-
+@php
+}
+@endphp
 {{-- section content: products list --}}
 <div id="sc-products">
     <div class="card-wrapper container">
         <div class="row">
             @php
+            if(empty($products))
+            {
+            echo '
+            <div class="col text-center">
+                <h3>Belum ada product</h3>
+            </div>';
+            }
             foreach ($products as $k => $d) {
 
             @endphp
-            <a class="products-card" href="{{ url('products/detail/'.$d->code) }}" data-type="{{ $d->type }}">
+            <a class="products-card" href="{{ url('products/'.$d->code) }}" data-type="{{ $d->type }}">
                 <div class="card col-md-4 col-sm-3">
                     <div class="card-img">
                         <img src="{{ $d->img[0] }}">

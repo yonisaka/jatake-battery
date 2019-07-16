@@ -10,15 +10,16 @@ class Products extends Model
     // use ModelJsonStorage;
 
     protected $fillable = [
-        'code','name',
-        'merk','description',
-        'capacity','dimention',
+        'short','name',
+        'merk','deskripsi',
+        'label','link',
         'type','img',
+        'qty',
         'price','status'
     ];
 
     public function scopeDetail($q,$id)
     {
-        return $q->where('id',$id)->orWhere('code',$id);
+        return $q->where('id',$id)->orWhere('short',$id);
     }
 }

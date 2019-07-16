@@ -15,16 +15,17 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('code');
+            $table->string('short')->nullable()->unique();
             $table->string('name');
-            $table->string('merk');
-            $table->longText('description');
-            $table->integer('capacity');
-            $table->string('dimention');
+            $table->string('merk')->nullable();
+            $table->longText('deskripsi')->nullable();
+            $table->integer('qty')->nullable();
             $table->enum('type',['MOTOR','MOBIL']);
-            $table->string('img');
-            $table->string('price');
-            $table->boolean('status');
+            $table->longText('label')->nullable();
+            $table->longText('link')->nullable();
+            $table->longText('img')->nullable();
+            $table->string('price')->default(0);
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }
@@ -36,6 +37,9 @@ class CreateProductsTable extends Migration
      */
     public function down()
     {
+        $this->command->info('yes');
+        if (Schema::hasTable('products')) {
+        }
         Schema::dropIfExists('products');
     }
 }

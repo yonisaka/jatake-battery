@@ -1,4 +1,13 @@
 $(function () {
+    // include library
+    let $lib = $('<script></script>').attr('src', '/js/library.js')
+    $('head').append($lib);
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
     $("#sc-category a").click(function (e) {
         e.preventDefault();
 

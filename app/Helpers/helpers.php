@@ -15,3 +15,21 @@ if(!function_exists('formating'))
         return ;
     }
 }
+
+if(!function_exists('toObj'))
+{
+    function toObj($things)
+    {
+        return (object)$things;
+    }
+}
+
+
+if(!function_exists('pricify'))
+{
+    function pricify($things)
+    {
+        return (object)$things;
+    }
+}
+

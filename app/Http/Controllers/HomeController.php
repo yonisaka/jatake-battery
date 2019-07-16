@@ -12,7 +12,7 @@ class HomeController extends Controller
     public function index()
     {
 
-        $data['products'] = Products::orderBy('code')->get();
+        $data['products'] = Products::orderBy('id')->get();
         return view("index",$data);
     }
 

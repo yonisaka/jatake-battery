@@ -19,13 +19,24 @@ Route::prefix('/extra-pages')->group(function()
     Route::get('/{page}','ExtraPagesController@page')->name("extra");
 });
 
+Route::resource('/products','ProductsController')->except(['create','edit']);
 Route::prefix('/products')->group(function()
 {
-    Route::get('/','ProductsController@index')->name("products");
-    Route::get('/detail/{code}','ProductsController@detail')->name("products.detail");
+    Route::any('/json/{function}','ProductsController@json');
+    Route::any('/json/{function}/{id}','ProductsController@json');
 });
+
 
 Route::prefix('/admin')->group(function()
 {
-    Route::get('/','AdminController@index')->name('admin');
+    Route::get('/','AdminController@index');
+    Route::get('/login','AdminController@login');
+});
+
+Route::middleware(function($req,$next){
+    echo "this is API";
+    return $next($req);
+})->prefix('/api')->group(function()
+{
+    Route::apiResource('/products','Api\ProductsApi');
 });

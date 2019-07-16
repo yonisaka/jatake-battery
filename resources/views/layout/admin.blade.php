@@ -4,14 +4,18 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Jatake Battery - Administrator </title>
 
     <!-- Styles -->
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
-    <script src="{{ asset('/modules/jquery-3.4.1/jquery-3.4.1.min.js') }}"></script>
-    <script src="{{ asset('/modules/bootstrap-4.3.1/js/bootstrap.min.js') }}"></script>
+    <link href="{{ asset('modules/datatable/datatables.min.css') }}" rel="stylesheet">
+    <script type="text/javascript" src="{{ asset('modules/jquery-3.4.1/jquery-3.4.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('modules/bootstrap-4.3.1/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('modules/sweetalert2.all.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('modules/datatable/datatables.min.js') }}"></script>
     @yield('head')
 </head>
 
