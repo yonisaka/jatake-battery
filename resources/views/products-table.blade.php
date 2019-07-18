@@ -16,28 +16,12 @@ empty($p->img) ? $p->img = [] : false;
     <td scope="row"><b>{{ !empty($p->short)?$p->short : $p->id }}</b></td>
     <td><b>{{ $p->name }}</b></td>
     <td>{{ $p->merk }}</td>
-    <td><i class="fas fa{{ $p->type == 'motor' ? '-motorcycle' : '-car' }}"></i></td>
-    <td>
-        @php
-        foreach ($p->label as $k => $v) {
-        echo '<i class="fas '.$v->value.'"></i>';
-        }
-        @endphp
-    </td>
-    <td>{{ $p->qty }}</td>
-    <td>{{ $p->price }}</td>
-    <td>{{ str_limit($p->deskripsi,12) }}</td>
-    <td>
+    <td class="text-center">
         @php
         foreach ($p->img as $k => $v) {
-        echo '<img src="'.$v.'" alt="Gambar Product">';
+        echo '<img width="100px" src="'.$v.'" alt="Gambar Product">';
         }
         @endphp
-    </td>
-    <td>
-        <div class="d-block">Wa: {{ !empty($p->link)? $p->link->wa : '-'}}</div>
-        <div class="d-block">Bukalapak: bukalapak.com</div>
-        <div class="d-block">Tokopedia: bukalapak.com</div>
     </td>
     <td class="text-center">
         <button class="edit-product btn my-1 mx-1 btn-sm btn-warning" data-id="{{ $p->id }}"><i

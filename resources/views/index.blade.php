@@ -28,7 +28,7 @@
     </div>
 </div>
 @php
-if(!empty($products))
+if(!empty($products[0]))
 {
 @endphp
 {{-- section content: banner --}}
@@ -80,7 +80,7 @@ if(!empty($products))
     <div class="card-wrapper container">
         <div class="row">
             @php
-            if(empty($products))
+            if(empty($products[0]))
             {
             echo '
             <div class="col text-center">

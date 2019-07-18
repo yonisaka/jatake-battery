@@ -2,6 +2,8 @@
 @section('content')
 <div class="row">
     <h3 class="mt-5 mb-2">Product Manager</h3>
+</div>
+<div class="row">
     <div class="col p-3 main">
         <div class="d-block text-right">
             <button class="btn btn-success my-2" onclick="$('#add-product-modal').modal()">Add Product</button>
@@ -14,13 +16,7 @@
                             <th scope="col">ID/Short</th>
                             <th scope="col">Nama</th>
                             <th scope="col">Merk</th>
-                            <th scope="col">Tipe</th>
-                            <th scope="col">Label</th>
-                            <th scope="col">Qty</th>
-                            <th scope="col">Harga</th>
-                            <th scope="col">Deskripsi</th>
                             <th scope="col" class="text-center">Gambar</th>
-                            <th scope="col">Link ke Toko</th>
                             <th scope="col" class="text-center">Aksi</th>
                         </tr>
                     </thead>
