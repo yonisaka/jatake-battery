@@ -1,4 +1,4 @@
-@extends('layout.admin')
+@extends('layout.dashboard')
 @section('content')
 <div class="row">
     <h3 class="mt-5 mb-2">Product Manager</h3>
@@ -12,12 +12,12 @@
             <div class="container px-2 py-4">
                 <table class="align-middle mb-0 table table-bordered display" id="products-table">
                     <thead>
-                        <tr>
+                        <tr class="text-center">
                             <th scope="col">ID/Short</th>
                             <th scope="col">Nama</th>
                             <th scope="col">Merk</th>
-                            <th scope="col" class="text-center">Gambar</th>
-                            <th scope="col" class="text-center">Aksi</th>
+                            <th scope="col">Gambar</th>
+                            <th scope="col">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -312,9 +312,18 @@
 </div>
 
 <script>
-    let settings = {}
-    $("#products-table").DataTable(settings)
-    let serializeModal = function($modal)
+    $(document).ready(() => {
+        let dataTableSett = {
+            language: {
+                paginate: {
+                previous: '<i class="fas fa-arrow-circle-left"></i>',
+                next: '<i class="fas fa-arrow-circle-right"></i>'
+                }
+            }
+        }
+        $("#products-table").DataTable(dataTableSett)
+    })
+    let serializeModal = function($modal,$filter=true)
     {
         let formData = $modal.find('#form-product').serializeArray();
         // push label to array
@@ -342,9 +351,16 @@
         formData.push({name:'link',value:link})
 
         // filter null data
-        formData = formData.filter(arr=>{
-            return arr.value
-        })
+        if($filter)
+            formData = formData.filter(arr=>{
+                return arr.value
+            })
+        else
+            formData = formData.map(arr=>{
+                (arr.value.length == 0) ? arr.value = "" : null
+                return arr
+            })
+
         return objectifyForm(formData)
     }
     let editModal = function($data)
@@ -376,9 +392,11 @@
         $modal.find('#desc-product').val($data.deskripsi)
         $modal.find('.save-product').click(function(e){
             e.preventDefault()
-            let json = serializeModal($modal)
+            let json = serializeModal($modal,false)
+            // console.log(json);
 
-            $.post({
+            $.ajax({
+                method: "PUT",
                 url: "{{ url('/products/') }}/"+$data.id,
                 dataType: 'json',
                 data: json

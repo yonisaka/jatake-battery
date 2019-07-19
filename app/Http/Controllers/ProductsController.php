@@ -45,7 +45,7 @@ class ProductsController extends Controller
     public function update(Request $req, Products $product)
     {
         $data = $req->all();
-        // return response()->json(['message'=>'Terjadi kesalahan','err'=>[$data,$product]],400);
+        // return response()->json($data,400);
         $update = $product->update($data);
         if(!$update)
             return response()->json(['message'=>'Terjadi kesalahan','err'=>$update],400);

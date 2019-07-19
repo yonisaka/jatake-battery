@@ -13,58 +13,51 @@ class ProductsSeeder extends Seeder
     {
         //
         $productsArr = [
-                [
-                    'name'=>'Amaron C23AC SUper KW M',
-                    'merk'=>'Amaron',
-                    'description'=>'Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias nam molestiae non optio magnam odio aspernatur. Cupiditate, odit asperiores autem praesentium, quasi eum necessitatibus facilis magni, voluptas fuga et eaque.',
-                    'capacity'=>'50',
-                    'dimention'=>['10','20'],
-                    'code'=>'am-314',
-                    'type'=>'MOTOR',
-                    'img'=>[
-                        'http://jatakebattery.local/assets/Motobatt__MTZ-2.png',
-                        'http://jatakebattery.local/assets/Motobatt__MTZ-2.png',
-                        'http://jatakebattery.local/assets/Motobatt__MTZ-2.png'
-                    ],
-                    'price'=>'120000',
-                    'status'=>1
-                ],
-                [
-                    'name'=>'Amaron C23AC SUper KW 5',
-                    'merk'=>'Amaron',
-                    'description'=>'Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias nam molestiae non optio magnam odio aspernatur. Cupiditate, odit asperiores autem praesentium, quasi eum necessitatibus facilis magni, voluptas fuga et eaque.',
-                    'capacity'=>'50',
-                    'dimention'=>['10','20'],
-                    'code'=>'am-315',
-                    'type'=>'MOBIL',
-                    'img'=>[
-                        'http://jatakebattery.local/assets/Motobatt__MTZ-2.png',
-                        'http://jatakebattery.local/assets/Motobatt__MTZ-2.png',
-                        'http://jatakebattery.local/assets/Motobatt__MTZ-2.png'
-                    ],
-                    'price'=>'120000',
-                    'status'=>1
-                ],
-                [
-                    'name'=>'Amaron C23AC SUper KW N',
-                    'merk'=>'Amaron',
-                    'description'=>'Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias nam molestiae non optio magnam odio aspernatur. Cupiditate, odit asperiores autem praesentium, quasi eum necessitatibus facilis magni, voluptas fuga et eaque.',
-                    'capacity'=>'50',
-                    'dimention'=>['10','20'],
-                    'code'=>'an-314',
-                    'type'=>'MOTOR',
-                    'img'=>[
-                        'http://jatakebattery.local/assets/Motobatt__MTZ-2.png',
-                        'http://jatakebattery.local/assets/Motobatt__MTZ-2.png',
-                        'http://jatakebattery.local/assets/Motobatt__MTZ-2.png'
-                    ],
-                    'price'=>'120000',
-                    'status'=>1
-                ],
-            ];
-            foreach($productsArr as $d)
-            {
-                Products::create($d);
-            }
+            [   'short'=>'abc-1',
+                'name'=>'Aki Test 1',
+                'merk'=>'Honda',
+                'deskripsi'=>'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus nemo accusantium exercitationem pariatur nostrum dolore iure facilis quisquam porro magnam. Aspernatur blanditiis quisquam molestias delectus tempore. Libero suscipit veritatis in?',
+                'label'=>[],
+                'link'=>[],
+                'type'=>'MOTOR',
+                'img'=>[],
+                'qty'=>1,
+                'price'=>100000,],
+
+            [   'short'=>'abc-2',
+                'name'=>'Aki Test 2',
+                'merk'=>'Honda',
+                'deskripsi'=>'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus nemo accusantium exercitationem pariatur nostrum dolore iure facilis quisquam porro magnam. Aspernatur blanditiis quisquam molestias delectus tempore. Libero suscipit veritatis in?',
+                'label'=>[],
+                'link'=>[],
+                'type'=>'MOBIL',
+                'img'=>[],
+                'qty'=>1,
+                'price'=>500000,],
+            [   'short'=>'',
+                'name'=>'Aki Test 3',
+                'merk'=>'',
+                'deskripsi'=>'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus nemo accusantium exercitationem pariatur nostrum dolore iure facilis quisquam porro magnam. Aspernatur blanditiis quisquam molestias delectus tempore. Libero suscipit veritatis in?',
+                'label'=>[],
+                'link'=>[],
+                'type'=>'MOTOR',
+                'img'=>[],
+                'qty'=>1,
+                'price'=>10000000,],
+            [   'short'=>'abc-4',
+                'name'=>'Aki Test 5',
+                'merk'=>'Honda',
+                'deskripsi'=>'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus nemo accusantium exercitationem pariatur nostrum dolore iure facilis quisquam porro magnam. Aspernatur blanditiis quisquam molestias delectus tempore. Libero suscipit veritatis in?',
+                'label'=>[],
+                'link'=>[],
+                'type'=>'MOBIL',
+                'img'=>[],
+                'qty'=>1,
+                'price'=>'',],
+        ];
+        foreach($productsArr as $d)
+        {
+            Products::create($d);
+        }
     }
 }
