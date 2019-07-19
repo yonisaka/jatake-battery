@@ -87,8 +87,8 @@
         </div>
     </div>
 </body>
-<script src="{{ asset('/modules/bootstrap-4.3.1/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('/modules/jquery-3.4.1/jquery-3.4.1.min.js') }}"></script>
+<script src="{{ asset('/modules/bootstrap-4.3.1/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('/modules/fontawesome/js/all.min.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
 

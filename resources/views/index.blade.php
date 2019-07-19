@@ -65,7 +65,8 @@ if(!empty($products[0]))
                         </h3>
                     </div>
                 </div>
-                <a href="{{ url('products/'.$products[0]->code) }}" class="btn buy-now">
+                <a href="{{ url('products/') }}/{{ $products[0]->short ? $products[0]->short : $products[0]->id }}"
+                    class="btn buy-now">
                     Beli Sekarang <i class="fas fa-chevron-circle-right"></i>
                 </a>
             </div>
@@ -90,7 +91,8 @@ if(!empty($products[0]))
             foreach ($products as $k => $d) {
 
             @endphp
-            <a class="products-card" href="{{ url('products/'.$d->code) }}" data-type="{{ $d->type }}">
+            <a class="products-card" href="{{ url('products/') }}/{{ $d->short?$d->short:$d->id }}"
+                data-type="{{ $d->type }}">
                 <div class="card col-md-4 col-sm-3">
                     <div class="card-img">
                         <img src="{{ $d->img[0] }}">

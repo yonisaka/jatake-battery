@@ -28,7 +28,8 @@ class ProductsController extends Controller
         $data = Products::detail($id)->firstOrFail();
         if(empty($data))
             abort(404);
-        return $data;
+
+        return view('detail',['product'=>$data]);
     }
 
     public function store(Request $req){

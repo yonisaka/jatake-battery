@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'local'),
 
     /*
     |--------------------------------------------------------------------------
@@ -43,7 +43,25 @@ return [
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
 
-        'mysql' => [
+        'remotemysql' => [
+            'driver' => 'mysql',
+            'host' => env('DB_REMYSQL_HOST'),
+            'port' => '3306',
+            'database' => env('DB_REMYSQL_DB'),
+            'username' => env('DB_REMYSQL_USER'),
+            'password' => env('DB_REMYSQL_PASS'),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'strict' => true,
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
+        ],
+
+        'local' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),

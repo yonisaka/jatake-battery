@@ -78,6 +78,10 @@ img {
     color: #fff;
 }
 
+.btn-circle {
+    border-radius: 50%
+}
+
 .circled {
     background: #384e77;
     color: #fff;
