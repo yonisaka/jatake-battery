@@ -4,23 +4,40 @@
 @endsection
 @section('contentId',"home")
 @section('content')
+@php
+$product->label = !empty($product->label) ? $product->label : [];
+$product->img = !empty($product->img) ? $product->img : [];
+@endphp
 <div class="col p-3 main-section  bg-white">
     <!--Detail Product-->
     <div class="row m-5 ">
-        <div class="col-md-5 border pb-3 pt-3">
-            <img src="assets/Motobatt__MTZ-1.png" class="col-md-12">
+        <div class="col-md border pb-3 pt-3">
+
+            @php
+            if(empty($product->img))
+            {
+            @endphp
+            <img src="no-souce" class="col-md-12">
+            @php
+            }
+            foreach ($product->img as $k => $v) {
+            @endphp
+            <img src="{{ $v }}" class="col-md-12">
+            @php
+            } @endphp
         </div>
-        <div class="col-md-5 right-side-pro-box ml-5">
+        <div class="col-5 right-side-pro-box ml-5">
             <div class="row">
                 <div class="card shadow-sm" style="width: 150rem;">
                     <div class="card-body">
-                        <p class="card-title text-muted" style="font-display: montserrat">Accu Title</p>
-                        <h4 class="card-text pb-3 text-muted" style="border-bottom: 2px solid #707070">Accu merk</h4>
-                        <img src="assets/Group 3.png" title="Gratis Pemasangan" width="30" height="30">
-                        <img src="assets/Group 6.png" title="Tukar Tambah" width="30" height="30">
-                        <img src="assets/Group 5.png" title="Produk Terbaru" width="30" height="30">
-                        <img src="assets/checked.png" title="Jaminan Barang Asli" width="30" height="30">
-                        <img src="assets/Group 4.png" title="Produk Bekas" width="30" height="30">
+                        <p class="card-title text-muted" style="font-display: montserrat">{{ $product->merk }}</p>
+                        <h4 class="card-text pb-3 text-muted" style="border-bottom: 2px solid #707070">
+                            {{ $product->name }}</h4>
+                        @php
+                        foreach ($product->label as $k => $v) {
+                        echo '<i class="fas '.$v->value.'"></i>';
+                        }
+                        @endphp
                     </div>
                 </div>
             </div>
@@ -28,16 +45,15 @@
             <div class="row mt-4">
                 <div class="card shadow-sm" style="width: 150rem">
                     <div class="card-body">
-                        <h5 class="card-title">Pcs</h5>
                         <p class="card-text">Pilih salah satu metode pembelian</p>
                         <a href="#" class="btn btn-success btn-lg btn-circle">
-                            <img src="assets/tokopedia.png" width="28" height="28">
+                            <img src="{{ asset('assets/ico-tp.png') }}" width="28" height="28">
                         </a>
                         <a href="#" class="btn btn-danger btn-lg btn-circle">
                             <b class="button-text">BL</b>
                         </a>
                         <a href="#" class="btn btn-success btn-lg btn-circle">
-                            <img src="assets/whatsapp-logo (1).png" width="28" height="28">
+                            <img src="{{ asset('assets/ico-wa.png') }}" width="28" height="28">
                         </a>
                     </div>
                 </div>
@@ -45,10 +61,11 @@
 
             <div class="row mt-4">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Link">
+                    <input type="text" class="form-control" placeholder="Link"
+                        value="{{ !empty($product->short) ? url('products/'.$product->short) : url('products/'.$product->id) }}">
                     <div class="input-group-append">
-                        <button class="btn btn-primary" type="button">
-                            <img src="assets/copy.png" width="20" height="20">
+                        <button class="btn btn-outline-primary" type="button">
+                            <i class="fas fa-copy"></i>
                         </button>
                     </div>
                 </div>
@@ -73,11 +90,10 @@
                 <div class="card-body">
                     <ul>
                         <li class="list-group">
-                            <h4>Merk</h4>
+                            <h4>{{ $product->name }}</h4>
                         </li>
-                        <li>
-                            Accu Desc
-                        </li>
+                        <p> {{ !empty($product->deskripsi)?$product->deskripsi : "Belum ada deskripsi" }}
+                        </p>
                     </ul>
                 </div>
             </div>

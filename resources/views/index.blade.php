@@ -91,33 +91,34 @@ if(!empty($products[0]))
             foreach ($products as $k => $d) {
 
             @endphp
-            <a class="products-card" href="{{ url('products/') }}/{{ $d->short?$d->short:$d->id }}"
-                data-type="{{ $d->type }}">
-                <div class="card col-md-4 col-sm-3">
-                    <div class="card-img">
-                        <img src="{{ $d->img[0] }}">
+            <div class="col-md-3 col-sm-4">
+                <a href="{{ url('products/') }}/{{ $d->short?$d->short:$d->id }}" data-type="{{ $d->type }}">
+                    <div class="products-card card">
+                        <div class="card-img">
+                            <img src="{{ !empty($d->img[0]) ? $d->img[0] : '' }}">
+                        </div>
+                        <div class="card-header text-left">
+                            <h5 class="product-name font-xbold mb-1">{{ $d->merk }}</h5>
+                            <h5 class="product-author font-weight-normal">{{ $d->name }}</h5>
+                            <h5 class="products-type mb-2">
+                                @php
+                                if($d->type == "MOTOR"){
+                                @endphp
+                                <i class="fas fa-motorcycle"></i>
+                                @php
+                                }
+                                else{
+                                @endphp
+                                <i class="fas fa-car"></i>
+                                @php
+                                }
+                                @endphp
+                            </h5>
+                            <h6 class="product-price font-bold text-blue">{{ formating($d->price,'price') }}</h5>
+                        </div>
                     </div>
-                    <div class="card-header text-left">
-                        <h5 class="product-name font-xbold mb-1">{{ $d->merk }}</h5>
-                        <h5 class="product-author font-weight-normal">{{ $d->name }}</h5>
-                        <h5 class="products-type mb-2">
-                            @php
-                            if($d->type == "MOTOR"){
-                            @endphp
-                            <i class="fas fa-motorcycle"></i>
-                            @php
-                            }
-                            else{
-                            @endphp
-                            <i class="fas fa-car"></i>
-                            @php
-                            }
-                            @endphp
-                        </h5>
-                        <h6 class="product-price font-bold text-blue">{{ formating($d->price,'price') }}</h5>
-                    </div>
-                </div>
-            </a>
+                </a>
+            </div>
             @php
 
             }
