@@ -66,29 +66,35 @@ $product->img = !empty($product->img) ? $product->img : [];
                     </div>
                 </div>
             </div>
-
             <div class="row mt-4">
                 <div class="card shadow-sm" style="width: 150rem">
                     <div class="card-body">
                         <p class="card-text">Pilih salah satu metode pembelian</p>
-                        <a href="#" class="btn btn-success btn-lg btn-circle">
+                        <button {{ empty($product->link->tp) ? 'disabled' : null}}
+                            data-link="{{ !empty($product->link->tp) ? $product->link->tp : null}}"
+                            class="btn-shop btn btn-success btn-lg btn-circle">
                             <span>
                                 Tokopedia
                             </span>
                             <img src="{{ asset('assets/ico-tp.png') }}" width="28" height="28">
-                        </a>
-                        <a href="#" class="btn btn-danger btn-lg btn-circle">
+                        </button>
+                        <button {{ empty($product->link->bl) ? 'disabled' : null}}
+                            data-link="{{ !empty($product->link->bl) ? $product->link->bl : null}}"
+                            class="btn-shop btn btn-danger btn-lg btn-circle">
                             <span>Bukalapak</span>
                             <b class="button-text">BL</b>
-                        </a>
-                        <a href="#" class="btn btn-success btn-lg btn-circle">
+                        </button>
+                        <button {{ empty($product->link->wa) ? 'disabled' : null}}
+                            data-link="{{ !empty($product->link->wa) ? 'https://api.whatsapp.com/send?phone='.$product->link->wa.'&text='.rawurlencode('Halo, Saya ingin membeli '.$product->name.'.') : null}}"
+                            class="btn-shop btn btn-success btn-lg btn-circle">
                             <span>Whatsapp</span>
                             <img src="{{ asset('assets/ico-wa.png') }}" width="28" height="28">
-                        </a>
-                        <a href="#" class="btn btn-success btn-lg btn-circle">
+                        </button>
+                        <button {{ empty($product->link->sp) ? 'disabled' : null}}
+                            class="btn-shop btn btn-success btn-lg btn-circle">
                             <span>Shoopie</span>
                             <img src="{{ asset('assets/ico-wa.png') }}" width="28" height="28">
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>

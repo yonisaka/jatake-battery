@@ -37,26 +37,49 @@ $(window).on("load", () => {
 });
 $(document).ready(() => {
     // product goto
-    // $("#term-cond-modal").modal();
-    let termModal = $("#term-cond-modal");
-    let termModalBody = termModal.find(".modal-body");
-    let termTerm = termModal.find(".term-condition");
 
-    termModalBody.scroll(e => {
-        let scrollBottom =
-            termModalBody.scrollTop() +
-            termModalBody.height() -
-            termTerm[0].scrollHeight;
-        if (scrollBottom == 0) {
-            termModal.find(".accept-term").prop("disabled", false);
-            termModal.find(".accept-term").click(e => {
-                termModal.find(".continue-term").prop("disabled", false);
-                termModal.find(".continue-term").find(function(e) {
-                    window.open($(this).data("link"));
-                });
-            });
-        }
+    $(".btn-shop").click(function(e) {
+        e.preventDefault();
+        if (!$(this).data("link")) return;
+        showTermCond();
     });
+    window.showTermCond = function($footer = true) {
+        let termModal = $("#term-cond-modal");
+        termModal.modal();
+        let termModalBody = termModal.find(".modal-body");
+        let termTerm = termModal.find(".term-condition");
+
+        if (!$footer) {
+            termModal.find(".modal-footer").removeClass("d-block");
+            termModal.find(".modal-footer").hide();
+            return;
+        }
+        termModal.find(".modal-footer").addClass("d-block");
+        termModal.find(".cancel").click(e => {
+            termModal.modal("hide");
+        });
+        termModalBody.scroll(e => {
+            let scrollBottom =
+                termModalBody.scrollTop() +
+                termModalBody.height() -
+                termTerm[0].scrollHeight;
+            if (scrollBottom == 0) {
+                termModal.find(".accept-term").prop("disabled", false);
+                termModal.find(".accept-term").click(e => {
+                    termModal.find(".continue-term").prop("disabled", false);
+                    termModal.find(".continue-term").click(function(e) {
+                        window.open($(this).data("link"));
+                    });
+                });
+            }
+        });
+        termModal.on("hidden.bs.modal", e => {
+            termModal.find(".accept-term").prop("disabled", true);
+            termModal.find(".accept-term").prop("checked", false);
+            termModal.find(".continue-term").prop("disabled", true);
+        });
+        termModal.find(".continue-term").data("link", $(this).data("link"));
+    };
 
     $(".product-img").slick({
         adaptiveHeight: true,

@@ -48,7 +48,10 @@
                                     </h4>
                                     <ul class="list-unstyled">
                                         <li>
-                                            <a href="{{ url('extra-pages/term-condition') }}">
+                                            email : email@gmail.com
+                                        </li>
+                                        <li>
+                                            <a href="#" onclick="showTermCond(false)">
                                                 Syarat & Ketentuan
                                             </a>
                                         </li>
@@ -84,7 +87,7 @@
                 <div class="py-2 bg-dark">
                     <div class="container">
                         <div class="text-right">
-                            <b>Jatake.LeaProjects&copy;{{ date('Y') }}</b>
+                            <b>Jatake.LenergyProjects&copy;{{ date('Y') }}</b>
                         </div>
                     </div>
                 </div>
@@ -101,7 +104,7 @@
                 <div class="modal-body">
                     @include('term-cond')
                 </div>
-                <div class="d-block modal-footer">
+                <div class="modal-footer">
                     <div class="d-flex align-items-center">
                         <input type="checkbox" name="" class="accept-term" disabled>
                         <span class="ml-2">
@@ -109,7 +112,7 @@
                         </span>
                     </div>
                     <div class="btn-wrapper mt-3">
-                        <button class="btn btn-danger">Batal</button>
+                        <button class="cancel btn btn-danger">Batal</button>
                         <button class="continue-term float-right btn btn-success" disabled>Beli
                             Sekarang!</button>
                     </div>

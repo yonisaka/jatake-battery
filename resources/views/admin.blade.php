@@ -322,7 +322,7 @@
             }
         }
         $("#products-table").DataTable(dataTableSett)
-    })
+
     let serializeModal = function($modal,$filter=true)
     {
         let formData = $modal.find('#form-product').serializeArray();
@@ -345,9 +345,10 @@
         formData.push({name:'img',value:img})
 
         // push label to array
-        let link = [];
+        let link = {};
         $modal.find("#link-product input").each((i,el)=>{
-            $(el).val() ? link[$(el).data('name')] = $(el).val() : false})
+            $(el).val() ? link[$(el).data('name')] = $(el).val() : null
+        })
         formData.push({name:'link',value:link})
 
         // filter null data
@@ -356,10 +357,14 @@
                 return arr.value
             })
         else
+        {
             formData = formData.map(arr=>{
-                (arr.value.length == 0) ? arr.value = "" : null
+                 (arr.value == null ) ? null
+                :(arr.value.length == 0) ? arr.value = "" : null
                 return arr
             })
+        }
+
 
         return objectifyForm(formData)
     }
@@ -485,6 +490,7 @@
             console.log(res)
             swal.fire('Gagal Menyimpan',res.responseJSON.message,'error')
         })
+    })
     })
 </script>
 </div>

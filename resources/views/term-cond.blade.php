@@ -1,7 +1,7 @@
 <div class="term-condition">
     <ul class="list-unstyled">
         <li>
-            Kebijakan Pengembalian Produk:
+            <b>Kebijakan Pengembalian Produk:</b>
         </li>
         <ol>
             <li>
@@ -26,9 +26,6 @@
             </li>
             <li>
                 Komplain/Klaim dapat berupa:
-            </li>
-            <li>
-
                 <ul>
                     <li>
                         Kesalahan pengiriman barang yang tidak sesuai pesanan.

@@ -1,7 +1,6 @@
 .btn-circle {
     height: 60px;
-    /* width: 60px; */
-    padding-top: 14px;
+    padding-top: 8px;
     display: inline-flex;
     white-space: nowrap;
     border-radius: 60px;
@@ -10,15 +9,14 @@
 .btn-circle span {
     display: inline-block;
     visibility: hidden;
+    transition: visibility, max-width 0.25s ease-in-out;
     max-width: 0px;
 }
 
 .btn-circle:hover span {
     margin-right: 8px;
     visibility: visible;
-    display: inline-block;
     max-width: 200px;
-    transition: visibility, max-width 0.25s ease-in-out;
 }
 
 .btn-circle:hover {
@@ -27,11 +25,11 @@
 }
 
 .btn-circle.btn-success:hover {
-    color: #3ac47d;
+    color: #3ac47d !important
 }
 
 .btn-circle.btn-danger:hover {
-    color: #dc3545
+    color: #dc3545 !important
 }
 
 .btn-circle:hover span {
