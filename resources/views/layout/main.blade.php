@@ -9,8 +9,13 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    <script src="{{ asset('modules/jquery-3.4.1/jquery-3.4.1.min.js') }}"></script>
+    <script src="{{ asset('modules/bootstrap-4.3.1/js/bootstrap.min.js') }}" async></script>
+    <script src="{{ asset('modules/fontawesome/js/all.min.js') }}" async></script>
+    <script src="{{ asset('modules/slick/slick.min.js') }}" async></script>
     @yield('head')
 </head>
+@include('loader')
 
 <body>
     <div class="bg-light">
@@ -86,10 +91,33 @@
             </footer>
         </div>
     </div>
+
+    <div class="modal modalbox" id="term-cond-modal">
+        <div class="modal-dialog modal-dialog-scrollable mx-auto">
+            <div class="shadow-lv2 overflow-hidden rounded modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Syarat Ketentuan</h5>
+                </div>
+                <div class="modal-body">
+                    @include('term-cond')
+                </div>
+                <div class="d-block modal-footer">
+                    <div class="d-flex align-items-center">
+                        <input type="checkbox" name="" class="accept-term" disabled>
+                        <span class="ml-2">
+                            <b> Saya setuju blabalbalblala</b>
+                        </span>
+                    </div>
+                    <div class="btn-wrapper mt-3">
+                        <button class="btn btn-danger">Batal</button>
+                        <button class="continue-term float-right btn btn-success" disabled>Beli
+                            Sekarang!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
-<script src="{{ asset('/modules/jquery-3.4.1/jquery-3.4.1.min.js') }}"></script>
-<script src="{{ asset('/modules/bootstrap-4.3.1/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('/modules/fontawesome/js/all.min.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
 
 </html>

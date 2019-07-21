@@ -32,8 +32,58 @@ $(function() {
     });
 });
 
-$(window).on("load", () => {});
+$(window).on("load", () => {
+    $("#page-loader-wrapper").fadeOut("slow");
+});
 $(document).ready(() => {
+    // product goto
+    // $("#term-cond-modal").modal();
+    let termModal = $("#term-cond-modal");
+    let termModalBody = termModal.find(".modal-body");
+    let termTerm = termModal.find(".term-condition");
+
+    termModalBody.scroll(e => {
+        let scrollBottom =
+            termModalBody.scrollTop() +
+            termModalBody.height() -
+            termTerm[0].scrollHeight;
+        if (scrollBottom == 0) {
+            termModal.find(".accept-term").prop("disabled", false);
+            termModal.find(".accept-term").click(e => {
+                termModal.find(".continue-term").prop("disabled", false);
+                termModal.find(".continue-term").find(function(e) {
+                    window.open($(this).data("link"));
+                });
+            });
+        }
+    });
+
+    $(".product-img").slick({
+        adaptiveHeight: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        // respondTo: $('.product-img').parent(),
+        accessibility: true,
+        prevArrow:
+            '<button type="button" class="btn p-0 slick-prev"><i class="text-secondary fas fa-arrow-circle-left"></i></button>',
+        nextArrow:
+            '<button type="button" class="btn p-0 slick-next"><i class="text-secondary fas fa-arrow-circle-right"></i></button>',
+        fade: false,
+        asNavFor: ".product-img-nav",
+        infinite: false,
+        useTransform: true,
+        cssEase: "cubic-bezier(0.77, 0, 0.18, 1)"
+    });
+    $(".product-img-nav").slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        infinite: false,
+        asNavFor: ".product-img",
+        dots: false,
+        arrows: false,
+        focusOnSelect: true
+    });
+
     let img = $("img");
     img.each((i, el) => {
         $("<img/>")

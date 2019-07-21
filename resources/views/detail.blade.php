@@ -8,36 +8,61 @@
 $product->label = !empty($product->label) ? $product->label : [];
 $product->img = !empty($product->img) ? $product->img : [];
 @endphp
-<div class="col p-3 main-section  bg-white">
+<div class="col p-3 main-section mb-5 bg-white">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mx-5 bg-white px-0">
+            <li class="breadcrumb-item"><a href="{{ url('') }}"><i class="fas fa-home"></i>&nbsp;Home</a></li>
+            <li class="breadcrumb-item">Product</li>
+            <li class="breadcrumb-item active" aria-current="page">
+                {{ !empty($product->short) ? $product->short : $product->id }}</li>
+        </ol>
+    </nav>
     <!--Detail Product-->
-    <div class="row m-5 ">
-        <div class="col-md border pb-3 pt-3">
-
-            @php
-            if(empty($product->img))
-            {
-            @endphp
-            <img src="no-souce" class="col-md-12">
-            @php
-            }
-            foreach ($product->img as $k => $v) {
-            @endphp
-            <img src="{{ $v }}" class="col-md-12">
-            @php
-            } @endphp
+    <div class="row mx-5 mt-2 mb-4">
+        <div class="col-md-5 border py-3 my-2">
+            <div class="product-img">
+                @php
+                if(empty($product->img))
+                {
+                @endphp
+                <img src="no-souce" class="col-md-12">
+                @php
+                }
+                foreach ($product->img as $k => $v) {
+                @endphp
+                <img src="{{ $v }}" class="col-md-12">
+                @php
+                } @endphp
+            </div>
+            <div class="product-img-nav">
+                @php
+                if(empty($product->img))
+                {
+                @endphp
+                <img src="no-souce" class="col-md-12">
+                @php
+                }
+                foreach ($product->img as $k => $v) {
+                @endphp
+                <img height="50px" src="{{ $v }}" class="col-md-12">
+                @php
+                } @endphp
+            </div>
         </div>
-        <div class="col-5 right-side-pro-box ml-5">
+        <div class="col-md-6 offset-md-1 my-2">
             <div class="row">
                 <div class="card shadow-sm" style="width: 150rem;">
                     <div class="card-body">
                         <p class="card-title text-muted" style="font-display: montserrat">{{ $product->merk }}</p>
                         <h4 class="card-text pb-3 text-muted" style="border-bottom: 2px solid #707070">
                             {{ $product->name }}</h4>
-                        @php
-                        foreach ($product->label as $k => $v) {
-                        echo '<i class="fas '.$v->value.'"></i>';
-                        }
-                        @endphp
+                        <div class="product-labels py-3">
+                            @php
+                            foreach ($product->label as $k => $v) {
+                            echo '<i class="fas '.$v->value.'"></i>';
+                            }
+                            @endphp
+                        </div>
                     </div>
                 </div>
             </div>
@@ -47,12 +72,21 @@ $product->img = !empty($product->img) ? $product->img : [];
                     <div class="card-body">
                         <p class="card-text">Pilih salah satu metode pembelian</p>
                         <a href="#" class="btn btn-success btn-lg btn-circle">
+                            <span>
+                                Tokopedia
+                            </span>
                             <img src="{{ asset('assets/ico-tp.png') }}" width="28" height="28">
                         </a>
                         <a href="#" class="btn btn-danger btn-lg btn-circle">
+                            <span>Bukalapak</span>
                             <b class="button-text">BL</b>
                         </a>
                         <a href="#" class="btn btn-success btn-lg btn-circle">
+                            <span>Whatsapp</span>
+                            <img src="{{ asset('assets/ico-wa.png') }}" width="28" height="28">
+                        </a>
+                        <a href="#" class="btn btn-success btn-lg btn-circle">
+                            <span>Shoopie</span>
                             <img src="{{ asset('assets/ico-wa.png') }}" width="28" height="28">
                         </a>
                     </div>
@@ -74,7 +108,7 @@ $product->img = !empty($product->img) ? $product->img : [];
     </div>
 
     <!--Review-->
-    <div class="row">
+    <div class="row mb-5">
         <div class="col ml-5">
             <div class="card">
                 <div class="card-header">
@@ -82,9 +116,9 @@ $product->img = !empty($product->img) ? $product->img : [];
                         <li class="nav-item">
                             <a class="nav-link active" href="#">Deskripsi</a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link" href="#">Review</a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
                 <div class="card-body">
@@ -94,6 +128,8 @@ $product->img = !empty($product->img) ? $product->img : [];
                         </li>
                         <p> {{ !empty($product->deskripsi)?$product->deskripsi : "Belum ada deskripsi" }}
                         </p>
+                        <h5>Syarat dan Ketentuan:</h5>
+                        @include('term-cond')
                     </ul>
                 </div>
             </div>
@@ -102,7 +138,7 @@ $product->img = !empty($product->img) ? $product->img : [];
 </div>
 
 <!--script-->
-<script>
+<script type="text/javascript">
     // document.querySelector("#buton").onclick = function(){
     //             document.querySelector("#inp").select();
     //             document.execCommand('copy');

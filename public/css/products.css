@@ -1,5 +1,51 @@
 .btn-circle {
     height: 60px;
-    width: 60px;
+    /* width: 60px; */
     padding-top: 14px;
+    display: inline-flex;
+    white-space: nowrap;
+    border-radius: 60px;
+}
+
+.btn-circle span {
+    display: inline-block;
+    visibility: hidden;
+    max-width: 0px;
+}
+
+.btn-circle:hover span {
+    margin-right: 8px;
+    visibility: visible;
+    display: inline-block;
+    max-width: 200px;
+    transition: visibility, max-width 0.25s ease-in-out;
+}
+
+.btn-circle:hover {
+    border: 1px solid currentColor;
+    background: none !important;
+}
+
+.btn-circle.btn-success:hover {
+    color: #3ac47d;
+}
+
+.btn-circle.btn-danger:hover {
+    color: #dc3545
+}
+
+.btn-circle:hover span {
+    display: inline-block;
+}
+
+.product-img {
+    border-bottom: 2px solid #777;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.product-img-nav .slick-current {
+    border: 1px solid #777;
 }

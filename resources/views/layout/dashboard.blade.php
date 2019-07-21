@@ -12,10 +12,14 @@
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
     <link href="{{ asset('modules/datatable/datatables.min.css') }}" rel="stylesheet">
-    <script type="text/javascript" src="{{ asset('modules/jquery-3.4.1/jquery-3.4.1.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('modules/bootstrap-4.3.1/js/bootstrap.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('modules/sweetalert2.all.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('modules/datatable/datatables.min.js') }}"></script>
+
+    {{-- Scripts --}}
+    <script src="{{ asset('modules/jquery-3.4.1/jquery-3.4.1.min.js') }}"></script>
+    <script src="{{ asset('modules/bootstrap-4.3.1/js/bootstrap.min.js') }}" async></script>
+    <script src="{{ asset('modules/fontawesome/js/all.min.js') }}" async></script>
+    <script src="{{ asset('modules/sweetalert2.all.min.js') }}" async></script>
+    <script src="{{ asset('modules/slick/slick.min.js') }}" async></script>
+    <script src="{{ asset('modules/datatable/datatables.min.js') }}" async></script>
     @yield('head')
 </head>
 

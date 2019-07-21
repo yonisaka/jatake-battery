@@ -5,6 +5,7 @@
 @import "../modules/bootstrap-4.3.1/css/bootstrap.min.css";
 @import "../modules/bootstrap-4.3.1/css/bootstrap-reboot.min.css";
 @import "../modules/fontawesome/css/all.min.css";
+@import "../modules/slick/slick.css";
 
 /* styles */
 @import "./default.css";
