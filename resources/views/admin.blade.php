@@ -78,13 +78,13 @@
                                     <div class="col">
                                         <input class="ml-2" type="checkbox" data-name="gratis" id="lbl-gratis"
                                             value="fa-check" data-info="Gratis Pasang">
-                                        <i class="fas fa-check"></i>
+                                        <img src="{{ asset('assets/GratisPasang.png') }}" alt="Gratis Pasang" style="max-width:12%">
                                         Gratis Pasang
                                     </div>
                                     <div class="col">
                                         <input class="ml-2" type="checkbox" data-name="tukar" id="lbl-tukar"
                                             value="fa-check" data-info="Tukar Tambah">
-                                        <i class="fas fa-check"></i>
+                                            <img src="{{ asset('assets/TukarTambah.png') }}" alt="Tukar Tambah" style="max-width:12%">
                                         Tukar Tambah
                                     </div>
                                 </div>
@@ -92,13 +92,13 @@
                                     <div class="col">
                                         <input class="ml-2" type="checkbox" data-name="asli" id="lbl-asli"
                                             value="fa-check" data-info="Produk Asli">
-                                        <i class="fas fa-check"></i>
+                                        <img src="{{ asset('assets/Asli.png') }}" alt="Produk Asli" style="max-width:12%">
                                         Produk Asli
                                     </div>
                                     <div class="col">
                                         <input class="ml-2" type="checkbox" data-name="baru" id="lbl-baru"
                                             value="fa-check" data-info="Barang Baru">
-                                        <i class="fas fa-check"></i>
+                                        <img src="{{ asset('assets/Baru.png') }}" alt="Barang Baru" style="max-width:12%">
                                         Barang Baru
                                     </div>
                                 </div>
@@ -106,7 +106,7 @@
                                     <div class="col">
                                         <input class="ml-2" type="checkbox" data-name="bekas" id="lbl-bekas"
                                             value="fa-check" data-info="Barang Bekas">
-                                        <i class="fas fa-check"></i>
+                                        <img src="{{ asset('assets/BarangBekas.png') }}" alt="Barang Bekas" style="max-width:6%">
                                         Barang Bekas
                                     </div>
                                 </div>
@@ -220,13 +220,13 @@
                                     <div class="col">
                                         <input class="ml-2" type="checkbox" data-name="gratis" id="lbl-gratis"
                                             value="fa-check" data-info="Gratis Pasang">
-                                        <i class="fas fa-check"></i>
+                                        <img src="{{ asset('assets/GratisPasang.png') }}" alt="Gratis Pasang" style="max-width:12%">
                                         Gratis Pasang
                                     </div>
                                     <div class="col">
                                         <input class="ml-2" type="checkbox" data-name="tukar" id="lbl-tukar"
                                             value="fa-check" data-info="Tukar Tambah">
-                                        <i class="fas fa-check"></i>
+                                        <img src="{{ asset('assets/GratisPasang.png') }}" alt="Gratis Pasang" style="max-width:12%">
                                         Tukar Tambah
                                     </div>
                                 </div>
@@ -234,13 +234,13 @@
                                     <div class="col">
                                         <input class="ml-2" type="checkbox" data-name="asli" id="lbl-asli"
                                             value="fa-check" data-info="Produk Asli">
-                                        <i class="fas fa-check"></i>
+                                        <img src="{{ asset('assets/Asli.png') }}" alt="Produk Asli" style="max-width:12%">
                                         Produk Asli
                                     </div>
                                     <div class="col">
                                         <input class="ml-2" type="checkbox" data-name="baru" id="lbl-baru"
                                             value="fa-check" data-info="Barang Baru">
-                                        <i class="fas fa-check"></i>
+                                        <img src="{{ asset('assets/Baru.png') }}" alt="Barang Baru" style="max-width:12%">
                                         Barang Baru
                                     </div>
                                 </div>
@@ -248,7 +248,7 @@
                                     <div class="col">
                                         <input class="ml-2" type="checkbox" data-name="bekas" id="lbl-bekas"
                                             value="fa-check" data-info="Barang Bekas">
-                                        <i class="fas fa-check"></i>
+                                        <img src="{{ asset('assets/BarangBekas.png') }}" alt="Barang Bekas" style="max-width:12%">
                                         Barang Bekas
                                     </div>
                                 </div>
