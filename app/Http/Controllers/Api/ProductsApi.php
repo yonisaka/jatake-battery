@@ -15,6 +15,7 @@ class ProductsApi extends Controller
      */
     public function index()
     {
+        return Products::all();
         //
     }
 
@@ -34,9 +35,17 @@ class ProductsApi extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $req)
     {
         //
+        return $req->all();
+        $data = $req->all();
+        $product = new Products($data);
+        $save = $product->save();
+        if(!$save)
+            return response()->json(['message'=>'Terjadi kesalahan','err'=>$save],400);
+        else
+            return response()->json(['data'=>$save],200);
     }
 
     /**
@@ -47,6 +56,7 @@ class ProductsApi extends Controller
      */
     public function show(products $products)
     {
+        return Products::findOrFail($id);
         //
     }
 
@@ -71,6 +81,13 @@ class ProductsApi extends Controller
     public function update(Request $request, products $products)
     {
         //
+        $data = $req->all();
+        // return response()->json($data,400);
+        $update = $product->update($data);
+        if(!$update)
+            return response()->json(['message'=>'Terjadi kesalahan','err'=>$update],400);
+        else
+            return response()->json(['data'=>$update],200);
     }
 
     /**
@@ -82,5 +99,10 @@ class ProductsApi extends Controller
     public function destroy(products $products)
     {
         //
+        $delete = $product->delete();
+        if(!$delete)
+            return response()->json(['message'=>'Terjadi kesalahan','err'=>$update],400);
+        else
+            return response()->json(['data'=>$delete],200);
     }
 }

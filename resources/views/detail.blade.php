@@ -11,7 +11,8 @@ $product->img = !empty($product->img) ? $product->img : [];
 <div class="col p-3 main-section mb-5 bg-white">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb mx-5 bg-white px-0">
-            <li class="breadcrumb-item"><a href="{{ url('') }}"><i class="fas fa-home"></i>&nbsp;Home</a></li>
+            <li class="breadcrumb-item">
+                <b><a class="text-primary" href="{{ url('') }}"><i class="fas fa-home"></i>&nbsp;Home</a></b></li>
             <li class="breadcrumb-item">Product</li>
             <li class="breadcrumb-item active" aria-current="page">
                 {{ !empty($product->short) ? $product->short : $product->id }}</li>
@@ -69,6 +70,9 @@ $product->img = !empty($product->img) ? $product->img : [];
             <div class="row mt-4">
                 <div class="card shadow-sm" style="width: 150rem">
                     <div class="card-body">
+                        <div class="card-text">
+                            <h5>{{ formating($product->price,'price') }}</h5>
+                        </div>
                         <p class="card-text">Pilih salah satu metode pembelian</p>
                         <button {{ empty($product->link->tp) ? 'disabled' : null}}
                             data-link="{{ !empty($product->link->tp) ? $product->link->tp : null}}"
@@ -143,11 +147,4 @@ $product->img = !empty($product->img) ? $product->img : [];
     </div>
 </div>
 
-<!--script-->
-<script type="text/javascript">
-    // document.querySelector("#buton").onclick = function(){
-    //             document.querySelector("#inp").select();
-    //             document.execCommand('copy');
-    //         }
-</script>
 @endsection

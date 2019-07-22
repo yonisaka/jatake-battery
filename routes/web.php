@@ -30,13 +30,6 @@ Route::prefix('/products')->group(function()
 Route::prefix('/admin')->group(function()
 {
     Route::get('/','AdminController@index');
-    Route::get('/login','AdminController@login');
-});
-
-Route::middleware(function($req,$next){
-    echo "this is API";
-    return $next($req);
-})->prefix('/api')->group(function()
-{
-    Route::apiResource('/products','Api\ProductsApi');
+    Route::get('/login','AdminController@login')->name('login');
+    Route::get('/logout','AdminController@logout')->name('logout');
 });

@@ -13,6 +13,7 @@
     <script src="{{ asset('modules/bootstrap-4.3.1/js/bootstrap.min.js') }}" async></script>
     <script src="{{ asset('modules/fontawesome/js/all.min.js') }}" async></script>
     <script src="{{ asset('modules/slick/slick.min.js') }}" async></script>
+    <script src="{{ asset('js/main.js') }}" async></script>
     @yield('head')
 </head>
 @include('loader')
@@ -78,7 +79,7 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <a href="https://goo.gl/maps/frLfpp1cpPZJsbaQ6" target="_blank">
+                            <a class="map" href="https://goo.gl/maps/frLfpp1cpPZJsbaQ6" target="_blank">
                                 <img src="{{ asset('assets/maps.PNG') }}" alt="" srcset="">
                             </a>
                         </div>
@@ -121,6 +122,5 @@
         </div>
     </div>
 </body>
-<script src="{{ asset('js/main.js') }}"></script>
 
 </html>
