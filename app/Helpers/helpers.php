@@ -33,3 +33,11 @@ if(!function_exists('pricify'))
     }
 }
 
+if(!function_exists('errApi'))
+{
+    function errApi($e)
+    {
+        return response()->json(['message'=>$e->getMessage(),'err'=>(string) $e,'status'=>false,'code'=>$e->getCode()],400);
+    }
+}
+

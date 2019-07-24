@@ -2,50 +2,34 @@
 
 namespace App;
 
-use function GuzzleHttp\json_decode;
+use App\Helpers\Rest;
 
-class ApiProducts
+class ApiProducts extends Rest
 {
-    //
-    protected $rest;
-    public function __construct($token)
+    protected $uri = 'products';
+
+    public function getProductsById($id)
     {
-        $this->uri = 'products';
-        $this->client = new \GuzzleHttp\Client([
-            'base_uri'=>url('v1').'/',
-            'headers'=>[
-                'Authorization' => 'Bearer '.$token,
-                'Accept' => 'application/json',
-                'Content-type' => 'application/json'
-        ]]);
+        return $this->get('/'.$id);
     }
 
-    private function get($url='')
-    {
-        $resp = $this->_curl('get',$url)->getBody(true)->getContents();
-        return json_decode($resp);
-    }
-
-    private function post($url='',$body)
-    {
-        $resp = $this->_curl('post',$url,['form_params'=>$body]);
-        return json_decode($resp->getBody()->getContents());
-    }
-
-    private function _curl($method,$url='',$opt=[])
-    {
-        return $this->client->$method($this->uri.$url,$opt);
-    }
-
-    public function getAll()
+    public function getProductsAll()
     {
         return $this->get();
     }
 
-    public function create($url=null,$body)
+    public function createProduct($data)
     {
-        // dd($body);
-        return $this->post($url,$body);
+        return $this->post('',$data);
     }
 
+    public function deleteProduct($id)
+    {
+        return $this->delete('/'.$id);
+    }
+
+    public function updateProduct($id,$data)
+    {
+        return $this->put('/'.$id,$data);
+    }
 }

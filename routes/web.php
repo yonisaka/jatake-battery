@@ -19,17 +19,18 @@ Route::prefix('/extra-pages')->group(function()
     Route::get('/{page}','ExtraPagesController@page')->name("extra");
 });
 
-Route::resource('/products','ProductsController')->except(['create','edit']);
+Route::resource('/products','ProductsController')->parameters(['product'=>'id'])->except(['create']);
+
 Route::prefix('/products')->group(function()
 {
     Route::any('/json/{function}','ProductsController@json');
     Route::any('/json/{function}/{id}','ProductsController@json');
 });
 
-
-Route::prefix('/admin')->group(function()
+Route::prefix('/admin')->name('admin.')->group(function()
 {
-    Route::get('/','AdminController@index');
     Route::get('/login','AdminController@login')->name('login');
+    Route::post('/login','AdminController@request_login')->name('req_login');
     Route::get('/logout','AdminController@logout')->name('logout');
 });
+Route::resource('/admin', 'AdminController');

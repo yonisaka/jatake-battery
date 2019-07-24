@@ -22,6 +22,7 @@
     <script src="{{ asset('modules/datatable/datatables.min.js') }}" async></script>
     @yield('head')
 </head>
+@include('loader')
 
 <body>
     <div class="bg-light">
@@ -42,8 +43,8 @@
                                     <h5>Hello Admin!</h5>
                                 </div>
                                 <div class="">
-                                    <button class="btn btn-sm btn-danger"><i
-                                            class="fas fa-sign-out-alt"></i>Logout</button>
+                                    <a href="{{ route('admin.logout') }}" class="btn btn-sm btn-danger"><i
+                                            class="fas fa-sign-out-alt"></i>Logout</a>
                                 </div>
                             </div>
                         </div>

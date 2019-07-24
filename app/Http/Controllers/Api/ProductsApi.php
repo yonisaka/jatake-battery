@@ -8,6 +8,12 @@ use App\Http\Controllers\Controller;
 
 class ProductsApi extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth:api')->except(['index','show']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -38,14 +44,18 @@ class ProductsApi extends Controller
     public function store(Request $req)
     {
         //
-        return $req->all();
-        $data = $req->all();
-        $product = new Products($data);
-        $save = $product->save();
-        if(!$save)
-            return response()->json(['message'=>'Terjadi kesalahan','err'=>$save],400);
-        else
-            return response()->json(['data'=>$save],200);
+
+        try{
+            $data = $req->all();
+            $product = new Products($data);
+            $save = $product->save();
+            return response()->json(['data'=>$save,'status'=>true],200);
+        }
+        catch(\Exception $e)
+        {
+            return errApi($e);
+        }
+
     }
 
     /**
@@ -54,20 +64,16 @@ class ProductsApi extends Controller
      * @param  \App\products  $products
      * @return \Illuminate\Http\Response
      */
-    public function show(products $products)
+    public function show(Request $req, $product)
     {
-        return Products::findOrFail($id);
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\products  $products
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(products $products)
-    {
+        try{
+            $product = Products::detail($product)->firstOrFail();
+            return response()->json(['data'=>$product,'status'=>true],200);
+        }
+        catch(\Exception $e)
+        {
+            return errApi($e);
+        }
         //
     }
 
@@ -78,16 +84,18 @@ class ProductsApi extends Controller
      * @param  \App\products  $products
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, products $products)
+    public function update(Request $req, products $product)
     {
         //
-        $data = $req->all();
-        // return response()->json($data,400);
-        $update = $product->update($data);
-        if(!$update)
-            return response()->json(['message'=>'Terjadi kesalahan','err'=>$update],400);
-        else
-            return response()->json(['data'=>$update],200);
+        try{
+            $data = $req->all();
+            $update = $product->update($data);
+            return response()->json(['data'=>$update,'status'=>true],200);
+        }
+        catch(\Exception $e)
+        {
+            return errApi($e);
+        }
     }
 
     /**
@@ -96,13 +104,16 @@ class ProductsApi extends Controller
      * @param  \App\products  $products
      * @return \Illuminate\Http\Response
      */
-    public function destroy(products $products)
+    public function destroy(products $product)
     {
         //
-        $delete = $product->delete();
-        if(!$delete)
-            return response()->json(['message'=>'Terjadi kesalahan','err'=>$update],400);
-        else
-            return response()->json(['data'=>$delete],200);
+        try{
+            $delete = $product->delete();
+            return response()->json(['status'=>$delete],200);
+        }
+        catch(\Exception $e)
+        {
+            return errApi($e);
+        }
     }
 }

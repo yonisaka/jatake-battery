@@ -82,11 +82,12 @@
             let data = $(form).serializeArray();
             data = objectifyForm(data);
             $.post({
-                url: '/v1/admin/login',
+                url: '{{ route("admin.req_login") }}',
                 dataType: 'json',
                 data: data
             })
             .done(res=>{
+                // console.log(res);
                 window.location.href = '/admin'
             })
             .fail(err=>{

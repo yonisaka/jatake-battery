@@ -80,7 +80,7 @@ $product->img = !empty($product->img) ? $product->img : [];
                             <span>
                                 Tokopedia
                             </span>
-                            <img src="{{ asset('assets/ico-tp.png') }}" width="28" height="28">
+                            <img class="svg" src="{{ asset('assets/ico-tp.svg') }}" width="32" height="32">
                         </button>
                         <button {{ empty($product->link->bl) ? 'disabled' : null}}
                             data-link="{{ !empty($product->link->bl) ? $product->link->bl : null}}"
@@ -92,12 +92,12 @@ $product->img = !empty($product->img) ? $product->img : [];
                             data-link="{{ !empty($product->link->wa) ? 'https://api.whatsapp.com/send?phone='.$product->link->wa.'&text='.rawurlencode('Halo, Saya ingin membeli '.$product->name.'.') : null}}"
                             class="btn-shop btn btn-success btn-lg btn-circle">
                             <span>Whatsapp</span>
-                            <img src="{{ asset('assets/ico-wa.png') }}" width="28" height="28">
+                            <img class="svg" src="{{ asset('assets/ico-wa.svg') }}" width="32" height="32">
                         </button>
                         <button {{ empty($product->link->sp) ? 'disabled' : null}}
                             class="btn-shop btn btn-success btn-lg btn-circle">
                             <span>Shoopie</span>
-                            <img src="{{ asset('assets/ico-wa.png') }}" width="28" height="28">
+                            <img class="svg" src="{{ asset('assets/ico-sp.svg') }}" width="32" height="32">
                         </button>
                     </div>
                 </div>
@@ -146,5 +146,32 @@ $product->img = !empty($product->img) ? $product->img : [];
         </div>
     </div>
 </div>
+<script type="text/javascript" defer>
+    $(".product-img").slick({
+        adaptiveHeight: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        // respondTo: $('.product-img').parent(),
+        accessibility: true,
+        prevArrow:
+            '<button type="button" class="btn p-0 slick-prev"><i class="text-secondary fas fa-arrow-circle-left"></i></button>',
+        nextArrow:
+            '<button type="button" class="btn p-0 slick-next"><i class="text-secondary fas fa-arrow-circle-right"></i></button>',
+        fade: false,
+        asNavFor: ".product-img-nav",
+        infinite: false,
+        useTransform: true,
+        cssEase: "cubic-bezier(0.77, 0, 0.18, 1)"
+    });
+    $(".product-img-nav").slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        infinite: false,
+        asNavFor: ".product-img",
+        dots: false,
+        arrows: false,
+        focusOnSelect: true
+    });
 
+</script>
 @endsection

@@ -18,9 +18,9 @@ use Illuminate\Http\Request;
 // });
 
 // with auth
-Route::middleware('auth:api')->prefix('/')->group(function()
+Route::name('api.')->group(function()
 {
+    // Route::('/products','Api\ProductsApi');
     Route::apiResource('/products','Api\ProductsApi');
+    Route::post('/admin/login','Api\AdminApi@login')->name('admin.login');
 });
-
-Route::post('/admin/login','Api\AdminApi@login');

@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Products;
-use PHPUnit\Runner\Exception;
+use App\ApiProducts as Products;
 
 class ProductsController extends Controller
 {
@@ -12,8 +11,17 @@ class ProductsController extends Controller
 
     public function __construct()
     {
+        $this->products = new Products();
         $this->middleware(function($req,$next){
-            // echo "should login";
+            if(!empty(session('admin_token')))
+                $this->token = session('admin_token');
+            else
+            {
+                if($req->expectsJson())
+                    return response()->json(['message'=>'Unauthorized',],403);
+                return redirect(route('admin.login'));
+            }
+            $this->products = new Products(['token'=>$this->token,]);
             return $next($req);
         })->except(['show','index']);
     }
@@ -23,56 +31,52 @@ class ProductsController extends Controller
         abort(404);
     }
 
-    public function show($id)
+    public function show(Request $req, $id)
     {
-        $data = Products::detail($id)->firstOrFail();
-        if(empty($data))
-            abort(404);
+        $resp = $this->products->getProductsById($id);
+        if($req->expectsJson())
+        {
+            if(empty($resp->data))
+                return response()->json(['message'=>'Terjadi kesalahan','err'=>$resp],404);
+            return response()->json($resp,200);
+        }
 
-        return view('detail',['product'=>$data]);
+        if(empty($resp->data))
+            abort(404);
+        return view('detail',['product'=>$resp->data]);
     }
 
     public function store(Request $req){
         $data = $req->all();
-        $product = new Products($data);
-        $save = $product->save();
-        if(!$save)
-            return response()->json(['message'=>'Terjadi kesalahan','err'=>$save],400);
-        else
-            return response()->json(['data'=>$save],200);
+        if($req->expectsJson())
+        {
+            $resp = $this->products->createProduct($data);
+            if(empty($resp->status))
+                return response()->json(['message'=>'Terjadi kesalahan','err'=>$resp],400);
+            return response()->json($resp,200);
+        }
     }
 
-    public function update(Request $req, Products $product)
+    public function update(Request $req, $id)
     {
-        $data = $req->all();
-        // return response()->json($data,400);
-        $update = $product->update($data);
-        if(!$update)
-            return response()->json(['message'=>'Terjadi kesalahan','err'=>$update],400);
-        else
-            return response()->json(['data'=>$update],200);
+        if($req->expectsJson())
+        {
+            $data = $req->all();
+            $resp = $this->products->updateProduct($id,$data);
+            if(empty($resp->data))
+                return response()->json(['message'=>'Terjadi kesalahan','err'=>$resp],400);
+            return response()->json($resp,200);
+        }
     }
 
-    public function destroy(Products $product)
+    public function destroy(Request $req,$id)
     {
-        $delete = $product->delete();
-        if(!$delete)
-            return response()->json(['message'=>'Terjadi kesalahan','err'=>$update],400);
-        else
-            return response()->json(['data'=>$delete],200);
-    }
-
-    public function json(Request $req, $func,$id=null)
-    {
-        $res = $this->$func($id);
-        return response()->json(['data'=>$res],200);
-    }
-
-    private function getAll(){
-        return Products::all();
-    }
-
-    private function get($id){
-        return Products::findOrFail($id);
+        $resp = $this->products->deleteProduct($id);
+        if($req->expectsJson())
+        {
+            if(empty($resp->status))
+                return response()->json(['message'=>'Terjadi kesalahan','err'=>$resp],400);
+            return response()->json($resp,200);
+        }
     }
 }
