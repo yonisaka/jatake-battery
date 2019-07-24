@@ -14,7 +14,7 @@ empty($p->img) ? $p->img = [] : false;
 @endphp
 <tr class="text-center">
     <td><b>{{ !empty($p->short)?$p->short : $p->id }}</b></td>
-    <td>{{ $p->name }}</td>
+    <td><a target="_blank" class="font-bold text-secondary" href="{{ url('products/'.$p->id) }}">{{ $p->name }}</a></td>
     <td>{{ $p->merk }}</td>
     <td>
         @php

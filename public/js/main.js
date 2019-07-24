@@ -35,9 +35,76 @@ $(function() {
 $(window).on("load", () => {
     $("#page-loader-wrapper").fadeOut("slow");
 });
-$(document).ready(() => {
-    // product goto
 
+function svgInline($el) {
+    var $img = $($el);
+    var imgID = $img.attr("id");
+    var imgClass = $img.attr("class");
+    var imgURL = $img.attr("src");
+
+    $.get(
+        imgURL,
+        function(data) {
+            // Get the SVG tag, ignore the rest
+            var $svg = $(data).find("svg");
+
+            // Add replaced image's ID to the new SVG
+            if (typeof imgID !== "undefined") {
+                $svg = $svg.attr("id", imgID);
+            }
+            // Add replaced image's classes to the new SVG
+            if (typeof imgClass !== "undefined") {
+                $svg = $svg.attr("class", imgClass + " replaced-svg");
+            }
+
+            // Remove any invalid XML tags as per http://validator.w3.org
+            $svg = $svg.removeAttr("xmlns:a");
+
+            // Check if the viewport is set, if the viewport is not set the SVG wont't scale.
+            if (
+                !$svg.attr("viewBox") &&
+                $svg.attr("height") &&
+                $svg.attr("width")
+            ) {
+                $svg.attr(
+                    "viewBox",
+                    "0 0 " + $svg.attr("height") + " " + $svg.attr("width")
+                );
+            }
+
+            // Replace image with new SVG
+            let $el = $("<div/>")
+                .addClass("svg-wrapper")
+                .append($svg);
+            $el.find("svg")
+                .attr("height", $img.height() + "px")
+                .attr("width", $img.width() + "px");
+
+            $img.replaceWith($el);
+        },
+        "xml"
+    );
+}
+
+$(document).ready(() => {
+    $(".copylink").click(function(e) {
+        e.preventDefault();
+        let $idTarget = $(this).data("input");
+        let $target = $($idTarget);
+        try {
+            $target.select();
+            document.execCommand("copy");
+            swal.fire("Woohoo!", "Link referral berhasil tercopy!", "success");
+        } catch (e) {
+            console.log(e);
+        }
+    });
+
+    $("img.svg").each((i, el) => {
+        svgInline(el);
+    });
+
+    // product goto
     $(".btn-shop").click(function(e) {
         e.preventDefault();
         if (!$(this).data("link")) return;
@@ -81,40 +148,11 @@ $(document).ready(() => {
         termModal.find(".continue-term").data("link", $(this).data("link"));
     };
 
-    $(".product-img").slick({
-        adaptiveHeight: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        // respondTo: $('.product-img').parent(),
-        accessibility: true,
-        prevArrow:
-            '<button type="button" class="btn p-0 slick-prev"><i class="text-secondary fas fa-arrow-circle-left"></i></button>',
-        nextArrow:
-            '<button type="button" class="btn p-0 slick-next"><i class="text-secondary fas fa-arrow-circle-right"></i></button>',
-        fade: false,
-        asNavFor: ".product-img-nav",
-        infinite: false,
-        useTransform: true,
-        cssEase: "cubic-bezier(0.77, 0, 0.18, 1)"
-    });
-    $(".product-img-nav").slick({
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        infinite: false,
-        asNavFor: ".product-img",
-        dots: false,
-        arrows: false,
-        focusOnSelect: true
-    });
-
     let img = $("img");
     img.each((i, el) => {
         $("<img/>")
             .on("error", e => {
-                $(el).attr(
-                    "src",
-                    "https://trello-attachments.s3.amazonaws.com/5d0de6ba1fad1a0b455b4016/232x232/d684e1cdd1ea5eea4b763dc16ecef4ed/no_image.png"
-                );
+                $(el).attr("src", "/assets/no_image.png");
             })
             .attr("src", $(el).attr("src"));
     });

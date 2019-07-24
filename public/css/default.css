@@ -2,7 +2,7 @@ html,
 body {
     background-color: #fff;
     color: #636b6f;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
     font-weight: 200;
     height: 100vh;
     margin: 0;
@@ -35,25 +35,7 @@ img {
     max-width: 100%;
 }
 
-.text-blue {
-    color: #384e77;
-}
-
-.font-light {
-    font-weight: 200
-}
-
-.font-sbold {
-    font-weight: 700;
-}
-
-.font-bold {
-    font-weight: 800
-}
-
-.font-xbold {
-    font-weight: 900;
-}
+/* .btn */
 
 .btn.btn-success {
     background: #3ac47d;
@@ -78,8 +60,98 @@ img {
     color: #fff;
 }
 
+.btn-outline-primary {
+    color: #384e77;
+    border-color: currentColor
+}
+
+.btn-outline-primary:hover {
+
+    color: #fff;
+    background-color: #384e77;
+    border-color: #384e77;
+}
+
 .btn-circle {
     border-radius: 50%
+}
+
+/* .btn */
+
+/* .text- */
+
+.text-primary,
+.text-primary:focus {
+    color: #384e77 !important;
+}
+
+.font-light {
+    font-weight: 200;
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+/* .font-bold {
+    font-weight: 800
+} */
+
+.font-xbold {
+    font-weight: 900;
+}
+
+.font-alt {
+    font-family: "Open Sans", sans-serif;
+}
+
+/* .text- */
+
+/* .bg  */
+.bg-blue-dark {
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(90, 92, 106, 1) 0%, rgba(32, 45, 58, 1) 81.3%);
+}
+
+.bg-blue-light {
+    background: #eceef4;
+}
+
+/* .bg */
+
+/* border */
+.border-rad-05 {
+    border-radius: 0.5rem;
+}
+
+/* border */
+
+.form-cool .input-group-text,
+.form-cool .form-control {
+    border: none;
+    background: none;
+}
+
+.form-cool input {
+    font-size: inherit;
+}
+
+.form-cool .form-control:focus {
+    outline: 0;
+    box-shadow: none;
+}
+
+.form-cool .form-group>div {
+    margin-bottom: 8px;
+    background: #fff;
+    padding: 8px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 14px;
+    box-shadow: 0 1px 3px rgba(50, 50, 93, 0.15), 0 1px 0 rgba(0, 0, 0, 0.02);
+}
+
+.form-cool .form-group .error {
+    color: #ef5350
 }
 
 .circled {
@@ -161,4 +233,8 @@ footer a {
 
 footer a:hover {
     color: #ddd;
+}
+
+footer .map img:hover {
+    opacity: 0.6;
 }

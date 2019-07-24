@@ -16,3 +16,11 @@ use Illuminate\Http\Request;
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
+
+// with auth
+Route::name('api.')->group(function()
+{
+    // Route::('/products','Api\ProductsApi');
+    Route::apiResource('/products','Api\ProductsApi');
+    Route::post('/admin/login','Api\AdminApi@login')->name('admin.login');
+});

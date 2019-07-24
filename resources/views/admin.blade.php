@@ -41,7 +41,8 @@
                         <div class="col-md">
                             <div class="form-group">
                                 <label for="">Nama Product</label>
-                                <input type="text" id="name-product" class="form-control" name='name'>
+                                <input type="text" id="name-product" class="form-control" name='name'
+                                    placeholder="(Wajib)" required>
                             </div>
                         </div>
                         <div class="col-md">
@@ -138,11 +139,13 @@
                             <div class="form-group" id="link-product">
                                 <label for="">Link Toko</label>
                                 <input type="text" class="mb-1 form-control" data-name="wa" id="wa-product"
-                                    placeholder="Nomor WA">
+                                    placeholder="Nomor WA (cnth: 628123456789)">
                                 <input type="text" class="mb-1 form-control" data-name="tp" id="tp-product"
                                     placeholder="Link ke Tokopedia">
                                 <input type="text" class="mb-1 form-control" data-name="bl" id="bl-product"
                                     placeholder="Link ke Bukalapak">
+                                <input type="text" class="mb-1 form-control" data-name="sp" id="sp-product"
+                                    placeholder="Link ke Shoppe">
                             </div>
                         </div>
                     </div>
@@ -154,11 +157,11 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col text-left">
-                                <button class="btn btn-secondary">Bingung <i
+                                <button class="btn btn-secondary help-product">Bingung <i
                                         class="fas fa-question-circle"></i></button>
                             </div>
                             <div class="col text-right">
-                                <button class="btn btn-warning">Reset</button>
+                                <button class="btn btn-warning reset-product">Reset</button>
                                 <button class="btn btn-success save-product">Simpan</button>
                             </div>
                         </div>
@@ -183,7 +186,8 @@
                         <div class="col-md">
                             <div class="form-group">
                                 <label for="">Nama Product</label>
-                                <input type="text" id="name-product" class="form-control" name='name'>
+                                <input type="text" id="name-product" class="form-control" name='name'
+                                    placeholder="(Wajib)" required>
                             </div>
                         </div>
                         <div class="col-md">
@@ -280,11 +284,13 @@
                             <div class="form-group" id="link-product">
                                 <label for="">Link Toko</label>
                                 <input type="text" class="mb-1 form-control" data-name="wa" id="wa-product"
-                                    placeholder="Nomor WA">
+                                    placeholder="Nomor WA (cnth: 628123456789)">
                                 <input type="text" class="mb-1 form-control" data-name="tp" id="tp-product"
                                     placeholder="Link ke Tokopedia">
                                 <input type="text" class="mb-1 form-control" data-name="bl" id="bl-product"
                                     placeholder="Link ke Bukalapak">
+                                <input type="text" class="mb-1 form-control" data-name="sp" id="sp-product"
+                                    placeholder="Link ke Shoppe">
                             </div>
                         </div>
                     </div>
@@ -296,11 +302,11 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col text-left">
-                                <button class="btn btn-secondary">Bingung <i
+                                <button class="btn btn-secondary help-product">Bingung <i
                                         class="fas fa-question-circle"></i></button>
                             </div>
                             <div class="col text-right">
-                                <button class="btn btn-warning">Reset</button>
+                                <button class="btn btn-warning reset-product">Reset</button>
                                 <button class="btn btn-success save-product">Simpan</button>
                             </div>
                         </div>
@@ -311,8 +317,21 @@
     </div>
 </div>
 
+<div class="modal modalbox" id="help-product-modal">
+    <div class="modal-lg mx-auto mt-5">
+        <div class="shadow-lv2 overflow-hidden rounded modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Bantuan Product</h4>
+            </div>
+            <div class="modal-body">
+                <img src="{{ asset('assets/help-01.PNG') }}">
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
-    $(document).ready(() => {
+    $(window).on('load',() => {
         let dataTableSett = {
             language: {
                 paginate: {
@@ -323,90 +342,173 @@
         }
         $("#products-table").DataTable(dataTableSett)
 
-    let serializeModal = function($modal,$filter=true)
-    {
-        let formData = $modal.find('#form-product').serializeArray();
-        // push label to array
-        let label = [];
-        $modal.find("#label-product input").each((i,el)=>{
-            $(el).prop('checked') ? label.push({
-                name:$(el).data('name'),
-                value:$(el).val(),
-                info:$(el).data('info')
-            }) : false
-        })
-        formData.push({name:'label',value:label})
-
-        // push label to array
-        let img = [];
-        $modal.find("#img-product input").each((i,el)=>{
-            $(el).val() ? img.push($(el).val()) : false
-        })
-        formData.push({name:'img',value:img})
-
-        // push label to array
-        let link = {};
-        $modal.find("#link-product input").each((i,el)=>{
-            $(el).val() ? link[$(el).data('name')] = $(el).val() : null
-        })
-        formData.push({name:'link',value:link})
-
-        // filter null data
-        if($filter)
-            formData = formData.filter(arr=>{
-                return arr.value
-            })
-        else
+        let serializeModal = function($modal,$filter=true)
         {
-            formData = formData.map(arr=>{
-                 (arr.value == null ) ? null
-                :(arr.value.length == 0) ? arr.value = "" : null
-                return arr
+            let formData = $modal.find('#form-product').serializeArray();
+            // push label to array
+            let label = [];
+            $modal.find("#label-product input").each((i,el)=>{
+                $(el).prop('checked') ? label.push({
+                    name:$(el).data('name'),
+                    value:$(el).val(),
+                    info:$(el).data('info')
+                }) : false
             })
-        }
+            formData.push({name:'label',value:label})
 
-
-        return objectifyForm(formData)
-    }
-    let editModal = function($data)
-    {
-        if(!$data)
-            return false
-        let $modal = $("#edit-product-modal")
-
-        $modal.find('#id-product').val($data.id);
-        $modal.find('#name-product').val($data.name);
-        $modal.find('#merk-product').val($data.merk)
-        $modal.find('#short-product').val($data.short)
-        $modal.find('#type-product').val($data.type)
-        $modal.find('#qty-product').val($data.qty)
-        $modal.find('#price-product').val($data.price)
-        if($data.label)
-        $.each($data.label, (i, v) => {
-            $modal.find('input[data-name='+v.name+']').prop('checked',true);
-        });
-        if($data.img)
-            $modal.find('#img-product input').each((i,el)=>{
-                $(el).val($data.img[i])
+            // push label to array
+            let img = [];
+            $modal.find("#img-product input").each((i,el)=>{
+                $(el).val() ? img.push($(el).val()) : false
             })
-        if($data.link){
-            $modal.find('#wa-product').val($data.link.wa)
-            $modal.find('#tp-product').val($data.link.tp)
-            $modal.find('#bl-product').val($data.link.bl)
-        }
-        $modal.find('#desc-product').val($data.deskripsi)
-        $modal.find('.save-product').click(function(e){
-            e.preventDefault()
-            let json = serializeModal($modal,false)
-            // console.log(json);
+            formData.push({name:'img',value:img})
 
-            $.ajax({
-                method: "PUT",
-                url: "{{ url('/products/') }}/"+$data.id,
+            // push label to array
+            let link = {};
+            $modal.find("#link-product input").each((i,el)=>{
+                $(el).val() ? link[$(el).data('name')] = $(el).val() : null
+            })
+            formData.push({name:'link',value:link})
+
+            // filter null data
+            if($filter)
+                formData = formData.filter(arr=>{
+                    return arr.value
+                })
+            else
+            {
+                formData = formData.map(arr=>{
+                    (arr.value == null ) ? null
+                    :(arr.value.length == 0) ? arr.value = "" : null
+                    return arr
+                })
+            }
+
+
+            return objectifyForm(formData)
+        }
+        let editModal = function($data)
+        {
+            if(!$data)
+                return false
+            let $modal = $("#edit-product-modal")
+
+            $modal.find('#id-product').val($data.id);
+            $modal.find('#name-product').val($data.name);
+            $modal.find('#merk-product').val($data.merk)
+            $modal.find('#short-product').val($data.short)
+            $modal.find('#type-product').val($data.type)
+            $modal.find('#qty-product').val($data.qty)
+            $modal.find('#price-product').val($data.price)
+            if($data.label)
+            $.each($data.label, (i, v) => {
+                $modal.find('input[data-name='+v.name+']').prop('checked',true);
+            });
+            if($data.img)
+                $modal.find('#img-product input').each((i,el)=>{
+                    $(el).val($data.img[i])
+                })
+            if($data.link){
+                $modal.find('#wa-product').val($data.link.wa)
+                $modal.find('#tp-product').val($data.link.tp)
+                $modal.find('#bl-product').val($data.link.bl)
+            }
+            $modal.find('#desc-product').val($data.deskripsi)
+            $modal.find('.save-product').click(function(e){
+                e.preventDefault()
+                let json = serializeModal($modal,false)
+                // console.log(json);
+
+                $.ajax({
+                    method: "PUT",
+                    url: "{{ url('/products/') }}/"+$data.id,
+                    dataType: 'json',
+                    data: json
+                })
+                .done((res)=>{
+                    console.log(res);
+
+                    if(!res.data)
+                        swal.fire('Gagal Menyimpan','Coba lagi','error')
+                    else
+                        swal.fire('Berhasil Menyimpan!','Data telah tersimpan','success')
+                        .then(()=>{
+                            window.location.reload()
+                        })
+                })
+                .fail((res)=>{
+                    console.log(res)
+                    swal.fire('Gagal Menyimpan',res.responseJSON.message,'error')
+                })
+            })
+            $modal.modal()
+        }
+        $(".edit-product").click(function(e)
+        {
+            e.preventDefault();
+            let $btn = $(this)
+            $.get('{{ url("/products") }}/'+$btn.data('id'))
+            .done((res)=>{
+                editModal(res.data)
+            })
+            .fail((err)=>{
+                console.log(err)
+                swal.fire('Gagal Memuat data',err.responseJSON.message,'error')
+            })
+        })
+        $(".delete-product").click(function(e)
+        {
+            e.preventDefault();
+            let $btn = $(this)
+            swal.fire({
+                title: 'Hapus data?',
+                text: "Data akan dihapus dari database!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, hapus!'
+                }).then((result) => {
+                if (result.value) {
+                    $.ajax({
+                        method: 'DELETE',
+                        url: '{{ url("/products") }}/'+$btn.data('id')
+                    })
+                    .done((res)=>{
+                        swal.fire('Berhasil Menghapus data','','success')
+                        .then(()=>{
+                            window.location.reload()
+                        })
+                    })
+                    .fail((err)=>{
+                        console.log(err)
+                        swal.fire('Gagal Menghapus data',err.responseJSON.message,'error')
+                    })
+                }
+                })
+        })
+
+        $('.reset-product').click((e)=>{
+            e.preventDefault();
+            window.location.reload();
+        })
+
+        $('.help-product').click((e)=>{
+            e.preventDefault();
+            $('#help-product-modal').modal();
+        })
+
+        $('#add-product-modal .save-product').click(function(e){
+            e.preventDefault();
+            let json = serializeModal($('#add-product-modal'))
+            $.post({
+                url: "{{ url('/products') }}",
                 dataType: 'json',
                 data: json
             })
             .done((res)=>{
+                console.log(res);
+
                 if(!res.data)
                     swal.fire('Gagal Menyimpan','Coba lagi','error')
                 else
@@ -420,77 +522,6 @@
                 swal.fire('Gagal Menyimpan',res.responseJSON.message,'error')
             })
         })
-        $modal.modal()
-    }
-
-    $(".edit-product").click(function(e)
-    {
-        e.preventDefault();
-        let $btn = $(this)
-        $.get('{{ url("/products/json/get") }}/'+$btn.data('id'))
-        .done((res)=>{
-            editModal(res.data)
-        })
-        .fail((err)=>{
-            console.log(err)
-            swal.fire('Gagal Memuat data',err.responseJSON.message,'error')
-        })
-    })
-    $(".delete-product").click(function(e)
-    {
-        e.preventDefault();
-        let $btn = $(this)
-        swal.fire({
-            title: 'Hapus data?',
-            text: "Data akan dihapus dari database!",
-            type: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Ya, hapus!'
-            }).then((result) => {
-            if (result.value) {
-                $.ajax({
-                    method: 'DELETE',
-                    url: '{{ url("/products") }}/'+$btn.data('id')
-                })
-                .done((res)=>{
-                    swal.fire('Berhasil Menghapus data','','success')
-                    .then(()=>{
-                        window.location.reload()
-                    })
-                })
-                .fail((err)=>{
-                    console.log(err)
-                    swal.fire('Gagal Menghapus data',err.responseJSON.message,'error')
-                })
-            }
-            })
-    })
-
-
-    $('#add-product-modal .save-product').click(function(e){
-        e.preventDefault();
-        let json = serializeModal($('#add-product-modal'))
-        $.post({
-            url: "{{ url('/products') }}",
-            dataType: 'json',
-            data: json
-        })
-        .done((res)=>{
-            if(!res.data)
-                swal.fire('Gagal Menyimpan','Coba lagi','error')
-            else
-                swal.fire('Berhasil Menyimpan!','Data telah tersimpan','success')
-                .then(()=>{
-                    window.location.reload()
-                })
-        })
-        .fail((res)=>{
-            console.log(res)
-            swal.fire('Gagal Menyimpan',res.responseJSON.message,'error')
-        })
-    })
     })
 </script>
 </div>

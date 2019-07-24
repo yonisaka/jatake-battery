@@ -4,6 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Jatake Battery - {{ !empty($pages)? $pages : "Halaman Depan" }}</title>
 
@@ -11,8 +13,10 @@
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     <script src="{{ asset('modules/jquery-3.4.1/jquery-3.4.1.min.js') }}"></script>
     <script src="{{ asset('modules/bootstrap-4.3.1/js/bootstrap.min.js') }}" async></script>
+    <script src="{{ asset('modules/sweetalert2.all.min.js') }}" async></script>
     <script src="{{ asset('modules/fontawesome/js/all.min.js') }}" async></script>
     <script src="{{ asset('modules/slick/slick.min.js') }}" async></script>
+    <script src="{{ asset('js/main.js') }}" async></script>
     @yield('head')
 </head>
 @include('loader')
@@ -78,7 +82,7 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <a href="https://goo.gl/maps/frLfpp1cpPZJsbaQ6" target="_blank">
+                            <a class="map" href="https://goo.gl/maps/frLfpp1cpPZJsbaQ6" target="_blank">
                                 <img src="{{ asset('assets/maps.PNG') }}" alt="" srcset="">
                             </a>
                         </div>
@@ -121,6 +125,5 @@
         </div>
     </div>
 </body>
-<script src="{{ asset('js/main.js') }}"></script>
 
 </html>
