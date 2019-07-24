@@ -41,7 +41,8 @@
                         <div class="col-md">
                             <div class="form-group">
                                 <label for="">Nama Product</label>
-                                <input type="text" id="name-product" class="form-control" name='name'>
+                                <input type="text" id="name-product" class="form-control" name='name'
+                                    placeholder="(Wajib)" required>
                             </div>
                         </div>
                         <div class="col-md">
@@ -77,36 +78,36 @@
                                 <div class="row">
                                     <div class="col">
                                         <input class="ml-2" type="checkbox" data-name="gratis" id="lbl-gratis"
-                                            value="fa-check" data-info="Gratis Pasang">
-                                        <i class="fas fa-check"></i>
+                                            value="fa-gifts" data-info="Gratis Pasang">
+                                        <i class="fas fa-gifts"></i>
                                         Gratis Pasang
                                     </div>
                                     <div class="col">
                                         <input class="ml-2" type="checkbox" data-name="tukar" id="lbl-tukar"
-                                            value="fa-check" data-info="Tukar Tambah">
-                                        <i class="fas fa-check"></i>
+                                            value="fa-tools" data-info="Tukar Tambah">
+                                        <i class="fas fa-tools"></i>
                                         Tukar Tambah
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">
                                         <input class="ml-2" type="checkbox" data-name="asli" id="lbl-asli"
-                                            value="fa-check" data-info="Produk Asli">
-                                        <i class="fas fa-check"></i>
+                                            value="fa-check-circle" data-info="Produk Asli">
+                                        <i class="fas fa-check-circle"></i>
                                         Produk Asli
                                     </div>
                                     <div class="col">
                                         <input class="ml-2" type="checkbox" data-name="baru" id="lbl-baru"
-                                            value="fa-check" data-info="Barang Baru">
-                                        <i class="fas fa-check"></i>
+                                            value="fa-box-open" data-info="Barang Baru">
+                                        <i class="fas fa-box-open"></i>
                                         Barang Baru
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">
                                         <input class="ml-2" type="checkbox" data-name="bekas" id="lbl-bekas"
-                                            value="fa-check" data-info="Barang Bekas">
-                                        <i class="fas fa-check"></i>
+                                            value="fa-hands" data-info="Barang Bekas">
+                                        <i class="fas fa-hands"></i>
                                         Barang Bekas
                                     </div>
                                 </div>
@@ -138,11 +139,13 @@
                             <div class="form-group" id="link-product">
                                 <label for="">Link Toko</label>
                                 <input type="text" class="mb-1 form-control" data-name="wa" id="wa-product"
-                                    placeholder="Nomor WA">
+                                    placeholder="Nomor WA (cnth: 628123456789)">
                                 <input type="text" class="mb-1 form-control" data-name="tp" id="tp-product"
                                     placeholder="Link ke Tokopedia">
                                 <input type="text" class="mb-1 form-control" data-name="bl" id="bl-product"
                                     placeholder="Link ke Bukalapak">
+                                <input type="text" class="mb-1 form-control" data-name="sp" id="sp-product"
+                                    placeholder="Link ke Shoppe">
                             </div>
                         </div>
                     </div>
@@ -183,7 +186,8 @@
                         <div class="col-md">
                             <div class="form-group">
                                 <label for="">Nama Product</label>
-                                <input type="text" id="name-product" class="form-control" name='name'>
+                                <input type="text" id="name-product" class="form-control" name='name'
+                                    placeholder="(Wajib)" required>
                             </div>
                         </div>
                         <div class="col-md">
@@ -219,36 +223,36 @@
                                 <div class="row">
                                     <div class="col">
                                         <input class="ml-2" type="checkbox" data-name="gratis" id="lbl-gratis"
-                                            value="fa-check" data-info="Gratis Pasang">
-                                        <i class="fas fa-check"></i>
+                                            value="fa-gifts" data-info="Gratis Pasang">
+                                        <i class="fas fa-gifts"></i>
                                         Gratis Pasang
                                     </div>
                                     <div class="col">
                                         <input class="ml-2" type="checkbox" data-name="tukar" id="lbl-tukar"
-                                            value="fa-check" data-info="Tukar Tambah">
-                                        <i class="fas fa-check"></i>
+                                            value="fa-tools" data-info="Tukar Tambah">
+                                        <i class="fas fa-tools"></i>
                                         Tukar Tambah
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">
                                         <input class="ml-2" type="checkbox" data-name="asli" id="lbl-asli"
-                                            value="fa-check" data-info="Produk Asli">
-                                        <i class="fas fa-check"></i>
+                                            value="fa-check-circle" data-info="Produk Asli">
+                                        <i class="fas fa-check-circle"></i>
                                         Produk Asli
                                     </div>
                                     <div class="col">
                                         <input class="ml-2" type="checkbox" data-name="baru" id="lbl-baru"
-                                            value="fa-check" data-info="Barang Baru">
-                                        <i class="fas fa-check"></i>
+                                            value="fa-box-open" data-info="Barang Baru">
+                                        <i class="fas fa-box-open"></i>
                                         Barang Baru
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">
                                         <input class="ml-2" type="checkbox" data-name="bekas" id="lbl-bekas"
-                                            value="fa-check" data-info="Barang Bekas">
-                                        <i class="fas fa-check"></i>
+                                            value="fa-hands" data-info="Barang Bekas">
+                                        <i class="fas fa-hands"></i>
                                         Barang Bekas
                                     </div>
                                 </div>
@@ -280,11 +284,13 @@
                             <div class="form-group" id="link-product">
                                 <label for="">Link Toko</label>
                                 <input type="text" class="mb-1 form-control" data-name="wa" id="wa-product"
-                                    placeholder="Nomor WA">
+                                    placeholder="Nomor WA (cnth: 628123456789)">
                                 <input type="text" class="mb-1 form-control" data-name="tp" id="tp-product"
                                     placeholder="Link ke Tokopedia">
                                 <input type="text" class="mb-1 form-control" data-name="bl" id="bl-product"
                                     placeholder="Link ke Bukalapak">
+                                <input type="text" class="mb-1 form-control" data-name="sp" id="sp-product"
+                                    placeholder="Link ke Shoppe">
                             </div>
                         </div>
                     </div>
@@ -318,8 +324,7 @@
                 <h4 class="modal-title">Bantuan Product</h4>
             </div>
             <div class="modal-body">
-                Begini cara mengisinya:
-                <img src="" alt="" srcset="">
+                <img src="{{ asset('assets/help-01.PNG') }}">
             </div>
         </div>
     </div>
@@ -486,6 +491,11 @@
         $('.reset-product').click((e)=>{
             e.preventDefault();
             window.location.reload();
+        })
+
+        $('.help-product').click((e)=>{
+            e.preventDefault();
+            $('#help-product-modal').modal();
         })
 
         $('#add-product-modal .save-product').click(function(e){

@@ -87,6 +87,19 @@ function svgInline($el) {
 }
 
 $(document).ready(() => {
+    $(".copylink").click(function(e) {
+        e.preventDefault();
+        let $idTarget = $(this).data("input");
+        let $target = $($idTarget);
+        try {
+            $target.select();
+            document.execCommand("copy");
+            swal.fire("Woohoo!", "Link referral berhasil tercopy!", "success");
+        } catch (e) {
+            console.log(e);
+        }
+    });
+
     $("img.svg").each((i, el) => {
         svgInline(el);
     });

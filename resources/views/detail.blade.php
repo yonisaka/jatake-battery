@@ -57,13 +57,17 @@ $product->img = !empty($product->img) ? $product->img : [];
                         <p class="card-title text-muted" style="font-display: montserrat">{{ $product->merk }}</p>
                         <h4 class="card-text pb-3 text-muted" style="border-bottom: 2px solid #707070">
                             {{ $product->name }}</h4>
-                        <div class="product-labels py-3">
+                        <ul class="list-inline product-labels py-3">
                             @php
                             foreach ($product->label as $k => $v) {
-                            echo '<i class="fas '.$v->value.'"></i>';
+                            @endphp
+                            <li class="list-inline-item">
+                                <i class="fas {{ $v->value }}"></i>&nbsp;{{ $v->info }}
+                            </li>
+                            @php
                             }
                             @endphp
-                        </div>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -95,6 +99,7 @@ $product->img = !empty($product->img) ? $product->img : [];
                             <img class="svg" src="{{ asset('assets/ico-wa.svg') }}" width="32" height="32">
                         </button>
                         <button {{ empty($product->link->sp) ? 'disabled' : null}}
+                            data-link="{{ !empty($product->link->sp) ? $product->link->sp : null}}"
                             class="btn-shop btn btn-success btn-lg btn-circle">
                             <span>Shoopie</span>
                             <img class="svg" src="{{ asset('assets/ico-sp.svg') }}" width="32" height="32">
@@ -105,10 +110,10 @@ $product->img = !empty($product->img) ? $product->img : [];
 
             <div class="row mt-4">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Link"
+                    <input id="product-link" type="text" class="form-control" placeholder="Link"
                         value="{{ !empty($product->short) ? url('products/'.$product->short) : url('products/'.$product->id) }}">
                     <div class="input-group-append">
-                        <button class="btn btn-outline-primary" type="button">
+                        <button class="copylink btn btn-outline-primary" data-input="#product-link" type="button">
                             <i class="fas fa-copy"></i>
                         </button>
                     </div>
@@ -146,32 +151,35 @@ $product->img = !empty($product->img) ? $product->img : [];
         </div>
     </div>
 </div>
-<script type="text/javascript" defer>
-    $(".product-img").slick({
-        adaptiveHeight: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        // respondTo: $('.product-img').parent(),
-        accessibility: true,
-        prevArrow:
-            '<button type="button" class="btn p-0 slick-prev"><i class="text-secondary fas fa-arrow-circle-left"></i></button>',
-        nextArrow:
-            '<button type="button" class="btn p-0 slick-next"><i class="text-secondary fas fa-arrow-circle-right"></i></button>',
-        fade: false,
-        asNavFor: ".product-img-nav",
-        infinite: false,
-        useTransform: true,
-        cssEase: "cubic-bezier(0.77, 0, 0.18, 1)"
-    });
-    $(".product-img-nav").slick({
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        infinite: false,
-        asNavFor: ".product-img",
-        dots: false,
-        arrows: false,
-        focusOnSelect: true
-    });
+<script type="text/javascript" async>
+    $(window).on('load',()=>{
+        $(".product-img").slick({
+            adaptiveHeight: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            respondTo: $('.product-img').parent(),
+            accessibility: true,
+            prevArrow:
+                '<button type="button" class="btn p-0 slick-prev"><i class="text-secondary fas fa-arrow-circle-left"></i></button>',
+            nextArrow:
+                '<button type="button" class="btn p-0 slick-next"><i class="text-secondary fas fa-arrow-circle-right"></i></button>',
+            fade: false,
+            asNavFor: ".product-img-nav",
+            infinite: false,
+            useTransform: true,
+            cssEase: "cubic-bezier(0.77, 0, 0.18, 1)"
+        });
+        $(".product-img-nav").slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            infinite: false,
+            asNavFor: ".product-img",
+            dots: false,
+            arrows: false,
+            focusOnSelect: true
+        });
+    })
+
 
 </script>
 @endsection
