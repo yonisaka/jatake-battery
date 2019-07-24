@@ -78,36 +78,36 @@
                                 <div class="row">
                                     <div class="col">
                                         <input class="ml-2" type="checkbox" data-name="gratis" id="lbl-gratis"
-                                            value="fa-check" data-info="Gratis Pasang">
-                                        <img src="{{ asset('assets/GratisPasang.png') }}" alt="Gratis Pasang" style="max-width:12%">
+                                            value="fa-gifts" data-info="Gratis Pasang">
+                                        <i class="fas fa-gifts"></i>
                                         Gratis Pasang
                                     </div>
                                     <div class="col">
                                         <input class="ml-2" type="checkbox" data-name="tukar" id="lbl-tukar"
-                                            value="fa-check" data-info="Tukar Tambah">
-                                            <img src="{{ asset('assets/TukarTambah.png') }}" alt="Tukar Tambah" style="max-width:12%">
+                                            value="fa-tools" data-info="Tukar Tambah">
+                                        <i class="fas fa-tools"></i>
                                         Tukar Tambah
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">
                                         <input class="ml-2" type="checkbox" data-name="asli" id="lbl-asli"
-                                            value="fa-check" data-info="Produk Asli">
-                                        <img src="{{ asset('assets/Asli.png') }}" alt="Produk Asli" style="max-width:12%">
+                                            value="fa-check-circle" data-info="Produk Asli">
+                                        <i class="fas fa-check-circle"></i>
                                         Produk Asli
                                     </div>
                                     <div class="col">
                                         <input class="ml-2" type="checkbox" data-name="baru" id="lbl-baru"
-                                            value="fa-check" data-info="Barang Baru">
-                                        <img src="{{ asset('assets/Baru.png') }}" alt="Barang Baru" style="max-width:12%">
+                                            value="fa-box-open" data-info="Barang Baru">
+                                        <i class="fas fa-box-open"></i>
                                         Barang Baru
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">
                                         <input class="ml-2" type="checkbox" data-name="bekas" id="lbl-bekas"
-                                            value="fa-check" data-info="Barang Bekas">
-                                        <img src="{{ asset('assets/BarangBekas.png') }}" alt="Barang Bekas" style="max-width:6%">
+                                            value="fa-hands" data-info="Barang Bekas">
+                                        <i class="fas fa-hands"></i>
                                         Barang Bekas
                                     </div>
                                 </div>
@@ -223,36 +223,36 @@
                                 <div class="row">
                                     <div class="col">
                                         <input class="ml-2" type="checkbox" data-name="gratis" id="lbl-gratis"
-                                            value="fa-check" data-info="Gratis Pasang">
-                                        <img src="{{ asset('assets/GratisPasang.png') }}" alt="Gratis Pasang" style="max-width:12%">
+                                            value="fa-gifts" data-info="Gratis Pasang">
+                                        <i class="fas fa-gifts"></i>
                                         Gratis Pasang
                                     </div>
                                     <div class="col">
                                         <input class="ml-2" type="checkbox" data-name="tukar" id="lbl-tukar"
-                                            value="fa-check" data-info="Tukar Tambah">
-                                        <img src="{{ asset('assets/GratisPasang.png') }}" alt="Gratis Pasang" style="max-width:12%">
+                                            value="fa-tools" data-info="Tukar Tambah">
+                                        <i class="fas fa-tools"></i>
                                         Tukar Tambah
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">
                                         <input class="ml-2" type="checkbox" data-name="asli" id="lbl-asli"
-                                            value="fa-check" data-info="Produk Asli">
-                                        <img src="{{ asset('assets/Asli.png') }}" alt="Produk Asli" style="max-width:12%">
+                                            value="fa-check-circle" data-info="Produk Asli">
+                                        <i class="fas fa-check-circle"></i>
                                         Produk Asli
                                     </div>
                                     <div class="col">
                                         <input class="ml-2" type="checkbox" data-name="baru" id="lbl-baru"
-                                            value="fa-check" data-info="Barang Baru">
-                                        <img src="{{ asset('assets/Baru.png') }}" alt="Barang Baru" style="max-width:12%">
+                                            value="fa-box-open" data-info="Barang Baru">
+                                        <i class="fas fa-box-open"></i>
                                         Barang Baru
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">
                                         <input class="ml-2" type="checkbox" data-name="bekas" id="lbl-bekas"
-                                            value="fa-check" data-info="Barang Bekas">
-                                        <img src="{{ asset('assets/BarangBekas.png') }}" alt="Barang Bekas" style="max-width:12%">
+                                            value="fa-hands" data-info="Barang Bekas">
+                                        <i class="fas fa-hands"></i>
                                         Barang Bekas
                                     </div>
                                 </div>

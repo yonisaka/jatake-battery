@@ -51,6 +51,17 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
+        "fresh-migrate": [
+            "php artisan migrate:fresh",
+            "php artisan passport:install",
+            "php artisan migrate --seed"
+        ],
+        "post-install-cmd": [
+            "php artisan clear-compiled",
+            "chmod -R 777 storage",
+            "php artisan migrate",
+            "php artisan passport:install"
+        ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"

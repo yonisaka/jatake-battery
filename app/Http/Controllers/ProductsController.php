@@ -14,14 +14,16 @@ class ProductsController extends Controller
         $this->products = new Products();
         $this->middleware(function($req,$next){
             if(!empty(session('admin_token')))
+            {
                 $this->token = session('admin_token');
+                $this->products = new Products(['token'=>$this->token,]);
+            }
             else
             {
                 if($req->expectsJson())
                     return response()->json(['message'=>'Unauthorized',],403);
                 return redirect(route('admin.login'));
             }
-            $this->products = new Products(['token'=>$this->token,]);
             return $next($req);
         })->except(['show','index']);
     }

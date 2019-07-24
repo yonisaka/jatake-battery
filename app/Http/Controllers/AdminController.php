@@ -14,15 +14,17 @@ class AdminController extends Controller
         $this->products = new Products();
         $this->middleware(function($req,$next){
             if(!empty(session('admin_token')))
+            {
                 $this->token = session('admin_token');
+                $this->products = new Products(['token'=>$this->token,]);
+                $this->admin = new Admins(['token'=>$this->token,]);
+            }
             else
             {
                 if($req->expectsJson())
                     return response()->json(['message'=>'Unauthorized',],403);
                 return redirect(route('admin.login'));
             }
-            $this->products = new Products(['token'=>$this->token,]);
-            $this->admin = new Admins(['token'=>$this->token,]);
             return $next($req);
         })->except(['login','request_login']);
     }
@@ -45,7 +47,7 @@ class AdminController extends Controller
             'password'=>'required'
         ]);
         $resp = $this->admin->loginAdmin($login);
-        if(!empty($resp->err))
+        if(!empty($resp->err) || empty($resp->token))
         {
             return response()->json($resp,403);
         }
