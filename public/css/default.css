@@ -75,8 +75,7 @@ footer .map img:hover {
     display: inline-block;
 }
 
-.navbar .navbar-nav {
-}
+.navbar .navbar-nav {width: 100%;}
 
 .mainnav {
     display: flex;

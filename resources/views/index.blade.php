@@ -6,7 +6,7 @@
 @section('content')
 
 @php
-if(!empty($products[0]))
+if(!empty($products[0]) && $page=='home')
 {
 @endphp
 {{-- section content: banner --}}
@@ -63,7 +63,7 @@ if(!empty($products[0]))
             {
             echo '
             <div class="col text-center">
-                <h3>Belum ada product</h3>
+                <h3>Produk tidak ditemukan</h3>
             </div>';
             }
             foreach ($products as $k => $d) {

@@ -33,54 +33,60 @@
                 </div>
                 <nav class="navbar">
                     <div class="container navbar-cont">
-                        <div class="navbar-brand logo">
-                            <a href="{{ url('') }}">
-                                <img src="{{ asset('assets/logo.png') }}" class="img" alt="Jatake Battery">
-                            </a>
+                        <div class="col-md-3 text-center">
+                            <div class="navbar-brand logo">
+                                <a href="{{ url('') }}">
+                                    <img src="{{ asset('assets/logo.png') }}" class="img" alt="Jatake Battery">
+                                </a>
+                            </div>
                         </div>
-                        {{-- section content: category list --}}
-                        <div class="float-right navbar-nav">
-                            <div class="mainnav row">
-                                <div class="mt-2 col-md">
-                                    <div class="container">
-                                        <form action="{{ url('/search') }}" method="get">
-                                            <div class="input-group">
-                                                <input class="form-control" name="s" type="text" id="search">
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text"><i class="fas fa-search"></i></span>
+                        <div class="col-md text-right">
+                            {{-- section content: category list --}}
+                            <div class="navbar-nav">
+                                <div class="mainnav row">
+                                    <div class="mt-2 col-md-5">
+                                        <div class="container">
+                                            <form action="{{ url('/search') }}" method="get">
+                                                <div class="input-group">
+                                                    <input class="form-control" placeholder="Cari barang gan?"
+                                                        value="{{ !empty($s)?$s:'' }}" name="s" type="text" id="search">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text"><i
+                                                                class="fas fa-search"></i></span>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="col-md">
+                                        <div class="list-group list-group-horizontal">
+                                            <div class="list-group-item {{ $page=="home"? 'active' : null }}">
+                                                <div class="nav-link">
+                                                    <a href="{{ url('') }}" data-type='all'>
+                                                        Beranda
+                                                    </a>
                                                 </div>
                                             </div>
-                                        </form>
-                                    </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="list-group list-group-horizontal">
-                                        <div class="list-group-item {{ $page=="home"? 'active' : null }}">
-                                            <div class="nav-link">
-                                                <a href="{{ url('') }}" data-type='all'>
-                                                    Beranda
-                                                </a>
+                                            <div class="list-group-item {{ $page=="motor"? 'active' : null }}">
+                                                <div class="nav-link">
+                                                    <a href="{{ url('/motor') }}" data-type='motor'>
+                                                        Motor
+                                                    </a>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="list-group-item {{ $page=="motor"? 'active' : null }}">
-                                            <div class="nav-link">
-                                                <a href="{{ url('/motor') }}" data-type='motor'>
-                                                    Motor
-                                                </a>
+                                            <div class="list-group-item {{ $page=="mobil"? 'active' : null }}">
+                                                <div class="nav-link">
+                                                    <a href="{{ url('/mobil') }}" data-type='mobil'>
+                                                        Mobil
+                                                    </a>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="list-group-item {{ $page=="mobil"? 'active' : null }}">
-                                            <div class="nav-link">
-                                                <a href="{{ url('/mobil') }}" data-type='mobil'>
-                                                    Mobil
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="list-group-item {{ $page=="term"? 'active' : null }}">
-                                            <div class="nav-link">
-                                                <a href="{{ url('/term-condition') }}" data-type='mobil'>
-                                                    Syarat & Ketentuan
-                                                </a>
+                                            <div class="list-group-item {{ $page=="term"? 'active' : null }}">
+                                                <div class="nav-link">
+                                                    <a href="{{ url('/term-condition') }}" data-type='mobil'>
+                                                        Syarat & Ketentuan
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

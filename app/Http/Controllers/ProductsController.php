@@ -45,7 +45,9 @@ class ProductsController extends Controller
 
         if(empty($resp->data))
             abort(404);
-        return view('detail',['product'=>$resp->data]);
+        $data['page'] = 'detail';
+        $data['product']=$resp->data;
+        return view('detail',$data);
     }
 
     public function store(Request $req){

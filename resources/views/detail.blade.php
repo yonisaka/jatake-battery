@@ -2,7 +2,7 @@
 @section('head')
 <link rel="stylesheet" href="{{ asset('css/products.css') }}">
 @endsection
-@section('contentId',"home")
+@section('contentId',"detail")
 @section('content')
 @php
 $product->label = !empty($product->label) ? $product->label : [];

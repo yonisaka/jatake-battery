@@ -20,6 +20,15 @@ class HomeController extends Controller
     {
         $data['page'] = 'motor';
         $data['products'] = Products::orderBy('id')->where('type','motor')->get();
-        return view("motor",$data);
+        return view("index",$data);
+    }
+
+    public function search(Request $req)
+    {
+        $s = $req->query("s");
+        $data['page'] = 'search';
+        $data['s'] = $s;
+        $data['products'] = Products::orderBy('id')->where('name','like','%'.$s.'%')->get();
+        return view("index",$data);
     }
 }
