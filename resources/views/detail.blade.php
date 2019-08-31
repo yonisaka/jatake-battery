@@ -8,9 +8,9 @@
 $product->label = !empty($product->label) ? $product->label : [];
 $product->img = !empty($product->img) ? $product->img : [];
 @endphp
-<div class="col p-3 main-section mb-5 bg-white">
+<div class="col p-3 main-section mb-5">
     <nav aria-label="breadcrumb">
-        <ol class="breadcrumb mx-5 bg-white px-0">
+        <ol class="breadcrumb shadow-sm border mx-5 bg-white px-3">
             <li class="breadcrumb-item">
                 <b><a class="text-primary" href="{{ url('') }}"><i class="fas fa-home"></i>&nbsp;Home</a></b></li>
             <li class="breadcrumb-item">Product</li>
@@ -20,7 +20,7 @@ $product->img = !empty($product->img) ? $product->img : [];
     </nav>
     <!--Detail Product-->
     <div class="row mx-5 mt-2 mb-4">
-        <div class="col-md-5 border py-3 my-2">
+        <div class="col-md-5 border bg-white shadow-sm py-3 my-2">
             <div class="product-img">
                 @php
                 if(empty($product->img))

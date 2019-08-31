@@ -19,17 +19,74 @@
     <script src="{{ asset('js/main.js') }}" async></script>
     @yield('head')
 </head>
+{{ empty($page)?$page='':null }}
 @include('loader')
 
 <body>
     <div class="bg-light">
         <div class="main-wrapper">
-            <header class="container-fluid">
-                <nav class="navbar justify-content-center">
-                    <div class="navbar-brand logo">
-                        <a href="{{ url('') }}">
-                            <img src="{{ asset('assets/logo.png') }}" class="img" alt="Jatake Battery">
-                        </a>
+            <header class="container-fluid border-bottom">
+                <div class="top-header bg-dark d-none">
+                    <div class="container">
+                        08123456789
+                    </div>
+                </div>
+                <nav class="navbar">
+                    <div class="container navbar-cont">
+                        <div class="navbar-brand logo">
+                            <a href="{{ url('') }}">
+                                <img src="{{ asset('assets/logo.png') }}" class="img" alt="Jatake Battery">
+                            </a>
+                        </div>
+                        {{-- section content: category list --}}
+                        <div class="float-right navbar-nav">
+                            <div class="mainnav row">
+                                <div class="mt-2 col-md">
+                                    <div class="container">
+                                        <form action="{{ url('/search') }}" method="get">
+                                            <div class="input-group">
+                                                <input class="form-control" name="s" type="text" id="search">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text"><i class="fas fa-search"></i></span>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="list-group list-group-horizontal">
+                                        <div class="list-group-item {{ $page=="home"? 'active' : null }}">
+                                            <div class="nav-link">
+                                                <a href="{{ url('') }}" data-type='all'>
+                                                    Beranda
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="list-group-item {{ $page=="motor"? 'active' : null }}">
+                                            <div class="nav-link">
+                                                <a href="{{ url('/motor') }}" data-type='motor'>
+                                                    Motor
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="list-group-item {{ $page=="mobil"? 'active' : null }}">
+                                            <div class="nav-link">
+                                                <a href="{{ url('/mobil') }}" data-type='mobil'>
+                                                    Mobil
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="list-group-item {{ $page=="term"? 'active' : null }}">
+                                            <div class="nav-link">
+                                                <a href="{{ url('/term-condition') }}" data-type='mobil'>
+                                                    Syarat & Ketentuan
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </nav>
             </header>

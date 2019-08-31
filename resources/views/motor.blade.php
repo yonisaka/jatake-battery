@@ -4,56 +4,6 @@
 @endsection
 @section('contentId',"home")
 @section('content')
-
-@php
-if(!empty($products[0]))
-{
-@endphp
-{{-- section content: banner --}}
-<div id="sc-banner" class="mt-5">
-    <div class="card banner-wrapper">
-        <img src="{{ asset('assets/banner.png') }}" alt="" class="card-img">
-        <div class="card-img-overlay">
-            <div class="container p-md-5 p-2">
-                <div class="row my-4">
-                    <div class="col-md-7">
-                        <h1 class="text-yellow banner-title">
-                            BEST PRODUCT
-                        </h1>
-                    </div>
-                </div>
-                <div class="row my-0">
-                    <div class="col-md-7">
-                        <h2 class="product-merk">
-                            {{ $products[0]->merk }}
-                        </h2>
-                    </div>
-                </div>
-                <div class="row mb-4 mt-0">
-                    <div class="col-md-7">
-                        <h2 class="product-name">
-                            {{ $products[0]->name }}
-                        </h2>
-                    </div>
-                </div>
-                <div class="row my-4">
-                    <div class="col-md-7">
-                        <h3 class="product-price">
-                            {{ formating($products[0]->price,'price') }}
-                        </h3>
-                    </div>
-                </div>
-                <a href="{{ url('products/') }}/{{ $products[0]->short ? $products[0]->short : $products[0]->id }}"
-                    class="btn buy-now">
-                    Beli Sekarang <i class="fas fa-chevron-circle-right"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-@php
-}
-@endphp
 {{-- section content: products list --}}
 <div id="sc-products">
     <div class="card-wrapper container">

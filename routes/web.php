@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/motor', 'HomeController@motor');
+Route::get('/mobil', 'HomeController@mobil');
 
 Route::prefix('/extra-pages')->group(function()
 {
