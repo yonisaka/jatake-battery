@@ -95,6 +95,39 @@
     font-size: 1rem;
 }
 
+#sc-testimoni {
+    padding: 2rem 0;
+}
+
+#sc-testimoni .card {
+    border: none;
+    border-radius: 1rem;
+    text-align: center;
+    margin: 0 6px;
+}
+
+#sc-testimoni .testimo-photo {
+    height: 152px;
+    width: 152px;
+    margin: auto;
+}
+
+#sc-testimoni .testimo-photo .photo-border {
+    border-radius: 50%;
+    overflow: hidden;
+    height: inherit;
+    width: inherit;
+}
+
+#sc-testimoni .testimo-photo .photo-border img {
+    height: inherit;
+}
+
+#sc-testimoni .testimo-name {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
 /* RESPONSIVE STYLES */
 @media screen and (max-width: 62rem) {
     #sc-banner .card-img {

@@ -41,3 +41,20 @@ if(!function_exists('errApi'))
     }
 }
 
+// if(!function_exists('search'))
+// {
+//     function search($value, $strict = false)
+//     {
+//          if (! $this->useAsCallable($value)) {
+//              return array_search($value, $this->items, $strict);
+//          }
+
+//          foreach ($this->items as $key => $item) {
+//              if (call_user_func($value, $item, $key)) {
+//                  return $key;
+//              }
+//          }
+
+//          return false;
+//     }
+// }

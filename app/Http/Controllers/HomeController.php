@@ -11,7 +11,8 @@ class HomeController extends Controller
     //
     public function index()
     {
-        $data['products'] = Products::orderBy('id')->get();
+        $limit = 4;
+        $data['products'] = Products::orderBy('id')->limit($limit)->get();
         $data['page'] = 'home';
         return view("index",$data);
     }
@@ -19,8 +20,16 @@ class HomeController extends Controller
     public function motor()
     {
         $data['page'] = 'motor';
-        $data['products'] = Products::orderBy('id')->where('type','motor')->get();
-        return view("index",$data);
+        $limit = 12;
+        $data['products'] = Products::orderBy('id')->where('type','motor')->limit($limit)->get();
+        return view("result",$data);
+    }
+    public function mobil()
+    {
+        $data['page'] = 'mobil';
+        $limit = 12;
+        $data['products'] = Products::orderBy('id')->where('type','mobil')->limit($limit)->get();
+        return view("result",$data);
     }
 
     public function search(Request $req)
@@ -29,6 +38,6 @@ class HomeController extends Controller
         $data['page'] = 'search';
         $data['s'] = $s;
         $data['products'] = Products::orderBy('id')->where('name','like','%'.$s.'%')->get();
-        return view("index",$data);
+        return view("result",$data);
     }
 }

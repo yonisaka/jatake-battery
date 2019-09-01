@@ -48,7 +48,7 @@
                                         <div class="container">
                                             <form action="{{ url('/search') }}" method="get">
                                                 <div class="input-group">
-                                                    <input class="form-control" placeholder="Cari barang gan?"
+                                                    <input class="form-control" placeholder="Cari apa gan?"
                                                         value="{{ !empty($s)?$s:'' }}" name="s" type="text" id="search">
                                                     <div class="input-group-append">
                                                         <span class="input-group-text"><i
@@ -96,7 +96,7 @@
                     </div>
                 </nav>
             </header>
-            <div class="container content" id="@yield('contentId')">
+            <div class="content py-5" id="@yield('contentId')">
                 @yield('content')
             </div>
             <footer class="container-fluid text-white p-0">
