@@ -30,21 +30,6 @@
     text-transform: uppercase;
 }
 
-#sc-banner .buy-now {
-    position: absolute;
-    bottom: 0;
-    font-size: 2rem;
-    right: 0;
-    background: #384e77;
-    color: #fff;
-    padding: 1rem 3rem;
-    border-radius: 3rem 0 0;
-}
-
-#sc-banner .buy-now:hover {
-    background: #2b3a55;
-}
-
 #sc-products {
     padding: 2rem 0;
 }

@@ -21,33 +21,35 @@ $product->img = !empty($product->img) ? $product->img : [];
     <!--Detail Product-->
     <div class="row mx-5 mt-2 mb-4">
         <div class="col-md-5 border bg-white shadow-sm py-3 my-2">
-            <div class="product-img">
-                @php
-                if(empty($product->img))
-                {
-                @endphp
-                <img src="no-souce" class="col-md-12">
-                @php
-                }
-                foreach ($product->img as $k => $v) {
-                @endphp
-                <img src="{{ $v }}" class="col-md-12">
-                @php
-                } @endphp
-            </div>
-            <div class="product-img-nav">
-                @php
-                if(empty($product->img))
-                {
-                @endphp
-                <img src="no-souce" class="col-md-12">
-                @php
-                }
-                foreach ($product->img as $k => $v) {
-                @endphp
-                <img height="50px" src="{{ $v }}" class="col-md-12">
-                @php
-                } @endphp
+            <div class="container">
+                <div class="product-img">
+                    @php
+                    if(empty($product->img))
+                    {
+                    @endphp
+                    <img src="no-souce" class="col-md-12">
+                    @php
+                    }
+                    foreach ($product->img as $k => $v) {
+                    @endphp
+                    <img src="{{ $v }}" class="col-md-12">
+                    @php
+                    } @endphp
+                </div>
+                <div class="product-img-nav">
+                    @php
+                    if(empty($product->img))
+                    {
+                    @endphp
+                    <img src="no-souce" class="col-md-12">
+                    @php
+                    }
+                    foreach ($product->img as $k => $v) {
+                    @endphp
+                    <img height="50px" src="{{ $v }}" class="col-md-12">
+                    @php
+                    } @endphp
+                </div>
             </div>
         </div>
         <div class="col-md-6 offset-md-1 my-2">
@@ -154,15 +156,11 @@ $product->img = !empty($product->img) ? $product->img : [];
 <script type="text/javascript" async>
     $(window).on('load',()=>{
         $(".product-img").slick({
-            adaptiveHeight: true,
+            // adaptiveHeight: true,
             slidesToShow: 1,
             slidesToScroll: 1,
             respondTo: $('.product-img').parent(),
             accessibility: true,
-            prevArrow:
-                '<button type="button" class="btn p-0 slick-prev"><i class="text-secondary fas fa-arrow-circle-left"></i></button>',
-            nextArrow:
-                '<button type="button" class="btn p-0 slick-next"><i class="text-secondary fas fa-arrow-circle-right"></i></button>',
             fade: false,
             asNavFor: ".product-img-nav",
             infinite: false,

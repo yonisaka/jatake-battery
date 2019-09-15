@@ -10,7 +10,11 @@
     <title>Jatake Battery - {{ !empty($pages)? $pages : "Halaman Depan" }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/main.css') }}" type="text/css" rel="stylesheet">
+    <link href="{{ asset('modules/slick/slick.css') }}" type="text/css" rel="stylesheet">
+    <link href="{{ asset('modules/slick/slick-theme.css') }}" type="text/css" rel="stylesheet">
+
+    {{-- Scripts --}}
     <script src="{{ asset('modules/jquery-3.4.1/jquery-3.4.1.min.js') }}"></script>
     <script src="{{ asset('modules/bootstrap-4.3.1/js/bootstrap.min.js') }}" async></script>
     <script src="{{ asset('modules/sweetalert2.all.min.js') }}" async></script>
