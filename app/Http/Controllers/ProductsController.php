@@ -46,6 +46,8 @@ class ProductsController extends Controller
         if(empty($resp->data))
             abort(404);
         $data['page'] = 'detail';
+        $data['recomends'] = $this->products->getProductsRecomend($resp->data->id)->data;
+        // dd($data);
         $data['product']=$resp->data;
         return view('detail',$data);
     }

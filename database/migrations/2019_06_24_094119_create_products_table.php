@@ -26,6 +26,8 @@ class CreateProductsTable extends Migration
             $table->longText('img')->nullable();
             $table->string('price')->default(0);
             $table->boolean('status')->default(1);
+            $table->integer('views')->default(0);
+            $table->integer('buys')->default(0);
             $table->timestamps();
         });
     }

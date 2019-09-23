@@ -8,7 +8,7 @@
 $product->label = !empty($product->label) ? $product->label : [];
 $product->img = !empty($product->img) ? $product->img : [];
 @endphp
-<div class="col p-3 main-section mb-5">
+<div class="col p-3 main-section">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb shadow-sm border mx-5 bg-white px-3">
             <li class="breadcrumb-item">
@@ -57,23 +57,32 @@ $product->img = !empty($product->img) ? $product->img : [];
                 <div class="card shadow-sm" style="width: 150rem;">
                     <div class="card-body">
                         <p class="card-title text-muted" style="font-display: montserrat">{{ $product->merk }}</p>
-                        <h4 class="card-text pb-3 text-muted" style="border-bottom: 2px solid #707070">
+                        <h4 class="card-text pb-3 text-muted">
                             {{ $product->name }}</h4>
-                        <ul class="list-inline product-labels py-3">
-                            @php
-                            foreach ($product->label as $k => $v) {
-                            @endphp
-                            <li class="list-inline-item">
-                                <i class="fas {{ $v->value }}"></i>&nbsp;{{ $v->info }}
-                            </li>
-                            @php
-                            }
-                            @endphp
-                        </ul>
                     </div>
                 </div>
             </div>
-            <div class="row mt-4">
+            <div class="row my-4">
+                <div class="card shadow-sm" style="width: 150rem;">
+                    <div class="card-body">
+                        <div class="row justify-content-md-around text-center">
+                            <div class="col">
+                                <img src="{{ asset('assets/trade.png') }}" alt="" srcset="">
+                                <b>GRATIS PASANG</b>
+                            </div>
+                            <div class="col">
+                                <img src="{{ asset('assets/trade.png') }}" alt="" srcset="">
+                                <b>GRATIS PASANG</b>
+                            </div>
+                            <div class="col">
+                                <img src="{{ asset('assets/trade.png') }}" alt="" srcset="">
+                                <b>GRATIS PASANG</b>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-4">
                 <div class="card shadow-sm" style="width: 150rem">
                     <div class="card-body">
                         <div class="card-text">
@@ -124,34 +133,92 @@ $product->img = !empty($product->img) ? $product->img : [];
         </div>
     </div>
 
-    <!--Review-->
-    <div class="row mb-5">
-        <div class="col ml-5">
+    {{-- Review --}}
+    <div class="row my-5">
+        <div class="col-11 m-auto">
             <div class="card">
                 <div class="card-header">
                     <ul class="nav nav-tabs card-header-tabs">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">Deskripsi</a>
+                            <a class="nav-link active" data-toggle='tab' role="tab" href="#detail-desc"
+                                aria-expanded="false" aria-controls="product-description">Informasi Produk</a>
                         </li>
-                        {{-- <li class="nav-item">
-                            <a class="nav-link" href="#">Review</a>
-                        </li> --}}
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle='tab' role='tab' href="#detail-review" aria-expanded="false"
+                                aria-controls="detail-review">Ulasan</a>
+                        </li>
                     </ul>
                 </div>
-                <div class="card-body">
-                    <ul>
-                        <li class="list-group">
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="detail-desc">
+                        <div class="p-4">
                             <h4>{{ $product->name }}</h4>
-                        </li>
-                        <p> {{ !empty($product->deskripsi)?$product->deskripsi : "Belum ada deskripsi" }}
-                        </p>
-                        <h5>Syarat dan Ketentuan:</h5>
-                        @include('term-cond')
-                    </ul>
+                            <div> {{ !empty($product->deskripsi)?$product->deskripsi : "Belum ada deskripsi" }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="detail-review">
+                        <div class="p-4">
+                            <div>
+                                Belum ada review
+                            </div>
+
+                            <div id="write-review" class="mt-2">
+                                <h5>Tulis ulasan Anda sekarang!</h5>
+                                <span>Anda akan menuliskan ulasan ke produk {{ $product->name }}. Bagaimana menurut Anda
+                                    produk ini?</span>
+                                <div class="mt-3">
+                                    <button class="btn btn-primary">Tulis Ulasan</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    {{-- Recomended --}}
+    <div class="row my-5">
+        <div class="col-11 m-auto">
+            <h4>Produk Rekomendasi</h4>
+            <div class="mt-3 mx-1 row justify-content-md-start justify-content-around products-card-wrapper">
+                @php
+                foreach ($recomends as $k => $d) {
+                @endphp
+                <a class="card products-card mx-1 col-md-3 col-sm-4"
+                    href="{{ url('products/') }}/{{ $d->short?$d->short:$d->id }}" data-type="{{ $d->type }}">
+                    <div class="card-img">
+                        <img src="{{ !empty($d->img[0]) ? $d->img[0] : '' }}">
+                    </div>
+                    <div class="card-header text-left">
+                        <h5 class="product-name font-light mb-1">{{ $d->merk }}</h5>
+                        <h5 class="product-author">{{ $d->name }}</h5>
+                        <h5 class="products-type mb-2">
+                            @php
+                            if($d->type == "motor"){
+                            @endphp
+                            <i class="fas fa-motorcycle"></i>
+                            @php
+                            }
+                            else{
+                            @endphp
+                            <i class="fas fa-car"></i>
+                            @php
+                            }
+                            @endphp
+                        </h5>
+                        <h6 class="product-price font-bold text-blue">{{ formating($d->price,'price') }}</h5>
+                    </div>
+                </a>
+                @php
+                }
+                @endphp
+            </div>
+        </div>
+    </div>
+
+
 </div>
 <script type="text/javascript" async>
     $(window).on('load',()=>{

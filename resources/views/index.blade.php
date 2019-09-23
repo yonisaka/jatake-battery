@@ -14,7 +14,7 @@ if(!empty($products[0]))
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <div id="banner-img">
+                <div class="home-slider" id="home-banner">
                     <img src="{{ asset('assets/banner.png') }}" class="col-12" alt="" srcset="">
                     <img src="{{ asset('assets/banner.png') }}" class="col-12" alt="" srcset="">
                     <img src="{{ asset('assets/banner.png') }}" class="col-12" alt="" srcset="">
@@ -30,24 +30,11 @@ if(!empty($products[0]))
 }
 @endphp
 {{-- section content: products list --}}
-<script>
-    $(window).on('load',()=>{
-        $("#banner-img").slick({
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                accessibility: true,
-                infinite: true,
-                useTransform: true,
-                dots: true,
-                cssEase: "cubic-bezier(0.77, 0, 0.18, 1)"
-        });
-    })
-</script>
 <div id="sc-products" class="container-fluid">
     <div class="container">
         <div class="card-wrapper container">
             <h3>Aki Motor</h3>
-            <div class="row justify-content-md-start justify-content-around">
+            <div class="row justify-content-md-start justify-content-around products-card-wrapper">
                 @php
                 if(count($products->where('type','motor')) == 0)
                 {
@@ -68,7 +55,7 @@ if(!empty($products[0]))
                         <h5 class="product-author">{{ $d->name }}</h5>
                         <h5 class="products-type mb-2">
                             @php
-                            if($d->type == "MOTOR"){
+                            if($d->type == "motor"){
                             @endphp
                             <i class="fas fa-motorcycle"></i>
                             @php
@@ -147,75 +134,186 @@ if(!empty($products[0]))
             <h4 class="font-light">Bagaimana pendapat mereka tentang <b>Jatake Battery</b>?</h4>
         </div>
         <div class="card-wrapper container mt-5">
-            <div class="row justify-content-around">
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="testimo-photo">
-                                <div class="photo-border">
-                                    <img src="{{ asset('assets/testimo.jpg') }}" alt="" srcset="">
-                                </div>
-                            </div>
-                            <div class="testimo-name">
-                                <h5>Alexander Volentinus</h5>
-                            </div>
-                            <div class="testimo-words">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, excepturi. Officiis
-                                    fuga
-                                    deserunt accusamus voluptatibus consequuntur cum modi aliquam cupiditate eius
-                                    dolorum
-                                    veniam
-                                    repellat nihil, non tempora delectus accusantium? Recusandae?</p>
+            <div class="home-slider">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="testimo-photo">
+                            <div class="photo-border">
+                                <img src="{{ asset('assets/star.jpg') }}" alt="" srcset="">
                             </div>
                         </div>
+                        <div class="testimo-words">
+                            <p>
+                                Barang sampai sesuai perhitungan. ana puas. kurirnya juga baik. semoga berkah dan awet.
+                                maju terus gan.</p>
+                        </div>
+                        <div class="testimo-name">
+                            <h5>- Yuliyanto</h5>
+                        </div>
                     </div>
+
                 </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="testimo-photo">
-                                <div class="photo-border">
-                                    <img src="{{ asset('assets/testimo.jpg') }}" alt="" srcset="">
-                                </div>
-                            </div>
-                            <div class="testimo-name">
-                                <h5>Alexander Volentinus</h5>
-                            </div>
-                            <div class="testimo-words">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, excepturi. Officiis
-                                    fuga
-                                    deserunt accusamus voluptatibus consequuntur cum modi aliquam cupiditate eius
-                                    dolorum
-                                    veniam
-                                    repellat nihil, non tempora delectus accusantium? Recusandae?</p>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="testimo-photo">
+                            <div class="photo-border">
+                                <img src="{{ asset('assets/star.jpg') }}" alt="" srcset="">
                             </div>
                         </div>
+                        <div class="testimo-words">
+                            <p>
+                                Barang good. langsung tokcer. mobilnya trims.</p>
+                        </div>
+                        <div class="testimo-name">
+                            <h5>- Royanih</h5>
+                        </div>
                     </div>
+
                 </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="testimo-photo">
-                                <div class="photo-border">
-                                    <img src="{{ asset('assets/testimo.jpg') }}" alt="" srcset="">
-                                </div>
-                            </div>
-                            <div class="testimo-name">
-                                <h5>Alexander Volentinus</h5>
-                            </div>
-                            <div class="testimo-words">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, excepturi. Officiis
-                                    fuga
-                                    deserunt accusamus voluptatibus consequuntur cum modi aliquam cupiditate eius
-                                    dolorum
-                                    veniam
-                                    repellat nihil, non tempora delectus accusantium? Recusandae?</p>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="testimo-photo">
+                            <div class="photo-border">
+                                <img src="{{ asset('assets/star.jpg') }}" alt="" srcset="">
                             </div>
                         </div>
+                        <div class="testimo-words">
+                            <p>
+                                Order pagi, siangnya diantar by grab, harga bersaing, bergaransi 3 bulan, rekomen
+                                banget, buat sekitaran Tangerang.</p>
+                        </div>
+                        <div class="testimo-name">
+                            <h5>- Achmadi Lubis</h5>
+                        </div>
                     </div>
+
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="testimo-photo">
+                            <div class="photo-border">
+                                <img src="{{ asset('assets/star.jpg') }}" alt="" srcset="">
+                            </div>
+                        </div>
+                        <div class="testimo-words">
+                            <p>
+                                Produk bagus lampu indikatornya biru artinya akinya OK</p>
+                        </div>
+                        <div class="testimo-name">
+                            <h5>- Budi Setiono</h5>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="testimo-photo">
+                            <div class="photo-border">
+                                <img src="{{ asset('assets/star.jpg') }}" alt="" srcset="">
+                            </div>
+                        </div>
+                        <div class="testimo-words">
+                            <p>
+                                Pengiriman cepat produk mantap</p>
+                        </div>
+                        <div class="testimo-name">
+                            <h5>- Abdillah Yusak</h5>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="testimo-photo">
+                            <div class="photo-border">
+                                <img src="{{ asset('assets/star.jpg') }}" alt="" srcset="">
+                            </div>
+                        </div>
+                        <div class="testimo-words">
+                            <p>
+                                Pengirimannya extra cepat bos, sejam nyampe.</p>
+                        </div>
+                        <div class="testimo-name">
+                            <h5>- Dedi kurniawan</h5>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="testimo-photo">
+                            <div class="photo-border">
+                                <img src="{{ asset('assets/star.jpg') }}" alt="" srcset="">
+                            </div>
+                        </div>
+                        <div class="testimo-words">
+                            <p>
+                                Barang sampai sesuai perhitungan. ana puas. kurirnya juga baik. semoga berkah dan awet.
+                                maju terus gan.</p>
+                        </div>
+                        <div class="testimo-name">
+                            <h5>- Yuliyanto</h5>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="testimo-photo">
+                            <div class="photo-border">
+                                <img src="{{ asset('assets/star.jpg') }}" alt="" srcset="">
+                            </div>
+                        </div>
+                        <div class="testimo-words">
+                            <p>
+
+                                Barang cepet sampe. penjual responsif</p>
+                        </div>
+                        <div class="testimo-name">
+                            <h5>- Bhansu</h5>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="testimo-photo">
+                            <div class="photo-border">
+                                <img src="{{ asset('assets/star.jpg') }}" alt="" srcset="">
+                            </div>
+                        </div>
+                        <div class="testimo-words">
+                            <p>
+                                Barang sudah sampai terimakasih</p>
+                        </div>
+                        <div class="testimo-name">
+                            <h5>- Teguh iman</h5>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    $(window).on('load',()=>{
+        $(".home-slider").each((i,el)=>{
+            let config = {
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    accessibility: true,
+                    infinite: true,
+                    useTransform: true,
+                    dots: true,
+                    cssEase: "cubic-bezier(0.77, 0, 0.18, 1)"
+            }
+
+            if($(el).attr('id') == 'home-banner') config.slidesToShow = 1
+
+            $(el).slick(config);
+
+        })
+    })
+</script>
 @endsection

@@ -38,55 +38,13 @@
     margin: 0;
 }
 
-.products-card {
-    margin: 0 10px;
-}
-
-#sc-products a {
-    text-decoration: none;
-}
-
-#sc-products .card {
-    max-width: 270px;
-    margin: 1rem 0;
-    transition: 0.2s all ease-in-out;
-    color: #636b6f;
-}
-
-#sc-products .card:hover {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-    transform: scale(1.01);
-}
-
-#sc-products .card:hover h5 {
-    color: #a0121c;
-}
-
-#sc-products .card .card-img img {
-    max-width: 100%;
-}
-
-#sc-products .card-img {
-    max-width: 75%;
-    margin: auto;
-}
-
-#sc-products .card-header {
-    background: none;
-    padding: 1rem 1.25rem;
-}
-
-#sc-products .product-price {
-    font-size: 1rem;
-}
-
 #sc-testimoni {
     padding: 2rem 0;
 }
 
 #sc-testimoni .card {
     border: none;
-    border-radius: 1rem;
+    border-radius: 01rem;
     text-align: center;
     margin: 0 6px;
 }

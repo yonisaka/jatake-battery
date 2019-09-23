@@ -32,4 +32,9 @@ class ApiProducts extends Rest
     {
         return $this->put('/'.$id,$data);
     }
+
+    public function getProductsRecomend($id)
+    {
+        return $this->get('/recomend/'.$id);
+    }
 }

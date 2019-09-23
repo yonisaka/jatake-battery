@@ -18,7 +18,7 @@
             </ol>
         </nav>
         <div class="card-wrapper container">
-            <div class="row justify-content-md-start justify-content-around">
+            <div class="row justify-content-md-start justify-content-around products-card-wrapper">
                 @php
                 if(empty($products[0]))
                 {
@@ -40,7 +40,7 @@
                         <h5 class="product-author">{{ $d->name }}</h5>
                         <h5 class="products-type mb-2">
                             @php
-                            if($d->type == "MOTOR"){
+                            if($d->type == "motor"){
                             @endphp
                             <i class="fas fa-motorcycle"></i>
                             @php

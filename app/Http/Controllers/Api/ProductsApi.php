@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\products;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Products;
 
 class ProductsApi extends Controller
 {
 
     public function __construct()
     {
-        $this->middleware('auth:api')->except(['index','show']);
+        $this->middleware('auth:api')->only(['create','store','update','destroy']);
     }
 
     /**
@@ -19,7 +19,7 @@ class ProductsApi extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $req)
     {
         return Products::all();
         //
@@ -84,7 +84,7 @@ class ProductsApi extends Controller
      * @param  \App\products  $products
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $req, products $product)
+    public function update(Request $req, Products $product)
     {
         //
         try{
@@ -104,7 +104,7 @@ class ProductsApi extends Controller
      * @param  \App\products  $products
      * @return \Illuminate\Http\Response
      */
-    public function destroy(products $product)
+    public function destroy(Products $product)
     {
         //
         try{
@@ -116,4 +116,58 @@ class ProductsApi extends Controller
             return errApi($e);
         }
     }
+
+    public function getMotors(Request $req)
+    {
+        try{
+            $limit = !empty($req->limit) ? $req->limit : 12;
+            $motors = Products::orderBy('id')->where('type','motor')->limit($limit)->get();
+            return response()->json(['data'=>$motors],200);
+        }
+        catch(\Exception $e)
+        {
+            return errApi($e);
+        }
+    }
+
+    public function getCars(Request $req)
+    {
+        try{
+            $limit = !empty($req->limit) ? $req->limit : 12;
+            $motors = Products::orderBy('id')->where('type','mobil')->limit($limit)->get();
+            return response()->json(['data'=>$motors],200);
+        }
+        catch(\Exception $e)
+        {
+            return errApi($e);
+        }
+    }
+
+    public function postSearch(Request $req)
+    {
+        try{
+            $s = Products::orderBy('id')->where('name','like','%'.$s.'%')->get();
+            return response()->json(['data'=>$s],200);
+        }
+        catch(\Exception $e)
+        {
+            return errApi($e);
+        }
+    }
+
+    public function getRecomend(Request $req,$id)
+    {
+        try{
+            $recomend = Products::orderBy('views')->get()->toArray();
+            $recomend = array_slice($recomend, 0, 4);
+            return response()->json(['data'=>$recomend],200);
+        }
+        catch(\Exception $e)
+        {
+            return errApi($e);
+        }
+    }
+
+
+
 }

@@ -153,17 +153,15 @@ footer .map img:hover {
 }
 
 .btn.btn-primary {
-    background: none;
-    color: #384e77;
-    padding: 0.75rem 2rem;
+    color: #fff;
+    background: #384e77;
     border-color: #636b6f;
     font-weight: 800;
-    font-size: 1.25rem;
 }
 
 .btn.btn-primary:hover {
-    background: #384e77;
-    color: #fff;
+    background: none;
+    color: #384e77;
 }
 
 .btn-outline-primary {
@@ -321,9 +319,59 @@ footer .map img:hover {
     margin-bottom: 30px;
 }
 
+/* cards */
+
+.products-card-wrapper .products-card {
+    margin: 0 10px;
+}
+
+.products-card-wrapper a {
+    text-decoration: none;
+}
+
+.products-card-wrapper .card {
+    max-width: 270px;
+    margin: 1rem 0;
+    transition: 0.2s all ease-in-out;
+    color: #636b6f;
+}
+
+.products-card-wrapper .card:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    transform: scale(1.01);
+}
+
+.products-card-wrapper .card:hover h5 {
+    color: #a0121c;
+}
+
+.products-card-wrapper .card .card-img img {
+    max-width: 100%;
+}
+
+.products-card-wrapper .card-img {
+    max-width: 75%;
+    margin: auto;
+}
+
+.products-card-wrapper .card-header {
+    background: none;
+    padding: 1rem 1.25rem;
+}
+
+.products-card-wrapper .product-price {
+    font-size: 1rem;
+}
+
+/* /cards */
+
 /* Slick */
 .slick-slider .slick-arrow::before {
     color: #232323;
+}
+
+.slick-slider .slick-dots {
+    bottom: -40px;
 }
 
 .slick-slider .slick-dots button::before {
