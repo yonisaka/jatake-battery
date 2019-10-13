@@ -12,7 +12,7 @@ class Products extends Model
     protected $fillable = [
         'short','name',
         'merk','deskripsi',
-        'label','link',
+        'link',
         'type','img',
         'qty',
         'price','status'

@@ -5,19 +5,19 @@
 @section('contentId',"home")
 @section('content')
 
+{{-- section content: banner --}}
 @php
 if(!empty($products[0]))
 {
 @endphp
-{{-- section content: banner --}}
 <div id="sc-banner" class="container-fluid">
     <div class="container">
         <div class="row">
             <div class="col-md-6">
                 <div class="home-slider" id="home-banner">
-                    <img src="{{ asset('assets/banner.png') }}" class="col-12" alt="" srcset="">
-                    <img src="{{ asset('assets/banner.png') }}" class="col-12" alt="" srcset="">
-                    <img src="{{ asset('assets/banner.png') }}" class="col-12" alt="" srcset="">
+                    <img src="{{ asset('img/banner.png') }}" class="col-12" alt="" srcset="">
+                    <img src="{{ asset('img/banner.png') }}" class="col-12" alt="" srcset="">
+                    <img src="{{ asset('img/banner.png') }}" class="col-12" alt="" srcset="">
                 </div>
             </div>
             <div class="col-md">
@@ -79,9 +79,11 @@ if(!empty($products[0]))
             </div>
         </div>
 
-        <div class="card-wrapper container mt-5">
+        <div class="space my-5"></div>
+
+        <div class="card-wrapper container">
             <h3>Aki Mobil</h3>
-            <div class="row justify-content-md-start justify-content-around">
+            <div class="row justify-content-md-start justify-content-around products-card-wrapper">
                 @php
                 if(count($products->where('type','mobil')) == 0)
                 {
@@ -102,7 +104,7 @@ if(!empty($products[0]))
                         <h5 class="product-author">{{ $d->name }}</h5>
                         <h5 class="products-type mb-2">
                             @php
-                            if($d->type == "MOTOR"){
+                            if($d->type == "motor"){
                             @endphp
                             <i class="fas fa-motorcycle"></i>
                             @php
@@ -121,11 +123,11 @@ if(!empty($products[0]))
                 }
                 @endphp
             </div>
-
             <div class="text-md-left text-center">
-                <a href="{{ url('mobil') }}" class="btn btn-outline-primary">Lihat Lainnya</a>
+                <a href="{{ url('motor') }}" class="btn btn-outline-primary">Lihat Lainnya</a>
             </div>
         </div>
+
     </div>
 </div>
 <div id="sc-testimoni" class="container-fluid">
@@ -139,7 +141,7 @@ if(!empty($products[0]))
                     <div class="card-body">
                         <div class="testimo-photo">
                             <div class="photo-border">
-                                <img src="{{ asset('assets/star.jpg') }}" alt="" srcset="">
+                                <img src="{{ asset('img/star.jpg') }}" alt="" srcset="">
                             </div>
                         </div>
                         <div class="testimo-words">
@@ -157,7 +159,7 @@ if(!empty($products[0]))
                     <div class="card-body">
                         <div class="testimo-photo">
                             <div class="photo-border">
-                                <img src="{{ asset('assets/star.jpg') }}" alt="" srcset="">
+                                <img src="{{ asset('img/star.jpg') }}" alt="" srcset="">
                             </div>
                         </div>
                         <div class="testimo-words">
@@ -174,7 +176,7 @@ if(!empty($products[0]))
                     <div class="card-body">
                         <div class="testimo-photo">
                             <div class="photo-border">
-                                <img src="{{ asset('assets/star.jpg') }}" alt="" srcset="">
+                                <img src="{{ asset('img/star.jpg') }}" alt="" srcset="">
                             </div>
                         </div>
                         <div class="testimo-words">
@@ -192,7 +194,7 @@ if(!empty($products[0]))
                     <div class="card-body">
                         <div class="testimo-photo">
                             <div class="photo-border">
-                                <img src="{{ asset('assets/star.jpg') }}" alt="" srcset="">
+                                <img src="{{ asset('img/star.jpg') }}" alt="" srcset="">
                             </div>
                         </div>
                         <div class="testimo-words">
@@ -209,7 +211,7 @@ if(!empty($products[0]))
                     <div class="card-body">
                         <div class="testimo-photo">
                             <div class="photo-border">
-                                <img src="{{ asset('assets/star.jpg') }}" alt="" srcset="">
+                                <img src="{{ asset('img/star.jpg') }}" alt="" srcset="">
                             </div>
                         </div>
                         <div class="testimo-words">
@@ -226,7 +228,7 @@ if(!empty($products[0]))
                     <div class="card-body">
                         <div class="testimo-photo">
                             <div class="photo-border">
-                                <img src="{{ asset('assets/star.jpg') }}" alt="" srcset="">
+                                <img src="{{ asset('img/star.jpg') }}" alt="" srcset="">
                             </div>
                         </div>
                         <div class="testimo-words">
@@ -243,7 +245,7 @@ if(!empty($products[0]))
                     <div class="card-body">
                         <div class="testimo-photo">
                             <div class="photo-border">
-                                <img src="{{ asset('assets/star.jpg') }}" alt="" srcset="">
+                                <img src="{{ asset('img/star.jpg') }}" alt="" srcset="">
                             </div>
                         </div>
                         <div class="testimo-words">
@@ -261,7 +263,7 @@ if(!empty($products[0]))
                     <div class="card-body">
                         <div class="testimo-photo">
                             <div class="photo-border">
-                                <img src="{{ asset('assets/star.jpg') }}" alt="" srcset="">
+                                <img src="{{ asset('img/star.jpg') }}" alt="" srcset="">
                             </div>
                         </div>
                         <div class="testimo-words">
@@ -279,7 +281,7 @@ if(!empty($products[0]))
                     <div class="card-body">
                         <div class="testimo-photo">
                             <div class="photo-border">
-                                <img src="{{ asset('assets/star.jpg') }}" alt="" srcset="">
+                                <img src="{{ asset('img/star.jpg') }}" alt="" srcset="">
                             </div>
                         </div>
                         <div class="testimo-words">

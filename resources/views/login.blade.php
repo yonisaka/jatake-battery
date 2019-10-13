@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-5 mx-auto text-center py-5">
             <div class="logo">
-                <img width="250px" src="{{ asset('assets/logo_white.png') }}" alt="" srcset="">
+                <img width="250px" src="{{ asset('img/logo_white.png') }}" alt="" srcset="">
             </div>
         </div>
     </div>

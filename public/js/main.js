@@ -153,7 +153,7 @@ $(document).ready(() => {
     img.each((i, el) => {
         $("<img/>")
             .on("error", e => {
-                $(el).attr("src", "/assets/no_image.png");
+                $(el).attr("src", "/img/no_image.png");
             })
             .attr("src", $(el).attr("src"));
     });

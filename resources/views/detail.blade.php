@@ -2,7 +2,7 @@
 @section('head')
 <link rel="stylesheet" href="{{ asset('css/products.css') }}">
 @endsection
-@section('contentId',"detail")
+@section('contentId',"product-detail")
 @section('content')
 @php
 $product->label = !empty($product->label) ? $product->label : [];
@@ -53,73 +53,79 @@ $product->img = !empty($product->img) ? $product->img : [];
             </div>
         </div>
         <div class="col-md-6 offset-md-1 my-2">
-            <div class="row">
+
+            <div class="row" id="product-header">
                 <div class="card shadow-sm" style="width: 150rem;">
                     <div class="card-body">
+                        <div class="float-right">
+                            <small><i class="fas fa-eye"></i> Telah dilihat {{ $product->views }} kali</small>
+                        </div>
                         <p class="card-title text-muted" style="font-display: montserrat">{{ $product->merk }}</p>
                         <h4 class="card-text pb-3 text-muted">
                             {{ $product->name }}</h4>
                     </div>
                 </div>
             </div>
-            <div class="row my-4">
+
+            <div class="row my-4" id="product-label">
                 <div class="card shadow-sm" style="width: 150rem;">
                     <div class="card-body">
                         <div class="row justify-content-md-around text-center">
                             <div class="col">
-                                <img src="{{ asset('assets/trade.png') }}" alt="" srcset="">
+                                <img src="{{ asset('img/install.png') }}" alt="" srcset="" class="d-block mx-auto">
                                 <b>GRATIS PASANG</b>
                             </div>
                             <div class="col">
-                                <img src="{{ asset('assets/trade.png') }}" alt="" srcset="">
-                                <b>GRATIS PASANG</b>
+                                <img src="{{ asset('img/battery.png') }}" alt="" srcset="" class="d-block mx-auto">
+                                <b>BISA TUKAR TAMBAH</b>
                             </div>
                             <div class="col">
-                                <img src="{{ asset('assets/trade.png') }}" alt="" srcset="">
-                                <b>GRATIS PASANG</b>
+                                <img src="{{ asset('img/original.png') }}" alt="" srcset="" class="d-block mx-auto">
+                                <b>PRODUK ASLI</b>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row my-4">
+
+            <div class="row my-4" id="product-links">
                 <div class="card shadow-sm" style="width: 150rem">
                     <div class="card-body">
                         <div class="card-text">
                             <h5>{{ formating($product->price,'price') }}</h5>
                         </div>
                         <p class="card-text">Pilih salah satu metode pembelian</p>
-                        <button {{ empty($product->link->tp) ? 'disabled' : null}}
-                            data-link="{{ !empty($product->link->tp) ? $product->link->tp : null}}"
-                            class="btn-shop btn btn-success btn-lg btn-circle">
+                        @if(empty($product->link))
+                        <b>Tidak ada link ke product</b>
+                        @endif
+                        <button data-link="{{ !empty($product->link->tp) ? $product->link->tp : null}}"
+                            class="btn-shop btn text-success btn-lg btn-circle {{ empty($product->link->tp) ? 'd-none' : null}}">
                             <span>
                                 Tokopedia
                             </span>
-                            <img class="svg" src="{{ asset('assets/ico-tp.svg') }}" width="32" height="32">
+                            <img src="{{ asset('img/tp.jpg') }}">
                         </button>
-                        <button {{ empty($product->link->bl) ? 'disabled' : null}}
-                            data-link="{{ !empty($product->link->bl) ? $product->link->bl : null}}"
-                            class="btn-shop btn btn-danger btn-lg btn-circle">
+                        <button data-link="{{ !empty($product->link->bl) ? $product->link->bl : null}}"
+                            class="btn-shop btn text-danger btn-lg btn-circle {{ empty($product->link->bl) ? 'd-none' : null}}">
                             <span>Bukalapak</span>
-                            <b class="button-text">BL</b>
+                            <img src="{{ asset('img/bl.jpg') }}">
                         </button>
-                        <button {{ empty($product->link->wa) ? 'disabled' : null}}
+                        <button
                             data-link="{{ !empty($product->link->wa) ? 'https://api.whatsapp.com/send?phone='.$product->link->wa.'&text='.rawurlencode('Halo, Saya ingin membeli '.$product->name.'.') : null}}"
-                            class="btn-shop btn btn-success btn-lg btn-circle">
+                            class="btn-shop btn text-success btn-lg btn-circle {{ empty($product->link->wa) ? 'd-none' : null}}">
                             <span>Whatsapp</span>
-                            <img class="svg" src="{{ asset('assets/ico-wa.svg') }}" width="32" height="32">
+                            <img src="{{ asset('img/wa.png') }}">
                         </button>
-                        <button {{ empty($product->link->sp) ? 'disabled' : null}}
-                            data-link="{{ !empty($product->link->sp) ? $product->link->sp : null}}"
-                            class="btn-shop btn btn-success btn-lg btn-circle">
+                        <button data-link="{{ !empty($product->link->sp) ? $product->link->sp : null}}"
+                            class="btn-shop btn text-warning btn-lg btn-circle {{ empty($product->link->sp) ? 'd-none' : null}}">
                             <span>Shoopie</span>
-                            <img class="svg" src="{{ asset('assets/ico-sp.svg') }}" width="32" height="32">
+                            <img src="{{ asset('img/sp.jpg') }}">
                         </button>
                     </div>
                 </div>
             </div>
 
-            <div class="row mt-4">
+            <div class="row mt-4" id="product-shortlink">
                 <div class="input-group">
                     <input id="product-link" type="text" class="form-control" placeholder="Link"
                         value="{{ !empty($product->short) ? url('products/'.$product->short) : url('products/'.$product->id) }}">

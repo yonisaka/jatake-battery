@@ -30,17 +30,17 @@
     <div class="bg-light">
         <div class="main-wrapper">
             <header class="container-fluid border-bottom">
-                <div class="top-header bg-dark d-none">
+                <div class="top-header bg-blue border-bottom pt-1">
                     <div class="container">
-                        08123456789
+                        <a href="#" class="text-white">Hubungi 08123456789 <i class=" fab fa-whatsapp"></i></a>
                     </div>
                 </div>
-                <nav class="navbar">
+                <nav class="navbar bg-blue">
                     <div class="container navbar-cont">
                         <div class="col-md-3 text-center">
                             <div class="navbar-brand logo">
                                 <a href="{{ url('') }}">
-                                    <img src="{{ asset('assets/logo.png') }}" class="img" alt="Jatake Battery">
+                                    <img src="{{ asset('img/logo_white.png') }}" class="img" alt="Jatake Battery">
                                 </a>
                             </div>
                         </div>
@@ -108,7 +108,7 @@
                     <div class="row py-5">
                         <div class="col-md-4">
                             <a href="{{ url('') }}">
-                                <img src="{{ url('/assets/logo_white.png') }}" class="logo" alt="Jatake Battery">
+                                <img src="{{ asset('img/logo_white.png') }}" class="logo" alt="Jatake Battery">
                             </a>
                         </div>
                         <div class="col-md-4">
@@ -138,8 +138,8 @@
                                     <ul class="list-unstyled">
                                         <li>
                                             <a href="https://goo.gl/maps/frLfpp1cpPZJsbaQ6" target="_blank">
-                                                Jl. Raya Gatot Subroto Km. 8 (sebelah indomaret) 
-                                                Kec. Jatiuwung, Kota/Kab. Tangerang 
+                                                Jl. Raya Gatot Subroto Km. 8 (sebelah indomaret)
+                                                Kec. Jatiuwung, Kota/Kab. Tangerang
                                                 Banten, 15134
                                             </a>
                                         </li>
@@ -150,7 +150,7 @@
                         </div>
                         <div class="col-md-4">
                             <a class="map" href="https://goo.gl/maps/frLfpp1cpPZJsbaQ6" target="_blank">
-                                <img src="{{ asset('assets/maps.PNG') }}" alt="" srcset="">
+                                <img src="{{ asset('img/maps.PNG') }}" alt="" srcset="">
                             </a>
                         </div>
                     </div>

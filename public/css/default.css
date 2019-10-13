@@ -65,7 +65,12 @@ footer .map img:hover {
     opacity: 0.6;
 }
 
+.bg-blue {
+    background: #384e77
+}
+
 /* navbar */
+
 .navbar-cont {
     vertical-align: middle;
     padding: 1rem 0;
@@ -116,7 +121,7 @@ footer .map img:hover {
 .mainnav .list-group-item.active {}
 
 .mainnav .list-group-item a {
-    color: #999;
+    color: #fafafa;
     font-weight: 700;
     font-size: 1rem;
 }
@@ -132,7 +137,7 @@ footer .map img:hover {
 
 .mainnav .list-group-item:hover a,
 .mainnav .list-group-item.active a {
-    color: #a0121c;
+    color: #fbe357;
 }
 
 .mainnav #search>.fa-search {

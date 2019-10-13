@@ -32,17 +32,16 @@
                     <div class="container">
                         <div id="logo" class="navbar-header">
                             <div class="navbar-brand" id="mainlogo">
-                                <a href="{{ url('/') }}"><img src="{{ asset('/assets/logo.png') }}" alt="" srcset="">
+                                <a href="{{ url('/') }}"><img src="{{ asset('img/logo.png') }}" alt="" srcset="">
                                 </a>
                             </div>
                         </div>
                         <div class="navbar-collapse">
-                            <div class="navbar-nav mr-auto"></div>
-                            <div class="navbar-nav float-right">
-                                <div class="mt-1 mr-4">
+                            <div class="ml-auto">
+                                <div class="d-inline-block mt-1 mr-4">
                                     <h5>Hello Admin!</h5>
                                 </div>
-                                <div class="">
+                                <div class="d-inline-block">
                                     <a href="{{ route('admin.logout') }}" class="btn btn-sm btn-danger"><i
                                             class="fas fa-sign-out-alt"></i>Logout</a>
                                 </div>

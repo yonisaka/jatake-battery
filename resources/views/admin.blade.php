@@ -69,50 +69,6 @@
                         </div>
                     </div>
                     <div class="form-row">
-                        <div class="col-md-6">
-                            <div class="position-relative form-group" id="label-product">
-                                <label for="">
-                                    Label
-                                </label>
-                                <br>
-                                <div class="row">
-                                    <div class="col">
-                                        <input class="ml-2" type="checkbox" data-name="gratis" id="lbl-gratis"
-                                            value="fa-gifts" data-info="Gratis Pasang">
-                                        <i class="fas fa-gifts"></i>
-                                        Gratis Pasang
-                                    </div>
-                                    <div class="col">
-                                        <input class="ml-2" type="checkbox" data-name="tukar" id="lbl-tukar"
-                                            value="fa-tools" data-info="Tukar Tambah">
-                                        <i class="fas fa-tools"></i>
-                                        Tukar Tambah
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <input class="ml-2" type="checkbox" data-name="asli" id="lbl-asli"
-                                            value="fa-check-circle" data-info="Produk Asli">
-                                        <i class="fas fa-check-circle"></i>
-                                        Produk Asli
-                                    </div>
-                                    <div class="col">
-                                        <input class="ml-2" type="checkbox" data-name="baru" id="lbl-baru"
-                                            value="fa-box-open" data-info="Barang Baru">
-                                        <i class="fas fa-box-open"></i>
-                                        Barang Baru
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <input class="ml-2" type="checkbox" data-name="bekas" id="lbl-bekas"
-                                            value="fa-hands" data-info="Barang Bekas">
-                                        <i class="fas fa-hands"></i>
-                                        Barang Bekas
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="col-md-2">
                             <div class="form-group">
                                 <label for="">Qty</label>
@@ -214,51 +170,7 @@
                         </div>
                     </div>
                     <div class="form-row">
-                        <div class="col-md-6">
-                            <div class="position-relative form-group" id="label-product">
-                                <label for="">
-                                    Label
-                                </label>
-                                <br>
-                                <div class="row">
-                                    <div class="col">
-                                        <input class="ml-2" type="checkbox" data-name="gratis" id="lbl-gratis"
-                                            value="fa-gifts" data-info="Gratis Pasang">
-                                        <i class="fas fa-gifts"></i>
-                                        Gratis Pasang
-                                    </div>
-                                    <div class="col">
-                                        <input class="ml-2" type="checkbox" data-name="tukar" id="lbl-tukar"
-                                            value="fa-tools" data-info="Tukar Tambah">
-                                        <i class="fas fa-tools"></i>
-                                        Tukar Tambah
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <input class="ml-2" type="checkbox" data-name="asli" id="lbl-asli"
-                                            value="fa-check-circle" data-info="Produk Asli">
-                                        <i class="fas fa-check-circle"></i>
-                                        Produk Asli
-                                    </div>
-                                    <div class="col">
-                                        <input class="ml-2" type="checkbox" data-name="baru" id="lbl-baru"
-                                            value="fa-box-open" data-info="Barang Baru">
-                                        <i class="fas fa-box-open"></i>
-                                        Barang Baru
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <input class="ml-2" type="checkbox" data-name="bekas" id="lbl-bekas"
-                                            value="fa-hands" data-info="Barang Bekas">
-                                        <i class="fas fa-hands"></i>
-                                        Barang Bekas
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
+                        <div class="col-md">
                             <div class="form-group">
                                 <label for="">Qty</label>
                                 <input type="number" class="form-control" name="qty" id="qty-product">
@@ -324,7 +236,7 @@
                 <h4 class="modal-title">Bantuan Product</h4>
             </div>
             <div class="modal-body">
-                <img src="{{ asset('assets/help-01.PNG') }}">
+                <img src="{{ asset('img/help-01.PNG') }}">
             </div>
         </div>
     </div>
@@ -345,25 +257,16 @@
         let serializeModal = function($modal,$filter=true)
         {
             let formData = $modal.find('#form-product').serializeArray();
-            // push label to array
-            let label = [];
-            $modal.find("#label-product input").each((i,el)=>{
-                $(el).prop('checked') ? label.push({
-                    name:$(el).data('name'),
-                    value:$(el).val(),
-                    info:$(el).data('info')
-                }) : false
-            })
-            formData.push({name:'label',value:label})
 
-            // push label to array
+
+            // push img to array
             let img = [];
             $modal.find("#img-product input").each((i,el)=>{
                 $(el).val() ? img.push($(el).val()) : false
             })
             formData.push({name:'img',value:img})
 
-            // push label to array
+            // push link to array
             let link = {};
             $modal.find("#link-product input").each((i,el)=>{
                 $(el).val() ? link[$(el).data('name')] = $(el).val() : null
@@ -400,10 +303,7 @@
             $modal.find('#type-product').val($data.type)
             $modal.find('#qty-product').val($data.qty)
             $modal.find('#price-product').val($data.price)
-            if($data.label)
-            $.each($data.label, (i, v) => {
-                $modal.find('input[data-name='+v.name+']').prop('checked',true);
-            });
+
             if($data.img)
                 $modal.find('#img-product input').each((i,el)=>{
                     $(el).val($data.img[i])
