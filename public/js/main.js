@@ -109,9 +109,9 @@ $(document).ready(() => {
     $(".btn-shop").click(function(e) {
         e.preventDefault();
         if (!$(this).data("link")) return;
-        showTermCond();
+        showTermCond($(this).data("link"));
     });
-    window.showTermCond = function($footer = true) {
+    window.showTermCond = function($link, $footer = true) {
         let termModal = $("#term-cond-modal");
         termModal.modal();
         let termModalBody = termModal.find(".modal-body");
@@ -136,7 +136,7 @@ $(document).ready(() => {
                 termModal.find(".accept-term").click(e => {
                     termModal.find(".continue-term").prop("disabled", false);
                     termModal.find(".continue-term").click(function(e) {
-                        window.open($(this).data("link"));
+                        window.open($link);
                     });
                 });
             }

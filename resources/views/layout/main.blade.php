@@ -179,7 +179,7 @@
                     <div class="d-flex align-items-center">
                         <input type="checkbox" name="" class="accept-term" disabled>
                         <span class="ml-2">
-                            <b> Saya setuju blabalbalblala</b>
+                            <b> Saya setuju dengan syarat dan ketentuan.</b>
                         </span>
                     </div>
                     <div class="btn-wrapper mt-3">

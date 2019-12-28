@@ -11,7 +11,7 @@ class HomeController extends Controller
     //
     public function index()
     {
-        $limit = 4;
+        $limit = 8;
         $data['products'] = Products::orderBy('id')->limit($limit)->get();
         $data['page'] = 'home';
         return view("index",$data);

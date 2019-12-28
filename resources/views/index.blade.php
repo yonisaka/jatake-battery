@@ -13,15 +13,12 @@ if(!empty($products[0]))
 <div id="sc-banner" class="container-fluid">
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md">
                 <div class="home-slider" id="home-banner">
                     <img src="{{ asset('img/banner.png') }}" class="col-12" alt="" srcset="">
                     <img src="{{ asset('img/banner.png') }}" class="col-12" alt="" srcset="">
                     <img src="{{ asset('img/banner.png') }}" class="col-12" alt="" srcset="">
                 </div>
-            </div>
-            <div class="col-md">
-                <img src="https://cdn.shopify.com/s/files/1/2018/8867/files/play-button.png" alt="" srcset="">
             </div>
         </div>
     </div>
@@ -44,6 +41,9 @@ if(!empty($products[0]))
                 </div>';
                 }
                 foreach ($products->where('type','motor') as $k => $d) {
+
+                if($k > 4)
+                break;
                 @endphp
                 <a class="card products-card mx-1 col-md-3 col-sm-4"
                     href="{{ url('products/') }}/{{ $d->short?$d->short:$d->id }}" data-type="{{ $d->type }}">
@@ -93,6 +93,8 @@ if(!empty($products[0]))
                 </div>';
                 }
                 foreach ($products->where('type','mobil') as $k => $d) {
+                if($k > 4)
+                break;
                 @endphp
                 <a class="card products-card mx-1 col-md-3 col-sm-4"
                     href="{{ url('products/') }}/{{ $d->short?$d->short:$d->id }}" data-type="{{ $d->type }}">
