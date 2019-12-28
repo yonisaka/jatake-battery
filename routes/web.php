@@ -24,11 +24,11 @@ Route::prefix('/extra-pages')->group(function()
 
 Route::resource('/products','ProductsController')->parameters(['product'=>'id'])->except(['create']);
 
-Route::prefix('/products')->group(function()
-{
-    Route::any('/json/{function}','ProductsController@json');
-    Route::any('/json/{function}/{id}','ProductsController@json');
-});
+// Route::prefix('/products')->group(function()
+// {
+//     Route::any('/json/{function}','ProductsController@json');
+//     Route::any('/json/{function}/{id}','ProductsController@json');
+// });
 
 Route::prefix('/admin')->name('admin.')->group(function()
 {
@@ -36,4 +36,8 @@ Route::prefix('/admin')->name('admin.')->group(function()
     Route::post('/login','AdminController@request_login')->name('req_login');
     Route::get('/logout','AdminController@logout')->name('logout');
 });
+
+Route::resource('/admin/brands','Admin\BrandControl')->parameters(['brand'=>'id'])->except(['create']);
+
 Route::resource('/admin', 'AdminController');
+

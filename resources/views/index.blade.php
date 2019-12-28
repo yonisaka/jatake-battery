@@ -51,7 +51,7 @@ if(!empty($products[0]))
                         <img src="{{ !empty($d->img[0]) ? $d->img[0] : '' }}">
                     </div>
                     <div class="card-header text-left">
-                        <h5 class="product-name font-light mb-1">{{ $d->merk }}</h5>
+                        <h5 class="product-name font-light mb-1">{{ $d->brand }}</h5>
                         <h5 class="product-author">{{ $d->name }}</h5>
                         <h5 class="products-type mb-2">
                             @php
@@ -102,7 +102,7 @@ if(!empty($products[0]))
                         <img src="{{ !empty($d->img[0]) ? $d->img[0] : '' }}">
                     </div>
                     <div class="card-header text-left">
-                        <h5 class="product-name font-light mb-1">{{ $d->merk }}</h5>
+                        <h5 class="product-name font-light mb-1">{{ $d->brand }}</h5>
                         <h5 class="product-author">{{ $d->name }}</h5>
                         <h5 class="products-type mb-2">
                             @php

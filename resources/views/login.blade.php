@@ -1,4 +1,5 @@
 @extends('layout.blank')
+@section('title',"Login Admin")
 @section('bodyClass','bg-blue-dark')
 @section('content')
 <div class="container-fluid ">

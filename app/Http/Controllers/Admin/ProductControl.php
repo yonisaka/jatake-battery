@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Products;
-use App\Library\Libs;
-use Exception;
-use Responder;
-class ProductsController extends Controller
+use App\Http\Controllers\Controller;
+
+class ProductControl extends Controller
 {
     //
 
@@ -98,4 +96,5 @@ class ProductsController extends Controller
             return Responder::error("product_delete_fail","Fail to Delete Product")->data($e)->respond();
         }
     }
+}
 }

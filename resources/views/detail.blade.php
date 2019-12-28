@@ -2,6 +2,7 @@
 @section('head')
 <link rel="stylesheet" href="{{ asset('css/products.css') }}">
 @endsection
+@section('title',"Detail Product")
 @section('contentId',"product-detail")
 @section('content')
 @php
@@ -60,7 +61,7 @@ $product->img = !empty($product->img) ? $product->img : [];
                         <div class="float-right">
                             <small><i class="fas fa-eye"></i> Telah dilihat {{ $product->views }} kali</small>
                         </div>
-                        <p class="card-title text-muted" style="font-display: montserrat">{{ $product->merk }}</p>
+                        <p class="card-title text-muted" style="font-display: montserrat">{{ $product->brand }}</p>
                         <h4 class="card-text pb-3 text-muted">
                             {{ $product->name }}</h4>
                     </div>
@@ -191,6 +192,7 @@ $product->img = !empty($product->img) ? $product->img : [];
             <div class="mt-3 mx-1 row justify-content-md-start justify-content-around products-card-wrapper">
                 @php
                 foreach ($recomends as $k => $d) {
+
                 @endphp
                 <a class="card products-card mx-1 col-md-3 col-sm-4"
                     href="{{ url('products/') }}/{{ $d->short?$d->short:$d->id }}" data-type="{{ $d->type }}">
@@ -198,7 +200,7 @@ $product->img = !empty($product->img) ? $product->img : [];
                         <img src="{{ !empty($d->img[0]) ? $d->img[0] : '' }}">
                     </div>
                     <div class="card-header text-left">
-                        <h5 class="product-name font-light mb-1">{{ $d->merk }}</h5>
+                        <h5 class="product-name font-light mb-1">{{ $d->brand }}</h5>
                         <h5 class="product-author">{{ $d->name }}</h5>
                         <h5 class="products-type mb-2">
                             @php

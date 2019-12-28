@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Jatake Battery - {{ !empty($pages)? $pages : "Halaman Depan" }}</title>
+    <title>Jatake Battery - @yield('title','Halaman Depan')</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/main.css') }}" type="text/css" rel="stylesheet">
