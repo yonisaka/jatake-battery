@@ -21,29 +21,15 @@
                     <label for="checkbox1"></label>
                   </div>
                 </th>
-                <th style="width:10%">Project Name</th>
-                <th style="width:22%" data-hide="phone,tablet">Description</th>
-                <th style="width:6%">Price</th>
-                <th style="width:10%" data-hide="phone,tablet">Progress</th>
+                <th style="">Brand Name</th>
+                <th style="">Description</th>
+                <th style="">Logo</th>
+                <th style="">Action</th>
+                {{-- <th style=""></th> --}}
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td class="v-align-middle">
-                  <div class="checkbox check-default">
-                    <input type="checkbox" value="3" id="checkbox2">
-                    <label for="checkbox2"></label>
-                  </div>
-                </td>
-                <td class="v-align-middle">Early Bird</td>
-                <td class="v-align-middle"><span class="muted">Redesign project template</span></td>
-                <td><span class="muted">$4,500</span></td>
-                <td class="v-align-middle">
-                  <div class="progress ">
-                    <div data-percentage="80%" class="progress-bar progress-bar-success animate-progress-bar"></div>
-                  </div>
-                </td>
-              </tr>
+
             </tbody>
           </table>
         </div>

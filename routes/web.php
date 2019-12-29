@@ -35,9 +35,12 @@ Route::prefix('/admin')->name('admin.')->group(function()
     Route::get('/login','AdminController@login')->name('login');
     Route::post('/login','AdminController@request_login')->name('req_login');
     Route::get('/logout','AdminController@logout')->name('logout');
-});
 
-Route::resource('/admin/brands','Admin\BrandsControl')->parameters(['brand'=>'id'])->except(['create']);
+    Route::prefix('/brands')->name('admin.brands.')->group(function(){
+        Route::resource('/','Admin\BrandsControl');
+        Route::post('/data','Admin\BrandsControl@data');
+    });
+});
 
 Route::resource('/admin', 'AdminController');
 

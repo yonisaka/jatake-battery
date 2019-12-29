@@ -18,9 +18,9 @@ if(!function_exists('formating'))
 
 if(!function_exists('arr2Obj'))
 {
-    function arr2Obj($arr)
+    function arr2Obj($arr,$progressive=true)
 	{
-		return json_decode(json_encode($arr));
+		return $progressive ? json_decode(json_encode($arr)) : (object)($arr);
     }
 }
 

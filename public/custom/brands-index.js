@@ -1,71 +1,63 @@
 $(() => {
-
-    // init tables
-    var responsiveHelper = undefined;
-    var breakpointDefinition = {
-        tablet: 1024,
-        phone: 480
-    };
-    var tableElement = $('#brands-datatable');
-
-    tableElement.dataTable({
-        "sDom": "<'row'<'col-md-6'l T><'col-md-6'f>r>t<'row'<'col-md-12'p i>>",
-        "oTableTools": {
-            "aButtons": [{
-                "sExtends": "collection",
-                "sButtonText": "<i class='fa fa-cloud-download'></i>",
-                "aButtons": ["csv", "xls", "pdf", "copy"]
-            }]
-        },
-        "sPaginationType": "bootstrap",
-        "aoColumnDefs": [{
-            'bSortable': false,
-            'aTargets': [0]
-        }],
-        "aaSorting": [
-            [1, "asc"]
-        ],
-        "oLanguage": {
-            "sLengthMenu": "_MENU_ ",
-            "sInfo": "Showing <b>_START_ to _END_</b> of _TOTAL_ entries"
-        },
-        bAutoWidth: false,
-        fnPreDrawCallback: function () {
-            // Initialize the responsive datatables helper once.
-            if (!responsiveHelper) {
-                responsiveHelper = new ResponsiveDatatablesHelper(tableElement, breakpointDefinition);
+    $("#brands-datatable").DataTable({
+        destroy: true,
+        "ajax": {
+            "url": "/admin/brands/data",
+            "type": "POST",
+            "dataType": "json",
+            "dataSrc": 'data',
+            "contentType": 'application/json; charset=utf-8',
+            'beforeSend': function (request) {
+                request.setRequestHeader(
+                    "X-CSRF-TOKEN", $('meta[name="csrf-token"]').attr("content")
+                );
+            },
+            data: (data) => {
+                data.page = data.start + 1
+                data.per_page = data.length
+                // console.log(data)
+                return JSON.stringify(data)
+            },
+            dataFilter: (data) => {
+                // console.log(data)
+                var json = jQuery.parseJSON(data);
+                json.recordsTotal = json.pagination.total
+                json.recordsFiltered = json.pagination.total
+                // console.log(json)
+                return JSON.stringify(json);
             }
         },
-        fnRowCallback: function (nRow) {
-            responsiveHelper.createExpandIcon(nRow);
+        pagingType: "first_last_numbers",
+        "processing": true,
+        "serverSide": true,
+        "deferRender": true,
+        "paging": true,
+        "searching": {
+            "regex": true
         },
-        fnDrawCallback: function (oSettings) {
-            responsiveHelper.respond();
-        }
-    });
-    $('#example th').click(function (e) {
-        $('#example .animate-progress-bar').each(function () {
-            $(this).removeClass('progress-bar');
-            $(this).css('width', '0%');
-            $(this).css('width', $(this).attr("data-percentage"));
-            $(this).addClass('progress-bar');
-        });
-    });
-    $('#example_wrapper .dataTables_filter input').addClass("input-medium "); // modify table search input
-    $('#example_wrapper .dataTables_length select').addClass("select2-wrapper span12"); // modify table per page dropdown
-
-
-
-    $('#example input').click(function () {
-        $(this).parent().parent().parent().toggleClass('row_selected');
-    });
-
-
-    $('#quick-access .btn-cancel').click(function () {
-        $("#quick-access").css("bottom", "-115px");
-    });
-    $('#quick-access .btn-add').click(function () {
-        fnClickAddRow();
-        $("#quick-access").css("bottom", "-115px");
-    });
+        "lengthMenu": [
+            [10, 25, 50, 100, -1],
+            [10, 25, 50, 100, "All"]
+        ],
+        "pageLength": 10,
+        columns: [{
+                defaultContent: '',
+            }, {
+                data: 'name'
+            },
+            {
+                data: 'desc'
+            },
+            {
+                data: 'img'
+            },
+            {
+                render: (data, type, row) => {
+                    return row
+                },
+                defaultContent: '',
+            }
+        ]
+        // "pagingType": "full_numbers"
+    })
 });

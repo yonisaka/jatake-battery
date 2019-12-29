@@ -34,32 +34,30 @@ class BrandsControl extends Controller
                 return $this->lib->jsonUnauth();
 
             return $next($req);
-        })->only(['store']);
+        })->only(['store,data']);
 
     }
 
     public function index(Request $req)
     {
-        $data = $req->all();
-        $brand = function()
+        return view('admin.brands',['page'=>'Brands']);
+    }
+
+    public function data(Request $req)
+    {
+        $param = arr2obj($req->all());
+        $brand = function() use ($param)
         {
-            return $this->brand->paginate();
+            return $this->brand->pagination((empty($param->page))?null:$param->page,(empty($param->per_page))?null:$param->per_page);
         };
-        if($req->expectsJson())
-        {
             try
             {
-                return \Responder::success($brand())->respond();
+                return \Responder::success($brand())->with('draw',$param->draw)->respond();
             }
             catch(\Exception $e)
             {
-                return \Responder::error("brand_create_fail","Fail to Create Brand")->data([$e])->respond();
+                return \Responder::error("brand_get_fail","Fail to Get Brand")->data([$e->__toString()])->respond();
             }
-        }
-        else
-        {
-            return view('admin.brands',['page'=>'Brands']);
-        }
     }
 
     public function store(Request $req){
