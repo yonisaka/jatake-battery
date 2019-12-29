@@ -37,7 +37,7 @@ Route::prefix('/admin')->name('admin.')->group(function()
     Route::get('/logout','AdminController@logout')->name('logout');
 });
 
-Route::resource('/admin/brands','Admin\BrandControl')->parameters(['brand'=>'id'])->except(['create']);
+Route::resource('/admin/brands','Admin\BrandsControl')->parameters(['brand'=>'id'])->except(['create']);
 
 Route::resource('/admin', 'AdminController');
 

@@ -106,8 +106,8 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="">Deskripsi</label>
-                        <textarea class='form-control' name="deskripsi" id="desc-product" cols="30"
+                        <label for="">desc</label>
+                        <textarea class='form-control' name="desc" id="desc-product" cols="30"
                             rows="10"></textarea>
                     </div>
                     <div class="form-group">
@@ -207,8 +207,8 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="">Deskripsi</label>
-                        <textarea class='form-control' name="deskripsi" id="desc-product" cols="30"
+                        <label for="">desc</label>
+                        <textarea class='form-control' name="desc" id="desc-product" cols="30"
                             rows="10"></textarea>
                     </div>
                     <div class="form-group">
@@ -313,7 +313,7 @@
                 $modal.find('#tp-product').val($data.link.tp)
                 $modal.find('#bl-product').val($data.link.bl)
             }
-            $modal.find('#desc-product').val($data.deskripsi)
+            $modal.find('#desc-product').val($data.desc)
             $modal.find('.save-product').click(function(e){
                 e.preventDefault()
                 let json = serializeModal($modal,false)

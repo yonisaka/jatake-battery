@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use Flugg\Responder\Facades\Responder;
 use App\Brand;
 use App\Library\Libs;
 
-class BrandControl extends Controller
+class BrandsControl extends Controller
 {
     //
     public function __construct()
@@ -21,7 +21,6 @@ class BrandControl extends Controller
             if(!empty(session('admin_token')))
             {
                 $this->token = session('admin_token');
-                $this->products = new Products(['token'=>$this->token,]);
             }
             else
             {
@@ -37,10 +36,16 @@ class BrandControl extends Controller
     }
 
     public function store(Request $req){
-        $data = $req->all();
-        if($req->expectsJson())
+        try
         {
-
+            $data = $req->all();
+            $product = new Brand($data);
+            $product->save();
+            return Responder::success($product)->respond(201);
+        }
+        catch(Exception $e)
+        {
+            Responder::error("product_create_fail","Fail to Create Product")->data($e)->respond();
         }
     }
 

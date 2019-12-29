@@ -17,7 +17,7 @@ class CreateBrandsTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->string('name');
-            $table->longText('deskripsi')->nullable();
+            $table->longText('desc')->nullable();
             $table->longText('link')->nullable();
             $table->longText('img')->nullable();
             $table->integer('rating')->nullable();

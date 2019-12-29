@@ -160,7 +160,7 @@ $product->img = !empty($product->img) ? $product->img : [];
                     <div class="tab-pane fade show active" id="detail-desc">
                         <div class="p-4">
                             <h4>{{ $product->name }}</h4>
-                            <div> {{ !empty($product->deskripsi)?$product->deskripsi : "Belum ada deskripsi" }}
+                            <div> {{ !empty($product->desc)?$product->desc : "Belum ada desc" }}
                             </div>
                         </div>
                     </div>

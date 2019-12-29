@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('short')->nullable()->unique();
             $table->string('name');
             $table->string('brand')->nullable();
-            $table->longText('deskripsi')->nullable();
+            $table->longText('desc')->nullable();
             $table->integer('qty')->nullable();
             $table->enum('type',['MOTOR','MOBIL']);
             $table->longText('link')->nullable();

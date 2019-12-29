@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use Responder;
 class ProductControl extends Controller
 {
     //
@@ -54,7 +54,6 @@ class ProductControl extends Controller
     }
 
     public function store(Request $req){
-
         try
         {
             $data = $req->all();
