@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Flugg\Responder\Facades\Responder;
 use App\Brand;
 use App\Library\Libs;
 
@@ -16,23 +15,51 @@ class BrandsControl extends Controller
         $this->brand = new Brand();
         $this->lib = new Libs();
         $this->middleware(function($req,$next){
-            if(!$req->expectsJson())
-                return Responder::error("unauthorized","unauthorized")->respond(401);
             if(!empty(session('admin_token')))
             {
                 $this->token = session('admin_token');
             }
             else
             {
-                return redirect(route('admin.login'));
+                if(!$req->expectsJson())
+                    return redirect(route('admin.login'));
+                return $this->lib->jsonUnauth();
             }
             return $next($req);
         })->except(['show','index']);
+
+        // secure spesific method
+        $this->middleware(function($req,$next){
+            if(!$req->expectsJson())
+                return $this->lib->jsonUnauth();
+
+            return $next($req);
+        })->only(['store']);
+
     }
 
-    public function index()
+    public function index(Request $req)
     {
-        abort(404);
+        $data = $req->all();
+        $brand = function()
+        {
+            return $this->brand->paginate();
+        };
+        if($req->expectsJson())
+        {
+            try
+            {
+                return \Responder::success($brand())->respond();
+            }
+            catch(\Exception $e)
+            {
+                return \Responder::error("brand_create_fail","Fail to Create Brand")->data([$e])->respond();
+            }
+        }
+        else
+        {
+            return view('admin.brands',['page'=>'Brands']);
+        }
     }
 
     public function store(Request $req){
@@ -41,21 +68,22 @@ class BrandsControl extends Controller
             $data = $req->all();
             $product = new Brand($data);
             $product->save();
-            return Responder::success($product)->respond(201);
+            return \Responder::success($product)->respond(201);
         }
-        catch(Exception $e)
+        catch(\Exception $e)
         {
-            Responder::error("product_create_fail","Fail to Create Product")->data($e)->respond();
+            return \Responder::error("brand_create_fail","Fail to Create Brand")->data([$e])->respond();
         }
     }
 
     public function show(Request $req){
-        $data = $req->all();
-        if($req->expectsJson())
+        try
         {
-            return $this->lib->model(function() use ($req,&$data,&$model){
-                return ['data'];
-            });
+            return \Responder::success($product)->respond(201);
+        }
+        catch(\Exception $e)
+        {
+            return \Responder::error("brand_create_fail","Fail to Create Brand")->data([$e])->respond();
         }
     }
 }

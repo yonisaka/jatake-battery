@@ -16,16 +16,8 @@ class Libs {
       return self::$instance;
     }
 
-    public function jsonResp($callback)
+    public function jsonUnauth()
     {
-        try{
-            $result = $callback();
-            return response()->json(['data'=>$result,'status'=>true],200);
-        }
-        catch(\Exception $e)
-        {
-            return responder()->error(401,$e->getMessage())->respond(401);
-            return $this->errJsonResp($e);
-        }
+        return \Responder::error("unauthorized","unauthorized")->respond(401);
     }
 }
