@@ -15,15 +15,10 @@
           <table class="table table-hover table-condensed" id="brands-datatable">
             <thead>
               <tr>
-                <th style="width:1%">
-                  <div class="checkbox check-default" style="margin-right:auto;margin-left:auto;">
-                    <input type="checkbox" value="1" id="checkbox1">
-                    <label for="checkbox1"></label>
-                  </div>
-                </th>
+                <th style="">ID</th>
                 <th style="">Brand Name</th>
                 <th style="">Description</th>
-                <th style="">Logo</th>
+                <th class="text-center" style="">Logo</th>
                 <th style="">Action</th>
                 {{-- <th style=""></th> --}}
               </tr>
@@ -40,5 +35,6 @@
 @endsection
 
 @section('script')
+    <script src="/custom/datatable-extra.js" type="text/javascript" defer></script>
     <script src="/custom/brands-index.js" type="text/javascript" defer></script>
 @show

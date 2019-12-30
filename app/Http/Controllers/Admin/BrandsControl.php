@@ -43,24 +43,8 @@ class BrandsControl extends Controller
         return view('admin.brands',['page'=>'Brands']);
     }
 
-    public function data(Request $req)
+    public function create(Request $req,Brand $brand)
     {
-        $param = arr2obj($req->all());
-        $brand = function() use ($param)
-        {
-            return $this->brand->pagination((empty($param->page))?null:$param->page,(empty($param->per_page))?null:$param->per_page);
-        };
-            try
-            {
-                return \Responder::success($brand())->with('draw',$param->draw)->respond();
-            }
-            catch(\Exception $e)
-            {
-                return \Responder::error("brand_get_fail","Fail to Get Brand")->data([$e->__toString()])->respond();
-            }
-    }
-
-    public function store(Request $req){
         try
         {
             $data = $req->all();
@@ -70,18 +54,49 @@ class BrandsControl extends Controller
         }
         catch(\Exception $e)
         {
-            return \Responder::error("brand_create_fail","Fail to Create Brand")->data([$e])->respond();
+            return \Responder::error("brand_create_fail","Fail to Create Brand")->data([$e->__toString()])->respond();
         }
     }
 
-    public function show(Request $req){
+    public function store(Request $req){
+        $param = arr2obj($req->all());
+        $brand = function() use ($param)
+        {
+            return $this->brand->pagination((empty($param->page))?null:$param->page,(empty($param->per_page))?null:$param->per_page);
+        };
+        try
+        {
+            return \Responder::success($brand())->with('draw',empty($param->draw)?null:$param->draw)->respond();
+        }
+        catch(\Exception $e)
+        {
+            return \Responder::error("brand_get_fail","Fail to Get Brand")->data([$e->__toString()])->respond();
+        }
+    }
+
+    public function show(Request $req,Brand $brand){
         try
         {
             return \Responder::success($product)->respond(201);
         }
         catch(\Exception $e)
         {
-            return \Responder::error("brand_create_fail","Fail to Create Brand")->data([$e])->respond();
+            return \Responder::error("brand_create_fail","Fail to Create Brand")->data([$e->__toString()])->respond();
+        }
+    }
+
+    public function destroy(Request $req,Brand $brand)
+    {
+        try
+        {
+            $del = $brand->delete();
+            if($del)
+                return \Responder::success($brand)->respond(204);
+            else throw new Exception($del);
+        }
+        catch(\Exception $e)
+        {
+            return \Responder::error("brand_destroy_fail","Fail to Delete Brand")->data([$e->__toString()])->respond();
         }
     }
 }

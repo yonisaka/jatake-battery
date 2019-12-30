@@ -32,15 +32,15 @@ Route::resource('/products','ProductsController')->parameters(['product'=>'id'])
 
 Route::prefix('/admin')->name('admin.')->group(function()
 {
-    Route::get('/login','AdminController@login')->name('login');
-    Route::post('/login','AdminController@request_login')->name('req_login');
-    Route::get('/logout','AdminController@logout')->name('logout');
+    Route::get('login','AdminController@login')->name('login');
+    Route::post('login','AdminController@request_login')->name('req_login');
+    Route::get('logout','AdminController@logout')->name('logout');
 
-    Route::prefix('/brands')->name('admin.brands.')->group(function(){
-        Route::resource('/','Admin\BrandsControl');
-        Route::post('/data','Admin\BrandsControl@data');
+    Route::prefix('brands')->name('admin.brands.')->group(function(){
+        Route::post('create','Admin\BrandsControl@create')->name('create');
     });
+
+    Route::apiResource('brands','Admin\BrandsControl');
 });
 
 Route::resource('/admin', 'AdminController');
-

@@ -5,21 +5,27 @@
   <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <meta charset="utf-8" />
-    <title>Webarch - Responsive Admin Dashboard</title>
+    <title>Jatake Batteries - Responsive Admin Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta content="" name="description" />
     <meta content="" name="author" />
     <!-- BEGIN PLUGIN CSS -->
     <link href="/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
     <link href="/plugins/bootstrap-select2/select2.css" rel="stylesheet" type="text/css" media="screen" />
-    {{-- <link href="/plugins/jquery-datatable/css/jquery.dataTables.css" rel="stylesheet" type="text/css" /> --}}
-    {{-- <link href="/plugins/datatables-responsive/css/datatables.responsive.css" rel="stylesheet" type="text/css" media="screen" /> --}}
     <!-- END PLUGIN CSS -->
     <!-- BEGIN PLUGIN CSS -->
     <link href="/plugins/pace/pace-theme-flash.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="/plugins/bootstrapv3/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="/plugins/bootstrapv3/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+
+    {{-- load newest css --}}
+    <link href="/plugins/update/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/plugins/toastr/toastr.min.css" rel="stylesheet" type="text/css" />
+    <link href="/plugins/swal2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
     <link href="/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" media="screen" >
+
+    {{-- <link href="/plugins/jquery-datatable/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
+    <link href="/plugins/datatables-responsive/css/datatables.responsive.css" rel="stylesheet" type="text/css" media="screen" /> --}}
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="/plugins/animate.min.css" rel="stylesheet" type="text/css" />
@@ -262,6 +268,10 @@
     <script src="/js/update/jquery-3.3.1.js" type="text/javascript"></script>
 
     <script src="/plugins/bootstrapv3/js/bootstrap.min.js" type="text/javascript"></script>
+
+    <script src="/plugins/update/popper.min.js" type="text/javascript"></script>
+    <script src="/plugins/update/bootstrap.min.js" type="text/javascript"></script>
+
     <script src="/plugins/jquery-block-ui/jqueryblockui.min.js" type="text/javascript"></script>
     <script src="/plugins/jquery-unveil/jquery.unveil.min.js" type="text/javascript"></script>
     <script src="/plugins/jquery-scrollbar/jquery.scrollbar.min.js" type="text/javascript"></script>
@@ -284,6 +294,8 @@
     <!-- END JAVASCRIPTS -->
 
     <script src="/plugins/datatables/datatables.min.js" type="text/javascript"></script>
+    <script src="/plugins/toastr/toastr.min.js" type="text/javascript"></script>
+    <script src="/plugins/swal2/sweetalert2.min.js" type="text/javascript"></script>
 
     <script src="{{ asset('js/main.js') }}"></script>
 
