@@ -22,8 +22,14 @@
     <link href="/plugins/update/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="/plugins/toastr/toastr.min.css" rel="stylesheet" type="text/css" />
     <link href="/plugins/swal2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
-    <link href="/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" media="screen" >
 
+    <link href="/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" media="screen" >
+    <link href="/plugins/datatables/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" media="screen" >
+    <link href="/plugins/datatables/Responsive/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" media="screen" >
+    <link href="/plugins/mdb/css/mdb.min.css" rel="stylesheet" type="text/css" media="screen" >
+    <link href="/plugins/mdb/css/style.css" rel="stylesheet" type="text/css" media="screen" >
+
+    {{-- <link href="/css/main.css" rel="stylesheet" type="text/css" media="screen" > --}}
     {{-- <link href="/plugins/jquery-datatable/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
     <link href="/plugins/datatables-responsive/css/datatables.responsive.css" rel="stylesheet" type="text/css" media="screen" /> --}}
 
@@ -36,6 +42,47 @@
     <!-- END CORE CSS FRAMEWORK -->
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <script src="{{ asset('modules/jquery-3.4.1/jquery-3.4.1.min.js') }}"></script>
+
+    <!-- END CONTAINER -->
+    <script src="/plugins/pace/pace.min.js" type="text/javascript" async></script>
+    <!-- BEGIN JS DEPENDECENCIES-->
+    {{-- <script src="/plugins/jquery/jquery-1.11.3.min.js" type="text/javascript"></script> --}}
+
+    {{-- <script src="/js/update/jquery-3.3.1.js" type="text/javascript"></script> --}}
+
+    <script src="/plugins/bootstrapv3/js/bootstrap.min.js" type="text/javascript" async></script>
+
+    <script src="/plugins/update/popper.min.js" type="text/javascript" async></script>
+    <script src="/plugins/update/bootstrap.min.js" type="text/javascript" async></script>
+
+    <script src="/plugins/jquery-block-ui/jqueryblockui.min.js" type="text/javascript" async></script>
+    <script src="/plugins/jquery-unveil/jquery.unveil.min.js" type="text/javascript" async></script>
+    <script src="/plugins/jquery-scrollbar/jquery.scrollbar.min.js" type="text/javascript" async></script>
+    <script src="/plugins/jquery-numberAnimate/jquery.animateNumbers.js" type="text/javascript" async></script>
+    <script src="/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript" async></script>
+    <script src="/plugins/bootstrap-select2/select2.min.js" type="text/javascript" async></script>
+    <!-- END CORE JS DEPENDECENCIES-->
+    <!-- BEGIN CORE TEMPLATE JS -->
+    <script src="/webarch/js/webarch.js" type="text/javascript" async></script>
+    {{-- <script src="/js/chat.js" type="text/javascript"></script> --}}
+    <!-- END CORE TEMPLATE JS -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <script src="/plugins/bootstrap-select2/select2.min.js" type="text/javascript" async></script>
+    {{-- <script src="/plugins/jquery-datatable/js/jquery.dataTables.min.js" type="text/javascript"></script> --}}
+    {{-- <script src="/plugins/jquery-datatable/extra/js/dataTables.tableTools.min.js" type="text/javascript"></script> --}}
+    {{-- <script type="text/javascript" src="/plugins/datatables-responsive/js/datatables.responsive.js"></script> --}}
+    {{-- <script type="text/javascript" src="/plugins/datatables-responsive/js/lodash.min.js"></script> --}}
+    <!-- END PAGE LEVEL JS INIT -->
+    {{-- <script src="/js/datatables.js" type="text/javascript"></script> --}}
+    <!-- END JAVASCRIPTS -->
+
+    <script src="/plugins/datatables/datatables.min.js" type="text/javascript" async></script>
+    <script src="/plugins/datatables/datatables/js/dataTables.bootstrap4.min.js" type="text/javascript" async></script>
+    <script src="/plugins/datatables/Responsive/js/responsive.bootstrap4.min.js" type="text/javascript" async></script>
+    <script src="/plugins/toastr/toastr.min.js" type="text/javascript" async></script>
+    <script src="/plugins/swal2/sweetalert2.min.js" type="text/javascript" async></script>
 
   </head>
   <!-- END HEAD -->
@@ -260,42 +307,6 @@
       </div>
 
     </div>
-    <!-- END CONTAINER -->
-    <script src="/plugins/pace/pace.min.js" type="text/javascript"></script>
-    <!-- BEGIN JS DEPENDECENCIES-->
-    {{-- <script src="/plugins/jquery/jquery-1.11.3.min.js" type="text/javascript"></script> --}}
-
-    <script src="/js/update/jquery-3.3.1.js" type="text/javascript"></script>
-
-    <script src="/plugins/bootstrapv3/js/bootstrap.min.js" type="text/javascript"></script>
-
-    <script src="/plugins/update/popper.min.js" type="text/javascript"></script>
-    <script src="/plugins/update/bootstrap.min.js" type="text/javascript"></script>
-
-    <script src="/plugins/jquery-block-ui/jqueryblockui.min.js" type="text/javascript"></script>
-    <script src="/plugins/jquery-unveil/jquery.unveil.min.js" type="text/javascript"></script>
-    <script src="/plugins/jquery-scrollbar/jquery.scrollbar.min.js" type="text/javascript"></script>
-    <script src="/plugins/jquery-numberAnimate/jquery.animateNumbers.js" type="text/javascript"></script>
-    <script src="/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
-    <script src="/plugins/bootstrap-select2/select2.min.js" type="text/javascript"></script>
-    <!-- END CORE JS DEPENDECENCIES-->
-    <!-- BEGIN CORE TEMPLATE JS -->
-    <script src="/webarch/js/webarch.js" type="text/javascript"></script>
-    {{-- <script src="/js/chat.js" type="text/javascript"></script> --}}
-    <!-- END CORE TEMPLATE JS -->
-    <!-- BEGIN PAGE LEVEL PLUGINS -->
-    <script src="/plugins/bootstrap-select2/select2.min.js" type="text/javascript"></script>
-    {{-- <script src="/plugins/jquery-datatable/js/jquery.dataTables.min.js" type="text/javascript"></script> --}}
-    {{-- <script src="/plugins/jquery-datatable/extra/js/dataTables.tableTools.min.js" type="text/javascript"></script> --}}
-    {{-- <script type="text/javascript" src="/plugins/datatables-responsive/js/datatables.responsive.js"></script> --}}
-    {{-- <script type="text/javascript" src="/plugins/datatables-responsive/js/lodash.min.js"></script> --}}
-    <!-- END PAGE LEVEL JS INIT -->
-    {{-- <script src="/js/datatables.js" type="text/javascript"></script> --}}
-    <!-- END JAVASCRIPTS -->
-
-    <script src="/plugins/datatables/datatables.min.js" type="text/javascript"></script>
-    <script src="/plugins/toastr/toastr.min.js" type="text/javascript"></script>
-    <script src="/plugins/swal2/sweetalert2.min.js" type="text/javascript"></script>
 
     <script src="{{ asset('js/main.js') }}"></script>
 

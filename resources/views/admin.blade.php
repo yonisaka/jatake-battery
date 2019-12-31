@@ -274,7 +274,7 @@
             formData.push({name:'link',value:link})
 
             // filter null data
-            if($filter)
+            if(!$filter)
                 formData = formData.filter(arr=>{
                     return arr.value
                 })
@@ -286,7 +286,6 @@
                     return arr
                 })
             }
-
 
             return objectifyForm(formData)
         }
@@ -316,7 +315,7 @@
             $modal.find('#desc-product').val($data.desc)
             $modal.find('.save-product').click(function(e){
                 e.preventDefault()
-                let json = serializeModal($modal,false)
+                let json = serializeModal($modal)
                 // console.log(json);
 
                 $.ajax({
@@ -400,7 +399,7 @@
 
         $('#add-product-modal .save-product').click(function(e){
             e.preventDefault();
-            let json = serializeModal($('#add-product-modal'))
+            let json = serializeModal($('#add-product-modal'),false)
             $.post({
                 url: "{{ url('/products') }}",
                 dataType: 'json',

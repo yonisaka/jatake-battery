@@ -9,17 +9,54 @@ class BrandObserver
     public function creating(Brand $brand)
     {
         // $product->dimention = json_encode($product->dimention);
-        $brand->img = json_encode($brand->img);
-        $brand->link = json_encode($brand->link);
+        if(!empty($brand->img))
+        {
+            $img = $brand->img;
+            $img = array_filter($img,function($val){
+                if(!empty($val))
+                    return true;
+                return false;
+            });
+            $brand->img = json_encode($img);
+        }
+
+        if(!empty($brand->link))
+        {
+
+            $link = $brand->link;
+            $link = array_map(function($val){
+                if(!empty($val))
+                    return $val;
+            },$link);
+            $brand->link = json_encode($link);
+        }
         // $product->type = strtoupper($product->type);
     }
 
     public function updating(Brand $brand)
     {
         // $product->dimention = json_encode($product->dimention);
-        $brand->img = json_encode($brand->img);
-        $brand->link = json_encode($brand->link);
-        // $product->type = strtoupper($product->type);
+        if(!empty($brand->img))
+        {
+
+            $img = $brand->img;
+            $img = array_filter($img,function($val){
+                if(!empty($val))
+                    return true;
+                return false;
+            });
+            $brand->img = json_encode($img);
+        }
+
+        if(!empty($brand->link))
+        {
+            $link = $brand->link;
+            $link = array_map(function($val){
+                if(!empty($val))
+                    return $val;
+            },$link);
+            $brand->link = json_encode($link);
+        }
     }
 
     /**

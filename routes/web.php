@@ -32,6 +32,7 @@ Route::resource('/products','ProductsController')->parameters(['product'=>'id'])
 
 Route::prefix('/admin')->name('admin.')->group(function()
 {
+    Route::get('/','AdminController@index');
     Route::get('login','AdminController@login')->name('login');
     Route::post('login','AdminController@request_login')->name('req_login');
     Route::get('logout','AdminController@logout')->name('logout');
@@ -43,4 +44,4 @@ Route::prefix('/admin')->name('admin.')->group(function()
     Route::apiResource('brands','Admin\BrandsControl');
 });
 
-Route::resource('/admin', 'AdminController');
+// Route::apiResource('/admin', 'AdminController');

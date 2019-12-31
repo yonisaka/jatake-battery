@@ -1,4 +1,4 @@
-const base_url = window.location.origin;
+const base_url = window.location.origin + "/";
 $(function () {
     // include library
     let $lib = $("<script></script>").attr("src", "/js/library.js");
