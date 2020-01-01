@@ -13,16 +13,13 @@ class Brand extends Model
         'name','desc','link','img'
     ];
 
-    public function pagination($page,$perPage,$search="")
+    public function scopePagination($q,$page=1,$perPage=10,$search="")
     {
-        $page = !empty($page)?$page:1;
-        $perPage = !empty($perPage)?$perPage:10;
-        $search = !empty($perPage)?$search:"";
         $curr = ($page-1)*$perPage;
         if ($page > 1) {
-            $data = $this->like('name',$search)->likeOr('desc',$search)->skip($curr)->paginate($perPage);
+            $data = $q->like('name',$search)->likeOr('desc',$search)->skip($curr)->paginate($perPage);
         } else {
-            $data = $this->like('name',$search)->likeOr('desc',$search)->paginate($perPage);
+            $data = $q->like('name',$search)->likeOr('desc',$search)->paginate($perPage);
         }
         return $data;
     }
@@ -33,5 +30,15 @@ class Brand extends Model
 
     public  function scopeLikeOr($query, $field, $value){
         return $query->whereOr($field, 'LIKE', "%$value%");
+    }
+
+    public function products()
+    {
+        return $this->hasMany('App\Product');
+    }
+
+    public function productsFilterType($type)
+    {
+        return $this->hasMany('App\Product')->where('products.type',$type);
     }
 }

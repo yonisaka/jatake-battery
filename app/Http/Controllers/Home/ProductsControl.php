@@ -1,27 +1,28 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Home;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Products;
+use App\Product;
 use App\Library\Libs;
 use Exception;
 use Responder;
-class ProductsController extends Controller
+class ProductsControl extends Controller
 {
     //
 
     public function __construct()
     {
         $this->lib = new Libs();
-        $this->products = new Products();
+        $this->products = new Product();
         $this->middleware(function($req,$next){
             if(!$req->expectsJson())
                 return Responder::error("unauthorized","unauthorized")->respond(401);
             if(!empty(session('admin_token')))
             {
                 $this->token = session('admin_token');
-                $this->products = new Products(['token'=>$this->token,]);
+                $this->products = new Product(['token'=>$this->token,]);
             }
             else
             {
@@ -39,9 +40,9 @@ class ProductsController extends Controller
     public function show(Request $req, $id)
     {
         try {
-            $resp = Products::detail($id)->firstOrFail();
+            $resp = Product::detail($id)->firstOrFail();
             $data['page'] = 'detail';
-            $recomend = Products::orderBy('views')->get()->toArray();
+            $recomend = Product::orderBy('views')->get()->toArray();
             $recomend = array_slice($recomend, 0, 4);
             $data['recomends'] = arr2Obj($recomend);
             $data['product']=$resp;
@@ -60,7 +61,7 @@ class ProductsController extends Controller
         try
         {
             $data = $req->all();
-            $product = new Products($data);
+            $product = new Product($data);
             $product->save();
             return Responder::success($product)->respond(201);
         }
@@ -76,7 +77,7 @@ class ProductsController extends Controller
         try
         {
             $data = $req->all();
-            $product = Products::find($id);
+            $product = Product::find($id);
             $product->update($data);
             return Responder::success($product)->respond(201);
         }
@@ -89,7 +90,7 @@ class ProductsController extends Controller
     public function destroy(Request $req,$id)
     {
         try{
-            $product = Products::find($id);
+            $product = Product::find($id);
             $delete = $product->delete();
             return Responder::success($delete)->respond(204);
         }

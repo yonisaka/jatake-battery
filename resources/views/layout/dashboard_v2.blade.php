@@ -259,14 +259,18 @@
           <!-- BEGIN SIDEBAR MENU -->
           <p class="menu-title sm">BROWSE <span class="pull-right"><a href="javascript:;"><i class="material-icons">refresh</i></a></span></p>
           <ul>
-            <li class="start ">
+            <li class="start">
                 <a href="/admin">
                     <i class="material-icons">home</i> <span class="title">Dashboard</span> <span class="selected"></span>
                 </a>
             </li>
 
-            <li class="open active">
-              <a href="javascript:;"> <i class="material-icons">format_bold</i> <span class="title">Brands</span> </a>
+            <li class="{{ stripos($page,'brand')!==false?"active":null }}">
+                <a href="/admin/brands"> <i class="material-icons">format_bold</i> <span class="title">Brands</span> </a>
+            </li>
+
+            <li class="{{ stripos($page,'product')!==false?"active":null }}">
+                <a href="/admin/products"> <i class="material-icons"></i> <span class="title">Products</span> </a>
             </li>
 
           </ul>

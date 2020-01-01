@@ -17,12 +17,26 @@ Route::get('/motor', 'HomeController@motor');
 Route::get('/mobil', 'HomeController@mobil');
 Route::get('/search', 'HomeController@search');
 
+Route::prefix('/')->name('home.')->group(function()
+{
+    Route::prefix('brands')->name('brands.')->group(function(){
+        Route::post('create','Home\BrandsControl@create')->name('create');
+    });
+
+    Route::apiResource('brands','Home\BrandsControl');
+
+    Route::prefix('products')->name('products.')->group(function(){
+        Route::post('create','Home\ProductsControl@create')->name('create');
+    });
+
+    Route::apiResource('products','Home\ProductsControl');
+});
+
 Route::prefix('/extra-pages')->group(function()
 {
     Route::get('/{page}','ExtraPagesController@page')->name("extra");
 });
 
-Route::resource('/products','ProductsController')->parameters(['product'=>'id'])->except(['create']);
 
 // Route::prefix('/products')->group(function()
 // {
@@ -37,7 +51,13 @@ Route::prefix('/admin')->name('admin.')->group(function()
     Route::post('login','AdminController@request_login')->name('req_login');
     Route::get('logout','AdminController@logout')->name('logout');
 
-    Route::prefix('brands')->name('admin.brands.')->group(function(){
+    Route::prefix('products')->name('products.')->group(function(){
+        Route::post('create','Admin\ProductsControl@create')->name('create');
+    });
+
+    Route::apiResource('products','Admin\ProductsControl');
+
+    Route::prefix('brands')->name('brands.')->group(function(){
         Route::post('create','Admin\BrandsControl@create')->name('create');
     });
 

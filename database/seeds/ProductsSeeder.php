@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Products;
+use App\Product;
 class ProductsSeeder extends Seeder
 {
     /**
@@ -15,7 +15,7 @@ class ProductsSeeder extends Seeder
         $productsArr = [
             [   'short'=>'abc-1',
                 'name'=>'Aki Test 1',
-                'brand'=>'Honda',
+                'brand_id'=>1,
                 'desc'=>'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus nemo accusantium exercitationem pariatur nostrum dolore iure facilis quisquam porro magnam. Aspernatur blanditiis quisquam molestias delectus tempore. Libero suscipit veritatis in?',
                 'link'=>[],
                 'type'=>'MOTOR',
@@ -25,7 +25,7 @@ class ProductsSeeder extends Seeder
 
             [   'short'=>'abc-2',
                 'name'=>'Aki Test 2',
-                'brand'=>'Honda',
+                'brand_id'=>2,
                 'desc'=>'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus nemo accusantium exercitationem pariatur nostrum dolore iure facilis quisquam porro magnam. Aspernatur blanditiis quisquam molestias delectus tempore. Libero suscipit veritatis in?',
                 'link'=>[],
                 'type'=>'MOBIL',
@@ -34,7 +34,7 @@ class ProductsSeeder extends Seeder
                 'price'=>500000,],
             [   'short'=>'',
                 'name'=>'Aki Test 3',
-                'brand'=>'',
+                // 'brandId'=>'',
                 'desc'=>'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus nemo accusantium exercitationem pariatur nostrum dolore iure facilis quisquam porro magnam. Aspernatur blanditiis quisquam molestias delectus tempore. Libero suscipit veritatis in?',
                 'link'=>[],
                 'type'=>'MOTOR',
@@ -43,7 +43,7 @@ class ProductsSeeder extends Seeder
                 'price'=>10000000,],
             [   'short'=>'abc-4',
                 'name'=>'Aki Test 5',
-                'brand'=>'Honda',
+                'brand_id'=>1,
                 'desc'=>'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus nemo accusantium exercitationem pariatur nostrum dolore iure facilis quisquam porro magnam. Aspernatur blanditiis quisquam molestias delectus tempore. Libero suscipit veritatis in?',
                 'link'=>[],
                 'type'=>'MOBIL',
@@ -53,7 +53,7 @@ class ProductsSeeder extends Seeder
         ];
         foreach($productsArr as $d)
         {
-            Products::create($d);
+            Product::create($d);
         }
     }
 }

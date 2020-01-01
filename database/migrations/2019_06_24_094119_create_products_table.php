@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id');
             $table->string('short')->nullable()->unique();
             $table->string('name');
-            $table->string('brand')->nullable();
+            $table->integer('brand_id')->nullable();
             $table->longText('desc')->nullable();
             $table->integer('qty')->nullable();
             $table->enum('type',['MOTOR','MOBIL']);

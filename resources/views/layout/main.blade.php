@@ -29,7 +29,7 @@
 <body>
     <div class="bg-light">
         <div class="main-wrapper">
-            <header class="container-fluid border-bottom">
+            <header class="container-fluid border-bottom px-0">
                 <div class="top-header bg-blue border-bottom pt-1">
                     <div class="container">
                         <a href="#" class="text-white">Hubungi 08123456789 <i class=" fab fa-whatsapp"></i></a>

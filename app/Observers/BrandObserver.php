@@ -2,65 +2,25 @@
 
 namespace App\Observers;
 use App\Brand;
+use App\Library\Libs;
 class BrandObserver
 {
     //
 
     public function creating(Brand $brand)
     {
-        // $product->dimention = json_encode($product->dimention);
-        if(!empty($brand->img))
-        {
-            $img = $brand->img;
-            $img = array_filter($img,function($val){
-                if(!empty($val))
-                    return true;
-                return false;
-            });
-            $brand->img = json_encode($img);
-        }
-
-        if(!empty($brand->link))
-        {
-
-            $link = $brand->link;
-            $link = array_map(function($val){
-                if(!empty($val))
-                    return $val;
-            },$link);
-            $brand->link = json_encode($link);
-        }
-        // $product->type = strtoupper($product->type);
+        $brand->img = Libs::_()->arrayNullFilter($brand->img);
+        $brand->link = Libs::_()->arrayNullFilter($brand->link);
     }
 
     public function updating(Brand $brand)
     {
-        // $product->dimention = json_encode($product->dimention);
-        if(!empty($brand->img))
-        {
-
-            $img = $brand->img;
-            $img = array_filter($img,function($val){
-                if(!empty($val))
-                    return true;
-                return false;
-            });
-            $brand->img = json_encode($img);
-        }
-
-        if(!empty($brand->link))
-        {
-            $link = $brand->link;
-            $link = array_map(function($val){
-                if(!empty($val))
-                    return $val;
-            },$link);
-            $brand->link = json_encode($link);
-        }
+        $brand->img = Libs::_()->arrayNullFilter($brand->img);
+        $brand->link = Libs::_()->arrayNullFilter($brand->link);
     }
 
     /**
-     * Handle the Products "retrieved" event.
+     * Handle the Product "retrieved" event.
      *
      * @param  \App\Brand  $brand
      * @return void
@@ -68,10 +28,11 @@ class BrandObserver
 
     public function retrieved(Brand $brand)
     {
-        // $product->dimention = json_decode($product->dimention);
+        if(!empty($brand->img))
         $brand->img = json_decode($brand->img);
+        if(!empty($brand->link))
         $brand->link = json_decode($brand->link);
-        // $product->type = strtolower($product->type);
+        // $brand->product = $brand->products();
     }
 
 }

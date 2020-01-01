@@ -1,4 +1,7 @@
 @extends('layout.dashboard_v2')
+@php
+    // dd($page)
+@endphp
 @section('content')
 <style>
 
@@ -15,22 +18,24 @@
         <div class="grid-title py-3 clearfix">
           {{-- <h4>Table <span class="semi-bold">Styles</span></h4> --}}
           <div class="tools">
-            <button class="btn btn-sm btn-success m-0 brand-create">Add Brand</button>
+            <button class="btn btn-sm btn-success m-0 product-create">Add Product</button>
             <a href="javascript:;" class="collapse"></a>
             <a href="javascript:;" class="reload"></a>
           </div>
         </div>
         <div class="grid-body ">
-          <table class="table table-hover table-condensed" id="brands-datatable">
+          <table class="table table-hover table-condensed" id="products-datatable">
             <thead>
               <tr>
                 <th style=""></th>
                 <th style="">ID</th>
-                <th style="">Brand Name</th>
+                <th style="">Name</th>
                 <th style="">Description</th>
-                <th class="text-center" style="">Logo</th>
+                <th style="">Brand</th>
+                <th style="">QTY</th>
+                <th style="">Type</th>
+                <th class="text-center" style="">Images</th>
                 <th style="">Action</th>
-                {{-- <th style=""></th> --}}
               </tr>
             </thead>
             <tbody>
@@ -74,7 +79,7 @@
                                 <label class="form-label">Brand Name</label>
                                 <span class="help">e.g. "Honda"</span>
                                 <div class="controls">
-                                    <input type="text" class="form-control" name="name">
+                                    <input type="text" class="form-control" id="brand-name" name="name">
                                 </div>
                             </div>
                         </div>
@@ -83,7 +88,7 @@
                                 <label class="form-label">Description</label>
                                 <span class="help">Explain about this brand</span>
                                 <div class="controls">
-                                    <textarea class="form-control" rows="3" name="desc"></textarea>
+                                    <textarea class="form-control" rows="3" id="brand-desc" name="desc"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -92,13 +97,13 @@
                                 <label class="form-label">Brand Link (Opt)</label>
                                 <span class="help"></span>
                                 <div class="controls">
-                                    <input type="text" class="form-control" name="link">
+                                    <input type="text" class="form-control" id="brand-link" name="link">
                                 </div>
                             </div>
                             <div class="form-group col-md-6">
                                 <label class="form-label">Brand Image</label>
                                 <span class="help">Put brand link image here</span>
-                                <div class="form-array" data-name="img">
+                                <div id="brand-img" class="form-array" data-name="img">
                                     <div class="controls">
                                         <input type="text" class="form-control form-array-input" />
                                     </div>
@@ -153,7 +158,7 @@
                                 <label class="form-label">Brand Name</label>
                                 <span class="help">e.g. "Honda"</span>
                                 <div class="controls">
-                                    <input type="text" class="form-control" name="name">
+                                    <input type="text" class="form-control" id="brand-name" name="name">
                                 </div>
                             </div>
                         </div>
@@ -162,7 +167,7 @@
                                 <label class="form-label">Description</label>
                                 <span class="help">Explain about this brand</span>
                                 <div class="controls">
-                                    <textarea class="form-control" rows="3" name="desc"></textarea>
+                                    <textarea class="form-control" rows="3" id="brand-desc" name="desc"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -171,13 +176,13 @@
                                 <label class="form-label">Brand Link (Opt)</label>
                                 <span class="help"></span>
                                 <div class="controls">
-                                    <input type="text" class="form-control" name="link">
+                                    <input type="text" class="form-control" id="brand-link" name="link">
                                 </div>
                             </div>
                             <div class="form-group col-md-6">
                                 <label class="form-label">Brand Image</label>
                                 <span class="help">Put brand link image here</span>
-                                <div class="form-array" data-name="img">
+                                <div id="brand-img" class="form-array" data-name="img">
                                     <div class="controls">
                                         <input type="text" class="form-control form-array-input" />
                                     </div>
@@ -203,5 +208,5 @@
 @endsection
 
 @section('script')
-    <script src="/js/admin/brands/brands-index.js" type="text/javascript" defer></script>
+    <script src="/js/admin/products/products-index.js" type="text/javascript" defer></script>
 @show
