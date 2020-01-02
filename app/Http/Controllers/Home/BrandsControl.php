@@ -43,7 +43,7 @@ class BrandsControl extends Controller
         $data['motor'] = $brand->productsFilterType('motor')->get()->all();
         $data['mobil'] = $brand->productsFilterType('mobil')->get()->all();
         $data['page'] = 'Brand';
-        return view("public.brand-show",$data);
+        return view("Public.brand-show",$data);
     }
 
     /**

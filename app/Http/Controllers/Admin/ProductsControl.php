@@ -40,7 +40,7 @@ class ProductsControl extends Controller
 
     public function index(Request $req)
     {
-        return view('admin.products',['page'=>'Products']);
+        return view('Admin.products',['page'=>'Products']);
     }
 
     public function create(Request $req)

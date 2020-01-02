@@ -40,7 +40,7 @@ class BrandsControl extends Controller
 
     public function index(Request $req)
     {
-        return view('admin.brands',['page'=>'Brands']);
+        return view('Admin.brands',['page'=>'Brands']);
     }
 
     public function create(Request $req)
