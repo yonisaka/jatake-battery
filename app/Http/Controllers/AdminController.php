@@ -31,6 +31,7 @@ class AdminController extends Controller
 
     public function index()
     {
+        return redirect(route('admin.products.index'));
         $products = $this->products->getProductsAll();
         return view('admin',['products'=>$products]);
     }

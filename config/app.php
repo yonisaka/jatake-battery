@@ -179,6 +179,7 @@ return [
         App\Providers\ModelServiceProvider::class,
         App\Providers\HelperServiceProvider::class,
         Laravel\Passport\PassportServiceProvider::class,
+        Flugg\Responder\ResponderServiceProvider::class,
     ],
 
     /*
@@ -228,6 +229,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Responder' => Flugg\Responder\Facades\Responder::class,
+        'Transformation' => Flugg\Responder\Facades\Transformation::class,
     ],
 
 ];

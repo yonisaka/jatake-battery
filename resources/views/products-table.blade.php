@@ -15,7 +15,7 @@ empty($p->img) ? $p->img = [] : false;
 <tr class="text-center">
     <td><b>{{ !empty($p->short)?$p->short : $p->id }}</b></td>
     <td><a target="_blank" class="font-bold text-secondary" href="{{ url('products/'.$p->id) }}">{{ $p->name }}</a></td>
-    <td>{{ $p->merk }}</td>
+    <td>{{ $p->brand }}</td>
     <td>
         @php
         foreach ($p->img as $k => $v) {

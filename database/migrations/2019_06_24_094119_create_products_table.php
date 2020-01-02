@@ -17,14 +17,15 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id');
             $table->string('short')->nullable()->unique();
             $table->string('name');
-            $table->string('merk')->nullable();
-            $table->longText('deskripsi')->nullable();
+            $table->integer('brand_id')->nullable();
+            $table->longText('desc')->nullable();
             $table->integer('qty')->nullable();
             $table->enum('type',['MOTOR','MOBIL']);
             $table->longText('link')->nullable();
             $table->longText('img')->nullable();
             $table->string('price')->default(0);
             $table->boolean('status')->default(1);
+            $table->integer('rating')->nullable();
             $table->integer('views')->default(0);
             $table->integer('buys')->default(0);
             $table->timestamps();

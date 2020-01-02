@@ -16,11 +16,11 @@ if(!function_exists('formating'))
     }
 }
 
-if(!function_exists('toObj'))
+if(!function_exists('arr2Obj'))
 {
-    function toObj($things)
-    {
-        return (object)$things;
+    function arr2Obj($arr,$progressive=true)
+	{
+		return $progressive ? json_decode(json_encode($arr)) : (object)($arr);
     }
 }
 
@@ -33,13 +33,6 @@ if(!function_exists('pricify'))
     }
 }
 
-if(!function_exists('errApi'))
-{
-    function errApi($e)
-    {
-        return response()->json(['message'=>$e->getMessage(),'err'=>(string) $e,'status'=>false,'code'=>$e->getCode()],400);
-    }
-}
 
 // if(!function_exists('search'))
 // {

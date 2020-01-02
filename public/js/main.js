@@ -1,4 +1,5 @@
-$(function() {
+const base_url = window.location.origin + "/";
+$(function () {
     // include library
     let $lib = $("<script></script>").attr("src", "/js/library.js");
     $("head").append($lib);
@@ -8,7 +9,6 @@ $(function() {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
         }
     });
-
     // $("#sc-category a").click(function(e) {
     //     e.preventDefault();
 
@@ -45,7 +45,7 @@ function svgInline($el) {
 
     $.get(
         imgURL,
-        function(data) {
+        function (data) {
             // Get the SVG tag, ignore the rest
             var $svg = $(data).find("svg");
 
@@ -87,8 +87,17 @@ function svgInline($el) {
     );
 }
 
+function strLimit($str, $limit) {
+
+    //trim the string to the maximum length
+    var trimmedString = $str.substr(0, $limit);
+
+    //re-trim if we are in the middle of a word
+    return trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" "))) + " ..."
+}
+
 $(document).ready(() => {
-    $(".copylink").click(function(e) {
+    $(".copylink").click(function (e) {
         e.preventDefault();
         let $idTarget = $(this).data("input");
         let $target = $($idTarget);
@@ -106,12 +115,12 @@ $(document).ready(() => {
     });
 
     // product goto
-    $(".btn-shop").click(function(e) {
+    $(".btn-shop").click(function (e) {
         e.preventDefault();
         if (!$(this).data("link")) return;
-        showTermCond();
+        showTermCond($(this).data("link"));
     });
-    window.showTermCond = function($footer = true) {
+    window.showTermCond = function ($link, $footer = true) {
         let termModal = $("#term-cond-modal");
         termModal.modal();
         let termModalBody = termModal.find(".modal-body");
@@ -135,8 +144,8 @@ $(document).ready(() => {
                 termModal.find(".accept-term").prop("disabled", false);
                 termModal.find(".accept-term").click(e => {
                     termModal.find(".continue-term").prop("disabled", false);
-                    termModal.find(".continue-term").click(function(e) {
-                        window.open($(this).data("link"));
+                    termModal.find(".continue-term").click(function (e) {
+                        window.open($link);
                     });
                 });
             }

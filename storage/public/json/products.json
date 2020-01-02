@@ -1,7 +1,7 @@
 [{
     "id": 1,
     "name": "Amaron C23AC SUper KW",
-    "merk": "Amaron",
+    "brand": "Amaron",
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias nam molestiae non optio magnam odio aspernatur. Cupiditate, odit asperiores autem praesentium, quasi eum necessitatibus facilis magni, voluptas fuga et eaque.",
     "capacity": "50",
     "dimention": ["10", "20"],
@@ -15,7 +15,7 @@
 }, {
     "id": 2,
     "name": "Amaron C23AC SUper KW",
-    "merk": "Amaron",
+    "brand": "Amaron",
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias nam molestiae non optio magnam odio aspernatur. Cupiditate, odit asperiores autem praesentium, quasi eum necessitatibus facilis magni, voluptas fuga et eaque.",
     "capacity": "50",
     "dimention": ["10", "20"],
@@ -29,7 +29,7 @@
 }, {
     "id": 3,
     "name": "Amaron C23AC SUper KW",
-    "merk": "Amaron",
+    "brand": "Amaron",
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias nam molestiae non optio magnam odio aspernatur. Cupiditate, odit asperiores autem praesentium, quasi eum necessitatibus facilis magni, voluptas fuga et eaque.",
     "capacity": "50",
     "dimention": ["10", "20"],
@@ -43,7 +43,7 @@
 }, {
     "id": 4,
     "name": "Amaron C23AC SUper KW",
-    "merk": "Amaron",
+    "brand": "Amaron",
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias nam molestiae non optio magnam odio aspernatur. Cupiditate, odit asperiores autem praesentium, quasi eum necessitatibus facilis magni, voluptas fuga et eaque.",
     "capacity": "50",
     "dimention": ["10", "20"],

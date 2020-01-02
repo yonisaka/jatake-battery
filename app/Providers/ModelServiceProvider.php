@@ -3,7 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Products;
+use App\Product;
+use App\Brand;
 use Illuminate\Support\Facades\Schema;
 
 class ModelServiceProvider extends ServiceProvider
@@ -27,6 +28,7 @@ class ModelServiceProvider extends ServiceProvider
     {
         //
         Schema::defaultStringLength(191); //NEW: Increase StringLength
-        Products::observe(\App\Observers\ProductsOberver::class);
+        Product::observe(\App\Observers\ProductOberver::class);
+        Brand::observe(\App\Observers\BrandObserver::class);
     }
 }

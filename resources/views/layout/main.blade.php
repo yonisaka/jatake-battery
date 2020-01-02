@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Jatake Battery - {{ !empty($pages)? $pages : "Halaman Depan" }}</title>
+    <title>Jatake Battery - @yield('title','Halaman Depan')</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/main.css') }}" type="text/css" rel="stylesheet">
@@ -29,7 +29,7 @@
 <body>
     <div class="bg-light">
         <div class="main-wrapper">
-            <header class="container-fluid border-bottom">
+            <header class="container-fluid border-bottom px-0">
                 <div class="top-header bg-blue border-bottom pt-1">
                     <div class="container">
                         <a href="#" class="text-white">Hubungi 08123456789 <i class=" fab fa-whatsapp"></i></a>
@@ -179,7 +179,7 @@
                     <div class="d-flex align-items-center">
                         <input type="checkbox" name="" class="accept-term" disabled>
                         <span class="ml-2">
-                            <b> Saya setuju blabalbalblala</b>
+                            <b> Saya setuju dengan syarat dan ketentuan.</b>
                         </span>
                     </div>
                     <div class="btn-wrapper mt-3">

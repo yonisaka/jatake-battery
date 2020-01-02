@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.1.3",
         "fideloper/proxy": "^4.0",
+        "flugger/laravel-responder": "^3.0",
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "5.8.*",
         "laravel/passport": "^7.3",
@@ -52,6 +53,13 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
+        "clear-cache": [
+            "php artisan cache:clear",
+            "php artisan config:clear",
+            "php artisan view:clear",
+            "php artisan route:clear",
+            "php artisan optimize:clear"
+        ],
         "fresh-migrate": [
             "php artisan migrate:fresh",
             "php artisan passport:install",

@@ -15,7 +15,7 @@
                         <tr class="text-center">
                             <th scope="col">ID/Short</th>
                             <th scope="col">Nama</th>
-                            <th scope="col">Merk</th>
+                            <th scope="col">brand</th>
                             <th scope="col">Gambar</th>
                             <th scope="col">Aksi</th>
                         </tr>
@@ -47,8 +47,8 @@
                         </div>
                         <div class="col-md">
                             <div class="form-group">
-                                <label for="">Merk Product</label>
-                                <input type="text" id="merk-product" class="form-control" name='merk'>
+                                <label for="">brand Product</label>
+                                <input type="text" id="brand-product" class="form-control" name='brand'>
                             </div>
                         </div>
                         <div class="col-md">
@@ -106,8 +106,8 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="">Deskripsi</label>
-                        <textarea class='form-control' name="deskripsi" id="desc-product" cols="30"
+                        <label for="">desc</label>
+                        <textarea class='form-control' name="desc" id="desc-product" cols="30"
                             rows="10"></textarea>
                     </div>
                     <div class="form-group">
@@ -148,8 +148,8 @@
                         </div>
                         <div class="col-md">
                             <div class="form-group">
-                                <label for="">Merk Product</label>
-                                <input type="text" id="merk-product" class="form-control" name='merk'>
+                                <label for="">brand Product</label>
+                                <input type="text" id="brand-product" class="form-control" name='brand'>
                             </div>
                         </div>
                         <div class="col-md">
@@ -207,8 +207,8 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="">Deskripsi</label>
-                        <textarea class='form-control' name="deskripsi" id="desc-product" cols="30"
+                        <label for="">desc</label>
+                        <textarea class='form-control' name="desc" id="desc-product" cols="30"
                             rows="10"></textarea>
                     </div>
                     <div class="form-group">
@@ -274,7 +274,7 @@
             formData.push({name:'link',value:link})
 
             // filter null data
-            if($filter)
+            if(!$filter)
                 formData = formData.filter(arr=>{
                     return arr.value
                 })
@@ -287,7 +287,6 @@
                 })
             }
 
-
             return objectifyForm(formData)
         }
         let editModal = function($data)
@@ -298,7 +297,7 @@
 
             $modal.find('#id-product').val($data.id);
             $modal.find('#name-product').val($data.name);
-            $modal.find('#merk-product').val($data.merk)
+            $modal.find('#brand-product').val($data.brand)
             $modal.find('#short-product').val($data.short)
             $modal.find('#type-product').val($data.type)
             $modal.find('#qty-product').val($data.qty)
@@ -313,10 +312,10 @@
                 $modal.find('#tp-product').val($data.link.tp)
                 $modal.find('#bl-product').val($data.link.bl)
             }
-            $modal.find('#desc-product').val($data.deskripsi)
+            $modal.find('#desc-product').val($data.desc)
             $modal.find('.save-product').click(function(e){
                 e.preventDefault()
-                let json = serializeModal($modal,false)
+                let json = serializeModal($modal)
                 // console.log(json);
 
                 $.ajax({
@@ -400,7 +399,7 @@
 
         $('#add-product-modal .save-product').click(function(e){
             e.preventDefault();
-            let json = serializeModal($('#add-product-modal'))
+            let json = serializeModal($('#add-product-modal'),false)
             $.post({
                 url: "{{ url('/products') }}",
                 dataType: 'json',
