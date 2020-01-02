@@ -203,5 +203,5 @@
 @endsection
 
 @section('script')
-    <script src="/js/admin/brands/brands-index.js" type="text/javascript" defer></script>
+    <script src="{{ asset('/js/admin/brands/brands-index.js') }}" type="text/javascript" defer></script>
 @show

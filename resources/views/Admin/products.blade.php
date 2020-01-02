@@ -208,5 +208,5 @@
 @endsection
 
 @section('script')
-    <script src="/js/admin/products/products-index.js" type="text/javascript" defer></script>
+    <script src="{{ asset('/js/admin/products/products-index.js') }}" type="text/javascript" defer></script>
 @show
