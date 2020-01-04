@@ -3,17 +3,21 @@
 <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 @endsection
 @section('contentId',"home")
+@section('contentWrapperCss',"p-0")
 @section('content')
-
 {{-- section content: banner --}}
-<div id="sc-banner" class="container-fluid">
-    <div class="container">
+<div id="sc-banner" class="container-fluid p-0">
+    <div class="container p-0">
         <div class="row">
-            <div class="col-md">
-                <div class="home-slider" id="home-banner">
-                    <img src="{{ asset('img/banner.png') }}" class="col-12" alt="" srcset="">
-                    <img src="{{ asset('img/banner.png') }}" class="col-12" alt="" srcset="">
-                    <img src="{{ asset('img/banner.png') }}" class="col-12" alt="" srcset="">
+            <div class="col-12 p-0">
+                <div class="slider-wrapper">
+                    <div class="home-slider" id="home-banner">
+                        <img src="{{ asset('img/banner.png') }}" class="col-12 p-0" alt="" srcset="">
+                        <img src="{{ asset('img/banner.png') }}" class="col-12 p-0" alt="" srcset="">
+                        <img src="{{ asset('img/banner.png') }}" class="col-12 p-0" alt="" srcset="">
+                    </div>
+                    <div class="home-banner-nav">
+                    </div>
                 </div>
             </div>
         </div>
@@ -23,7 +27,7 @@
 <div id="sc-products" class="container-fluid">
     <div class="container">
         <div class="card-wrapper container">
-            <h3>Merk Aki</h3>
+            <h3>Merk Kendaraan</h3>
             <div class="row justify-content-md-start justify-content-around products-card-wrapper">
                 @php
                 if(empty($brands))
@@ -67,7 +71,7 @@
         <div class="text-center">
             <h4 class="font-light">Bagaimana pendapat mereka tentang <b>Jatake Battery</b>?</h4>
         </div>
-        <div class="card-wrapper container mt-5">
+        <div class="card-wrapper slider-wrapper container mt-5">
             <div class="home-slider">
                 <div class="card">
                     <div class="card-body">
@@ -232,22 +236,30 @@
 </div>
 <script>
     $(window).on('load',()=>{
-        $(".home-slider").each((i,el)=>{
-            let config = {
+
+
+            $.each($(".slider-wrapper .home-slider"),(i,el)=>{
+                $slider = $(el)
+                $config = {
                     slidesToShow: 3,
                     slidesToScroll: 1,
                     accessibility: true,
                     infinite: true,
                     useTransform: true,
                     dots: true,
-                    cssEase: "cubic-bezier(0.77, 0, 0.18, 1)"
-            }
+                    cssEase: "cubic-bezier(0.77, 0, 0.18, 1)",
+                }
+                if($slider.attr('id') == 'home-banner')
+                {
+                    $config.slidesToShow = 1
+                    $config.appendArrows = $slider.parent().find(".home-banner-nav")
+                }
+                $slider.slick($config);
+            })
 
-            if($(el).attr('id') == 'home-banner') config.slidesToShow = 1
+        // $(".home-slider").each((i,el)=>{
+        // })
 
-            $(el).slick(config);
-
-        })
     })
 </script>
 @endsection

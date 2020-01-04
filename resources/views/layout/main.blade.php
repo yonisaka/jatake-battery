@@ -100,7 +100,7 @@
                     </div>
                 </nav>
             </header>
-            <div class="content py-5" id="@yield('contentId')">
+            <div class="content @yield('contentWrapperCss','py-5')" id="@yield('contentId')">
                 @yield('content')
             </div>
             <footer class="container-fluid text-white p-0">
