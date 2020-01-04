@@ -10,66 +10,62 @@
     <meta content="" name="description" />
     <meta content="" name="author" />
     <!-- BEGIN PLUGIN CSS -->
-    <link href="{{ asset('/plugins/font-awesome/css/font-awesome.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('/plugins/bootstrap-select2/select2.css') }}" rel="stylesheet" type="text/css" media="screen" />
-    <!-- END PLUGIN CSS -->
-    <!-- BEGIN PLUGIN CSS -->
-    <link href="{{ asset('/plugins/pace/pace-theme-flash.css') }}" rel="stylesheet" type="text/css" media="screen" />
+    {{-- load newest css --}}
     <link href="{{ asset('/plugins/bootstrapv3/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('/plugins/bootstrapv3/css/bootstrap-theme.min.css') }}" rel="stylesheet" type="text/css" />
 
-    {{-- load newest css --}}
     <link href="{{ asset('/plugins/update/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('/plugins/toastr/toastr.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('/plugins/swal2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
 
+    <link href="{{ asset('/plugins/pace/pace-theme-flash.css') }}" rel="stylesheet" type="text/css" media="screen" />
+
+    <link href="{{ asset('/plugins/font-awesome/css/font-awesome.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('/plugins/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" media="screen" >
     <link href="{{ asset('/plugins/datatables/datatables/css/datatables.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" media="screen" >
     <link href="{{ asset('/plugins/datatables/responsive/css/responsive.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" media="screen" >
     <link href="{{ asset('/plugins/mdb/css/mdb.min.css') }}" rel="stylesheet" type="text/css" media="screen" >
     <link href="{{ asset('/plugins/mdb/css/style.css') }}" rel="stylesheet" type="text/css" media="screen" >
 
+    {{-- <link href="{{ asset('/plugins/bootstrap-select2/select2.css') }}" rel="stylesheet" type="text/css" media="screen" /> --}}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="{{ asset('/plugins/animate.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('/plugins/jquery-scrollbar/jquery.scrollbar.css') }}" rel="stylesheet" type="text/css" />
+
+    <!-- END PLUGIN CSS -->
     {{-- <link href="/css/main.css" rel="stylesheet" type="text/css" media="screen" > --}}
     {{-- <link href="/plugins/jquery-datatable/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
     <link href="/plugins/datatables-responsive/css/datatables.responsive.css" rel="stylesheet" type="text/css" media="screen" /> --}}
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="{{ asset('/plugins/animate.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('/plugins/jquery-scrollbar/jquery.scrollbar.css') }}" rel="stylesheet" type="text/css" />
-    <!-- END PLUGIN CSS -->
     <!-- BEGIN CORE CSS FRAMEWORK -->
     <link href="{{ asset('/webarch/css/webarch.css') }}" rel="stylesheet" type="text/css" />
     <!-- END CORE CSS FRAMEWORK -->
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <script src="{{ asset('modules/jquery-3.4.1/jquery-3.4.1.min.js') }}"></script>
-
-    <!-- END CONTAINER -->
-    <script src="{{ asset('/plugins/pace/pace.min.js') }}" type="text/javascript" async></script>
     <!-- BEGIN JS DEPENDECENCIES-->
-    {{-- <script src="/plugins/jquery/jquery-1.11.3.min.js" type="text/javascript"></script> --}}
 
-    {{-- <script src="/js/update/jquery-3.3.1.js" type="text/javascript"></script> --}}
-
+    <script src="{{ asset('modules/jquery-3.4.1/jquery-3.4.1.min.js') }}"></script>
+    <script src="{{ asset('/plugins/pace/pace.min.js') }}" type="text/javascript" async></script>
     <script src="{{ asset('/plugins/bootstrapv3/js/bootstrap.min.js') }}" type="text/javascript" async></script>
-
     <script src="{{ asset('/plugins/update/popper.min.js') }}" type="text/javascript" async></script>
     <script src="{{ asset('/plugins/update/bootstrap.min.js') }}" type="text/javascript" async></script>
-
     <script src="{{ asset('/plugins/jquery-block-ui/jqueryblockui.min.js') }}" type="text/javascript" async></script>
     <script src="{{ asset('/plugins/jquery-unveil/jquery.unveil.min.js') }}" type="text/javascript" async></script>
     <script src="{{ asset('/plugins/jquery-scrollbar/jquery.scrollbar.min.js') }}" type="text/javascript" async></script>
     <script src="{{ asset('/plugins/jquery-numberAnimate/jquery.animateNumbers.js') }}" type="text/javascript" async></script>
     <script src="{{ asset('/plugins/jquery-validation/js/jquery.validate.min.js') }}" type="text/javascript" async></script>
-    <script src="{{ asset('/plugins/bootstrap-select2/select2.min.js') }}" type="text/javascript" async></script>
+    {{-- <script src="{{ asset('/plugins/bootstrap-select2/select2.min.js') }}" type="text/javascript" async></script> --}}
+
     <!-- END CORE JS DEPENDECENCIES-->
     <!-- BEGIN CORE TEMPLATE JS -->
     <script src="{{ asset('/webarch/js/webarch.js') }}" type="text/javascript" async></script>
     {{-- <script src="/js/chat.js" type="text/javascript"></script> --}}
     <!-- END CORE TEMPLATE JS -->
     <!-- BEGIN PAGE LEVEL PLUGINS -->
-    <script src="{{ asset('/plugins/bootstrap-select2/select2.min.js') }}" type="text/javascript" async></script>
+    {{-- <script src="{{ asset('/plugins/bootstrap-select2/select2.min.js') }}" type="text/javascript" async></script> --}}
     {{-- <script src="/plugins/jquery-datatable/js/jquery.dataTables.min.js" type="text/javascript"></script> --}}
     {{-- <script src="/plugins/jquery-datatable/extra/js/dataTables.tableTools.min.js" type="text/javascript"></script> --}}
     {{-- <script type="text/javascript" src="/plugins/datatables-responsive/js/datatables.responsive.js"></script> --}}
@@ -83,6 +79,7 @@
     <script src="{{ asset('/plugins/datatables/responsive/js/responsive.bootstrap4.min.js') }}" type="text/javascript" defer></script>
     <script src="{{ asset('/plugins/toastr/toastr.min.js') }}" type="text/javascript" defer></script>
     <script src="{{ asset('/plugins/swal2/sweetalert2.min.js') }}" type="text/javascript" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js" type="text/javascript" defer></script>
 
   </head>
   <!-- END HEAD -->
@@ -311,10 +308,11 @@
       </div>
 
     </div>
+  </body>
+    <footer>
 
+    </footer>
     <script src="{{ asset('js/main.js') }}"></script>
-
     @yield('script')
 
-  </body>
 </html>

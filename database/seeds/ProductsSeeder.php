@@ -17,7 +17,7 @@ class ProductsSeeder extends Seeder
                 'name'=>'Aki Test 1',
                 'brand_id'=>1,
                 'desc'=>'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus nemo accusantium exercitationem pariatur nostrum dolore iure facilis quisquam porro magnam. Aspernatur blanditiis quisquam molestias delectus tempore. Libero suscipit veritatis in?',
-                'link'=>[],
+                'link'=>['sp'=>'test1','bl'=>'test2'],
                 'type'=>'MOTOR',
                 'img'=>["https://moedah.com/wp-content/uploads/2017/05/Aki-Furukawa11.jpg","https://cdn.pixabay.com/photo/2014/03/25/15/25/car-battery-296788_960_720.png"],
                 'qty'=>1,

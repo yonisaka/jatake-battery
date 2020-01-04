@@ -183,36 +183,86 @@ $(() => {
         }
     });
 
-    $(".brand-create").unbind().click((e) => {
+    $(".product-create").unbind().click((e) => {
         e.preventDefault();
 
         // console.log("execute brand-create")
         $this = $(e.currentTarget)
-        $modal = ".modal#brand-create";
+        $modal = ".modal#product-create";
         $($modal).modal()
         $($modal).find(".submit").unbind().click((e) => {
             e.preventDefault();
 
-            // console.log("execute brand-create-submit")
+            // console.log("execute product-create-submit")
             $this = $(e.currentTarget)
             $($this).prop('disabled', true)
             let $data = formHelper.getData($modal)
             console.log($data);
+            return;
             $.ajax({
                     method: "POST",
                     dataType: "json",
-                    url: base_url + 'admin/brands/create',
+                    url: base_url + 'admin/product/create',
                     data: $data
                 })
                 .done((res) => {
-                    show_alert('Brand Created!', null, null, null, null, () => {
+                    show_alert('Product Created!', null, null, null, null, () => {
                         window.location.reload()
                     });
                 })
                 .fail((err) => {
                     $($this).prop('disabled', false)
-                    show_alert('Create Brand Error!', '', err)
+                    show_alert('Create Product Error!', '', err)
                 })
         })
+    })
+
+    // handle brand list select2
+    $("select.brand-list").select2({
+        placeholder: "Select Brand ...",
+        // minimumInputLength: 1,
+        ajax: {
+            method: 'post',
+            url: base_url + 'admin/brands',
+            dataType: 'json',
+            data: function (params) {
+                var query = {
+                    search: params.term,
+                    // page: params.page,
+                }
+                // Query parameters will be ?search=[term]&type=public
+                return query;
+            },
+            processResults: function (data) {
+                // let $more = (page * 10) < data.pagination.total;
+                // Transforms the top-level key of the response object from 'items' to 'results'
+                return {
+                    results: $.map(data.data, (el) => {
+                        return {
+                            text: el.name,
+                            slug: el.name,
+                            id: el.id
+                        }
+                    }),
+                    // more: $more
+                };
+            },
+            cache: true,
+        }
+    })
+    // handle brand list select2
+    $("select.type-list").select2({
+        placeholder: "Select Type ...",
+        minimumResultsForSearch: -1,
+        // matcher: false,
+        data: [{
+                id: 'motor',
+                text: 'MOTOR'
+            },
+            {
+                id: 'mobil',
+                text: 'MOBIL'
+            },
+        ]
     })
 });

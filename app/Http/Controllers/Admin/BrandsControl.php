@@ -59,10 +59,9 @@ class BrandsControl extends Controller
 
     public function store(Request $req){
         $param = arr2obj($req->all());
-        $param->search = !empty($param->search)?$param->search:null;
         $brand = function() use ($param)
         {
-            return $this->brand->pagination((empty($param->page))?null:$param->page,(empty($param->per_page))?null:$param->per_page,$param->search);
+            return $this->brand->pagination(@$param->page,@$param->per_page,@$param->search);
         };
         try
         {

@@ -10,7 +10,7 @@ use App\Library\Libs;
 class ProductsControl extends Controller
 {
     //
-    public function __construct(Request $req)
+    public function __construct()
     {
         $this->product = new Product();
         $this->lib = new Libs();
@@ -114,6 +114,11 @@ class ProductsControl extends Controller
         }
     }
 
-
+    public function old(Request $req)
+    {
+        // return redirect(route('admin.products.index'));
+        $products = $this->product->all();
+        return view('admin',['products'=>$products]);
+    }
 
 }

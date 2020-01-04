@@ -51,8 +51,10 @@ Route::prefix('/admin')->name('admin.')->group(function()
     Route::post('login','AdminController@request_login')->name('req_login');
     Route::get('logout','AdminController@logout')->name('logout');
 
+
     Route::prefix('products')->name('products.')->group(function(){
         Route::post('create','Admin\ProductsControl@create')->name('create');
+        Route::get('old','Admin\ProductsControl@old')->name('old');
     });
 
     Route::apiResource('products','Admin\ProductsControl');

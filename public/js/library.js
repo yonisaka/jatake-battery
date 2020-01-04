@@ -100,26 +100,36 @@ let formHelper = {
         let $formData = $form.serializeArray();
 
         $formArray = $form.find('.form-array')
-        $formArray.each((i, el) => {
-            $name = $(el).data('name')
+        $.each($formArray, (i, el) => {
+            $arrWrapper = $(el);
+            $name = $arrWrapper.data('name')
+            console.log($name);
             if ($name) {
-                $arr = $.map($formArray.find('.form-array-input'), (em) => {
+                $arr = $.map($arrWrapper.find('.form-array-input'), (em) => {
                     return $(em).val()
                 })
                 $formData.push({
                     name: $name,
                     value: $arr,
                 })
-
             } else {
-                $arr = map($formArray, (em) => {
-                    $name = $(em).data('name');
-                    if ($(em).data('name') && $(em).val())
-                        return {
-                            $name: $(em).val()
+                var $name = null;
+                $arr = {}
+                $.map($arrWrapper.find('.form-array-input'), (em) => {
+                    if ($(em).attr('name')) {
+                        $nm = $(em).attr('name').split('.');
+                        if ($nm.length > 1) {
+                            $name = $nm[0];
+                            var $subname = $nm[1];
+                            if ($(em).val())
+                                $arr[$subname] = $(em).val()
                         }
+                    }
                 })
-
+                $formData.push({
+                    name: $name,
+                    value: $arr,
+                })
             }
         })
         // $formData = $formData.map(arr => {
