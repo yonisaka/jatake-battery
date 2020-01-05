@@ -50,11 +50,11 @@
   <!-- Modal: modalPoll -->
   <div class="modal fade right" id="product-edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true" data-backdrop="false">
-    <div class="modal-dialog modal-full-height modal-right modal-notify modal-warning modal-md" role="document">
+    <div class="modal-dialog modal-full-height modal-right modal-notify modal-success modal-md" role="document">
       <div class="modal-content">
         <!--Header-->
         <div class="modal-header">
-          <p class="heading lead">Edit Brand
+          <p class="heading lead">Update Product
           </p>
 
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -69,44 +69,90 @@
             <div class="col-md-12">
               <div class="grid simple">
                 <div class="grid-title no-border">
-                  <h4 class="font-weight-bold">Update <span class="semi-bold">Brand Form</span></h4>
+                  <h4 class="font-weight-bold">Update <span class="semi-bold">Product Form</span></h4>
                 </div>
                 <div class="grid-body no-border">
                     <form action="#">
-
                         <div class="form-row">
                             <div class="form-group col-md">
-                                <label class="form-label">Brand Name</label>
+                                <label class="form-label">Name</label>
+                                <span class="help">e.g. "Aki XXA1"</span>
+                                <div class="controls">
+                                    <input type="text" class="form-control" name="name" placeholder="Fill here...">
+                                </div>
+                            </div>
+                            <div class="form-group col-md">
+                                <label class="form-label">Brand</label>
                                 <span class="help">e.g. "Honda"</span>
                                 <div class="controls">
-                                    <input type="text" class="form-control" id="brand-name" name="name">
+                                    <select name="brand_id" style="width: 100%" class="brand-list"></select>
+                                    {{-- <input type="text" class="form-control" name="brand"> --}}
+                                </div>
+                            </div>
+                            <div class="form-group col-md">
+                                <label class="form-label">Shortname</label>
+                                <span class="help">e.g. "aki-xxa1"</span>
+                                <div class="controls">
+                                    <input type="text" class="form-control" name="short" placeholder="Fill here...">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md">
+                                <label class="form-label">Type</label>
+                                <div class="controls">
+                                    <select name="type" class="type-list">
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-md">
+                                <label class="form-label">QTY</label>
+                                <span class="help">e.g. "1,2,3,etc"</span>
+                                <div class="controls">
+                                    <input type="number" class="form-control" name="qty" placeholder="Fill here...">
+                                </div>
+                            </div>
+                            <div class="form-group col-md">
+                                <label class="form-label">Price</label>
+                                <span class="help">e.g. "100000"</span>
+                                <div class="controls">
+                                {{-- <input type="text" class="form-control auto" > --}}
+                                    <input type="text" class="form-control auto-price" name="price" placeholder="Fill here...">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label class="form-label">Product Links (Opt)</label>
+                                <span class="help">Setup product links here</span>
+                                <div class="form-array">
+                                    <div class="controls">
+                                        <input type="text" name="link.wa" class="form-control form-array-input" placeholder="Nomor WA" />
+                                        <input type="text" name="link.tp" class="form-control form-array-input" placeholder="Tokopedia" />
+                                        <input type="text" name="link.bl" class="form-control form-array-input" placeholder="Bukalapak" />
+                                        <input type="text" name="link.sp" class="form-control form-array-input" placeholder="Shoope" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label class="form-label">Product Images</label>
+                                <span class="help">Put product link images here</span>
+                                <div class="form-array" data-name="img">
+                                    <div class="controls">
+                                        <input type="text" class="form-control form-array-input" placeholder="Gambar 1" />
+                                        <input type="text" class="form-control form-array-input" placeholder="Gambar 2" />
+                                        <input type="text" class="form-control form-array-input" placeholder="Gambar 3" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md">
                                 <label class="form-label">Description</label>
-                                <span class="help">Explain about this brand</span>
+                                <span class="help">Explain about this product</span>
                                 <div class="controls">
-                                    <textarea class="form-control" rows="3" id="brand-desc" name="desc"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label class="form-label">Brand Link (Opt)</label>
-                                <span class="help"></span>
-                                <div class="controls">
-                                    <input type="text" class="form-control" id="brand-link" name="link">
-                                </div>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label class="form-label">Brand Image</label>
-                                <span class="help">Put brand link image here</span>
-                                <div id="brand-img" class="form-array" data-name="img">
-                                    <div class="controls">
-                                        <input type="text" class="form-control form-array-input" />
-                                    </div>
+                                    <textarea class="form-control" rows="4" name="desc"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -165,7 +211,7 @@
                                 <label class="form-label">Brand</label>
                                 <span class="help">e.g. "Honda"</span>
                                 <div class="controls">
-                                    <select name="brand" style="width: 100%" class="brand-list"></select>
+                                    <select name="brand_id" style="width: 100%" class="brand-list"></select>
                                     {{-- <input type="text" class="form-control" name="brand"> --}}
                                 </div>
                             </div>
@@ -187,17 +233,18 @@
                                 </div>
                             </div>
                             <div class="form-group col-md">
-                                <label class="form-label">Shortname</label>
+                                <label class="form-label">QTY</label>
                                 <span class="help">e.g. "1,2,3,etc"</span>
                                 <div class="controls">
-                                    <input type="text" class="form-control" name="qty" placeholder="Fill here...">
+                                    <input type="number" class="form-control" name="qty" placeholder="Fill here...">
                                 </div>
                             </div>
                             <div class="form-group col-md">
-                                <label class="form-label">Shortname</label>
+                                <label class="form-label">Price</label>
                                 <span class="help">e.g. "100000"</span>
                                 <div class="controls">
-                                    <input type="text" class="form-control" name="price" placeholder="Fill here...">
+                                {{-- <input type="text" class="form-control auto" > --}}
+                                    <input type="text" class="form-control auto-price" name="price" placeholder="Fill here...">
                                 </div>
                             </div>
                         </div>

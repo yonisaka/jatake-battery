@@ -104,12 +104,12 @@ $(() => {
                 render: (data, type, row) => {
                     return (
                         '\
-                        <button type="button" class="btn btn-sm btn-clean btn-icon btn-icon-md brand-edit" data-id=' +
+                        <button type="button" class="btn btn-sm btn-clean btn-icon btn-icon-md product-edit" data-id=' +
                         row.id +
                         ' title="Edit">\
                             <i class="fa fa-edit"></i>\
                         </button>\
-                        <button type="button" class="btn btn-sm btn-clean btn-icon btn-icon-md brand-del" data-id=' +
+                        <button type="button" class="btn btn-sm btn-clean btn-icon btn-icon-md product-del" data-id=' +
                         row.id +
                         ' title="Delete">\
                             <i class="fa fa-trash"></i>\
@@ -121,34 +121,34 @@ $(() => {
             }
         ],
         "drawCallback": function (settings, json) {
-            $(".brand-del").click((e) => {
+            $(".product-del").click((e) => {
                 e.preventDefault();
                 $this = $(e.currentTarget)
                 $id = $($this).data('id')
-                swal2Confirm("Delete Brand", "You will delete brand, continue?", "warning", () => {
+                swal2Confirm("Delete Product", "You will delete product, continue?", "warning", () => {
                     $.ajax({
                         type: "DELETE",
-                        url: base_url + "/admin/brands/" + $id,
+                        url: base_url + "admin/products/" + $id,
                         success: function (data) {
-                            show_alert('Brand Deleted!', 'Brand successfully deleted', null, null, null, () => {
+                            show_alert('Product Deleted!', 'Product successfully deleted', null, null, null, () => {
                                 window.location.reload()
                             });
                         },
                         error: function (data) {
-                            show_alert('Error', 'Oops... Something went wrong!');
+                            show_alert('Error', 'Oops... Something went wrong!', data);
                         },
                     });
                 })
             })
-            $(".brand-edit").click((e) => {
+            $(".product-edit").click((e) => {
                 // console.log("execute brand-edit")
                 e.preventDefault();
                 $this = $(e.currentTarget)
                 $id = $($this).data('id')
-                $modal = ".modal#brand-edit";
+                $modal = ".modal#product-edit";
                 $.get({
                         dataType: "json",
-                        url: base_url + 'admin/brands/' + $id
+                        url: base_url + 'admin/products/' + $id
                     })
                     .done((res) => {
                         formHelper.edit(res.data, $modal)
@@ -166,7 +166,7 @@ $(() => {
                     $.ajax({
                             method: "PUT",
                             dataType: "json",
-                            url: base_url + 'admin/brands/' + $id,
+                            url: base_url + 'admin/products/' + $id,
                             data: $data
                         })
                         .done((res) => {
@@ -197,12 +197,10 @@ $(() => {
             $this = $(e.currentTarget)
             $($this).prop('disabled', true)
             let $data = formHelper.getData($modal)
-            console.log($data);
-            return;
             $.ajax({
                     method: "POST",
                     dataType: "json",
-                    url: base_url + 'admin/product/create',
+                    url: base_url + 'admin/products/create',
                     data: $data
                 })
                 .done((res) => {
@@ -265,4 +263,6 @@ $(() => {
             },
         ]
     })
+
+
 });

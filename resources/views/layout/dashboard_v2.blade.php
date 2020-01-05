@@ -27,8 +27,7 @@
     <link href="{{ asset('/plugins/mdb/css/mdb.min.css') }}" rel="stylesheet" type="text/css" media="screen" >
     <link href="{{ asset('/plugins/mdb/css/style.css') }}" rel="stylesheet" type="text/css" media="screen" >
 
-    {{-- <link href="{{ asset('/plugins/bootstrap-select2/select2.css') }}" rel="stylesheet" type="text/css" media="screen" /> --}}
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('/plugins/select2/select2.min.css') }}" rel="stylesheet" type="text/css" media="screen" />
 
     <link href="{{ asset('/plugins/animate.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('/plugins/jquery-scrollbar/jquery.scrollbar.css') }}" rel="stylesheet" type="text/css" />
@@ -57,7 +56,7 @@
     <script src="{{ asset('/plugins/jquery-scrollbar/jquery.scrollbar.min.js') }}" type="text/javascript" async></script>
     <script src="{{ asset('/plugins/jquery-numberAnimate/jquery.animateNumbers.js') }}" type="text/javascript" async></script>
     <script src="{{ asset('/plugins/jquery-validation/js/jquery.validate.min.js') }}" type="text/javascript" async></script>
-    {{-- <script src="{{ asset('/plugins/bootstrap-select2/select2.min.js') }}" type="text/javascript" async></script> --}}
+    <script src="{{ asset('/plugins/jquery-autonumeric/autonumeric.min.js') }}" type="text/javascript" async></script>
 
     <!-- END CORE JS DEPENDECENCIES-->
     <!-- BEGIN CORE TEMPLATE JS -->
@@ -79,7 +78,8 @@
     <script src="{{ asset('/plugins/datatables/responsive/js/responsive.bootstrap4.min.js') }}" type="text/javascript" defer></script>
     <script src="{{ asset('/plugins/toastr/toastr.min.js') }}" type="text/javascript" defer></script>
     <script src="{{ asset('/plugins/swal2/sweetalert2.min.js') }}" type="text/javascript" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js" type="text/javascript" defer></script>
+
+    <script src="{{ asset('/plugins/select2/select2.min.js') }}" type="text/javascript" defer></script>
 
   </head>
   <!-- END HEAD -->

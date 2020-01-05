@@ -89,6 +89,8 @@ function svgInline($el) {
 
 function strLimit($str, $limit) {
 
+    if (!$str)
+        return ""
     //trim the string to the maximum length
     var trimmedString = $str.substr(0, $limit);
 

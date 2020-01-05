@@ -99,11 +99,19 @@ let formHelper = {
         $form = $($form).prop("tagName") == "form" ? $($form) : $($form).find('form');
         let $formData = $form.serializeArray();
 
+        $formAuto = $form.find('.auto-price')
+        $.each($formAuto, (i, el) => {
+            if ($(el).data('rawVal')) {
+                $formData.push({
+                    name: $(el).attr('name'),
+                    value: $(el).data('rawVal'),
+                })
+            }
+        })
         $formArray = $form.find('.form-array')
         $.each($formArray, (i, el) => {
             $arrWrapper = $(el);
             $name = $arrWrapper.data('name')
-            console.log($name);
             if ($name) {
                 $arr = $.map($arrWrapper.find('.form-array-input'), (em) => {
                     return $(em).val()
@@ -140,3 +148,18 @@ let formHelper = {
         return objectifyForm($formData);
     },
 }
+
+$(() => {
+    let priceConfig = {
+        currencySymbol: 'Rp ',
+        decimalPlaces: 0,
+        decimalCharacter: ',',
+        digitGroupSeparator: '.',
+    }
+    $.each($('.auto-price'), (i, el) => {
+        var $price = new AutoNumeric(el, priceConfig)
+        $($price.domElement).on('keyup', function (e) {
+            $(this).data('raw-val', $price.rawValue)
+        })
+    })
+})
