@@ -28,6 +28,7 @@
     <link href="{{ asset('/plugins/mdb/css/style.css') }}" rel="stylesheet" type="text/css" media="screen" >
 
     <link href="{{ asset('/plugins/select2/select2.min.css') }}" rel="stylesheet" type="text/css" media="screen" />
+    <link href="{{ asset('/plugins/select2/select2-bootstrap4.min.css') }}" rel="stylesheet" type="text/css" media="screen" />
 
     <link href="{{ asset('/plugins/animate.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('/plugins/jquery-scrollbar/jquery.scrollbar.css') }}" rel="stylesheet" type="text/css" />

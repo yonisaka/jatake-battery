@@ -73,25 +73,75 @@ function swal2Confirm($title, $msg, $type, $callbackTrue, $callbackFalse) {
     })
 }
 
-let formHelper = {
+/**
+ * Just read the name...
+ *
+ * @param {*} functionToCheck
+ */
+function isFunction(functionToCheck) {
+    return functionToCheck && {}.toString.call(functionToCheck) === '[object Function]';
+}
+
+function strLimit($str, $limit) {
+
+    if (!$str)
+        return ""
+    //trim the string to the maximum length
+    var trimmedString = $str.substr(0, $limit);
+
+    //re-trim if we are in the middle of a word
+    return trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" "))) + " ..."
+}
+
+var formHelper = {
+    // initialize form helper like autonumeric and select2
+    init: ($reInit = false) => {
+        let priceConfig = {
+            currencySymbol: 'Rp ',
+            decimalPlaces: 0,
+            decimalCharacter: ',',
+            digitGroupSeparator: '.',
+        }
+        $.each($('.auto-price'), (i, el) => {
+            var $price = new AutoNumeric(el, priceConfig)
+            $($price.domElement).on('keyup', function (e) {
+                $(this).data('raw-val', $price.rawValue)
+            })
+            $($price.domElement).data('raw-val', $price.rawValue)
+        })
+        if (formHelper.initCallback && isFunction(formHelper.initCallback))
+            formHelper.initCallback()
+    },
     edit: ($data, $form) => {
         if (!$data)
             return false
+        formHelper.rawData = $data;
         $form = $($form).prop("tagName") == "form" ? $($form) : $($form).find('form');
-        $.each($data, (i, val) => {
-            if (!$.isArray(val))
-                $form.find(':not(.form-array) [name=' + i + ']').val(val)
-            else {
+        $.each($data, (key, val) => {
+            // filter data with no child or sub data
+            if (!$.isArray(val) && !$.isPlainObject(val)) {
+                // console.log(key)
+                $form.find(':not(.form-array) [name=' + key + ']').val(val)
+            } else {
+                // get formArray elements
                 $formArray = $form.find('.form-array')
-                if ($formArray.data('name') == i) {
-                    $formArray.find('.form-array-input').filter((j, el) => {
-                        $(el).val(val[j])
-                    })
-                } else {
-                    $formArray.find('.form-array-input [name=' + i + ']').filter((j, el) => {
-                        $(el).val(val[j])
-                    })
-                }
+                $.each($formArray, (j, el) => {
+                    // matching data-name formArray with data key
+                    if ($(el).data('name') == key) {
+                        $(el).find('.form-array-input').filter((k, em) => {
+                            $(em).val(val[k])
+                        })
+                        // check if sub value is object
+                    } else if ($.isPlainObject(val)) {
+                        $.each(val, (k, val) => {
+                            name = key + '.' + k;
+                            $(el).find('.form-array-input').filter((l, em) => {
+                                // console.log(em);
+                                return ($(em).prop('name') == name)
+                            }).val(val)
+                        })
+                    }
+                })
             }
         })
     },
@@ -150,16 +200,5 @@ let formHelper = {
 }
 
 $(() => {
-    let priceConfig = {
-        currencySymbol: 'Rp ',
-        decimalPlaces: 0,
-        decimalCharacter: ',',
-        digitGroupSeparator: '.',
-    }
-    $.each($('.auto-price'), (i, el) => {
-        var $price = new AutoNumeric(el, priceConfig)
-        $($price.domElement).on('keyup', function (e) {
-            $(this).data('raw-val', $price.rawValue)
-        })
-    })
+    formHelper.init();
 })

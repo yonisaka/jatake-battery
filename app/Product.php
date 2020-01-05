@@ -12,7 +12,7 @@ class Product extends Model
     // protected $table = 'products';
     protected $fillable = [
         'short','name',
-        'brand','desc',
+        'brand_id','desc',
         'link',
         'type','img',
         'qty',
@@ -22,6 +22,11 @@ class Product extends Model
     public function scopeFilterByBrand($q)
     {
         // return
+    }
+
+    public function getFillable()
+    {
+        return $this->fillable;
     }
 
     public function scopePagination($q,$page=1,$perPage=10,$search="")

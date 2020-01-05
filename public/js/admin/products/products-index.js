@@ -146,23 +146,36 @@ $(() => {
                 $this = $(e.currentTarget)
                 $id = $($this).data('id')
                 $modal = ".modal#product-edit";
-                $.get({
-                        dataType: "json",
-                        url: base_url + 'admin/products/' + $id
-                    })
-                    .done((res) => {
-                        formHelper.edit(res.data, $modal)
-                    })
-                    .fail((err) => {
-                        swal.fire('Gagal Memuat data', err.responseJSON.message, 'error')
-                    })
-                $($modal).modal()
+                (async () => {
+                    await $.get({
+                            dataType: "json",
+                            url: base_url + 'admin/products/' + $id
+                        })
+                        .done((res) => {
+                            formHelper.edit(res.data, $modal)
+                        })
+                        .fail((err) => {
+                            swal.fire('Gagal Memuat data', err.responseJSON.message, 'error')
+                        })
+                    $($modal).modal()
+                    formHelper.initCallback = () => {
+                        // handle brand list select2
+                        if (formHelper.rawData.brand) {
+                            $newOption = $("<option selected='selected'></option>").val(formHelper.rawData.brand.id).text(formHelper.rawData.brand.name)
+                            $("select.brand-list").append($newOption).trigger('change');
+                        }
+                        if (formHelper.rawData.type)
+                            $("select.type-list").eq(0).val(formHelper.rawData.type).trigger('change')
+                    }
+                    formHelper.init(true);
+                })();
                 $($modal).find(".submit").click((e) => {
                     // console.log("execute brand-edit-submit")
                     e.preventDefault();
                     $this = $(e.currentTarget)
                     $($this).prop('disabled', true)
                     let $data = formHelper.getData($modal)
+                    console.log($data);
                     $.ajax({
                             method: "PUT",
                             dataType: "json",
@@ -215,10 +228,9 @@ $(() => {
         })
     })
 
-    // handle brand list select2
-    $("select.brand-list").select2({
+    let $selectBrandConfig = {
         placeholder: "Select Brand ...",
-        // minimumInputLength: 1,
+        theme: 'bootstrap4',
         ajax: {
             method: 'post',
             url: base_url + 'admin/brands',
@@ -247,22 +259,23 @@ $(() => {
             },
             cache: true,
         }
-    })
-    // handle brand list select2
-    $("select.type-list").select2({
+    }
+    let $selectTypeConfig = {
         placeholder: "Select Type ...",
         minimumResultsForSearch: -1,
-        // matcher: false,
+        theme: 'bootstrap4',
         data: [{
-                id: 'motor',
+                id: 'MOTOR',
                 text: 'MOTOR'
             },
             {
-                id: 'mobil',
+                id: 'MOBIL',
                 text: 'MOBIL'
             },
         ]
-    })
-
+    }
+    $("select.brand-list").select2($selectBrandConfig)
+    // handle brand list select2
+    $("select.type-list").select2($selectTypeConfig)
 
 });

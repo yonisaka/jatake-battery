@@ -22,6 +22,7 @@ class ProductOberver
         // $product->dimention = json_encode($product->dimention);
         $product->img = Libs::_()->arrayNullFilter($product->img);
         $product->link = Libs::_()->arrayNullFilter($product->link);
+        unset($product->brand);
     }
 
     /**
