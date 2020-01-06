@@ -44,7 +44,7 @@
                 break;
                 @endphp
                 <a class="card brand-card mx-1 col-md-3 col-sm-4"
-                    href="{{ url('brands/'.$d->id) }}/">
+                    href="{{ route('home.products.brand',['brand_id'=>$d->id]) }}/">
                     <div class="card-img">
                         <img src="{{ @$d->img[0] }}">
                     </div>
@@ -57,13 +57,8 @@
                 }
                 @endphp
             </div>
-            <div class="text-md-left text-center">
-                <a href="{{ url('motor') }}" class="btn btn-outline-primary">Lihat Lainnya</a>
-            </div>
         </div>
-
         <div class="space my-5"></div>
-
     </div>
 </div>
 <div id="sc-testimoni" class="container-fluid">
@@ -236,8 +231,6 @@
 </div>
 <script>
     $(window).on('load',()=>{
-
-
             $.each($(".slider-wrapper .home-slider"),(i,el)=>{
                 $slider = $(el)
                 $config = {

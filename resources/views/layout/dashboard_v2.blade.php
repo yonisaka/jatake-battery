@@ -264,11 +264,11 @@
             </li>
 
             <li class="{{ stripos($page,'brand')!==false?"active":null }}">
-                <a href="/admin/brands"> <i class="material-icons">format_bold</i> <span class="title">Brands</span> </a>
+                <a href="/admin/brands"> <i class="material-icons">store</i> <span class="title">Brands</span> </a>
             </li>
 
             <li class="{{ stripos($page,'product')!==false?"active":null }}">
-                <a href="/admin/products"> <i class="material-icons"></i> <span class="title">Products</span> </a>
+                <a href="/admin/products"> <i class="material-icons">archive</i> <span class="title">Products</span> </a>
             </li>
 
           </ul>

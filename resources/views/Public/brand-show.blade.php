@@ -10,17 +10,17 @@
         <h4 class="font-weight-light">Jatake - <span class="font-weight-bold">{{ $brand->name }}</span></h4>
         <div class="space my-5"></div>
         <div class="card-wrapper container">
-            <h3>Aki Motor</h3>
+            <h3>Aki {{ $brand->type }}</h3>
             <div class="row justify-content-md-start justify-content-around products-card-wrapper">
                 @php
-                if(empty($motor))
+                if(empty($products))
                 {
                 echo '
                 <div class="col text-center">
                     <h4>Produk tidak ditemukan</h4>
                 </div>';
                 }
-                foreach ($motor as $k => $d) {
+                foreach ($products as $k => $d) {
                 @endphp
                 <a class="card products-card mx-1 col-md-3 col-sm-4"
                     href="{{ url('products/') }}/{{ $d->short?$d->short:$d->id }}" data-type="{{ $d->type }}">
@@ -40,47 +40,10 @@
                 }
                 @endphp
             </div>
-            <div class="text-md-left text-center">
-                <a href="{{ url('motor') }}" class="btn btn-outline-primary">Lihat Lainnya</a>
-            </div>
+
         </div>
 
         <div class="space my-5"></div>
-
-        <div class="card-wrapper container">
-            <h3>Aki Mobil</h3>
-            <div class="row justify-content-md-start justify-content-around products-card-wrapper">
-                @php
-                if(empty($mobil))
-                {
-                echo '
-                <div class="col text-center">
-                    <h4>Produk tidak ditemukan</h4>
-                </div>';
-                }
-                foreach ($mobil as $k => $d) {
-                @endphp
-                <a class="card products-card mx-1 col-md-3 col-sm-4"
-                    href="{{ url('products/') }}/{{ $d->short?$d->short:$d->id }}" data-type="{{ $d->type }}">
-                    <div class="card-img">
-                        <img src="{{ !empty($d->img[0]) ? $d->img[0] : '' }}">
-                    </div>
-                    <div class="card-header text-left">
-                        <h5 class="product-name font-light mb-1">{{ $d->merk }}</h5>
-                        <h5 class="product-author">{{ $d->name }}</h5>
-                        <h5 class="products-type mb-2">
-                            <i class='{{ stripos($d->type,'mobil') !== false ? "fas fa-car":null }}'></i>
-                        </h5>
-                        <h6 class="product-price font-bold text-blue">{{ formating($d->price,'price') }}</h5>
-                    </div>
-                </a>
-                @php
-                }
-                @endphp
-            </div>
-            <div class="text-md-left text-center">
-                <a href="{{ url('motor') }}" class="btn btn-outline-primary">Lihat Lainnya</a>
-            </div>
         </div>
     </div>
 </div>

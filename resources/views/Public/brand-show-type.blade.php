@@ -13,50 +13,38 @@
             <ol class="breadcrumb bg-light px-0">
                 <li class="breadcrumb-item">
                     <b><a class="text-primary" href="{{ url('') }}"><i class="fas fa-home"></i>&nbsp;Home</a></b></li>
-                <li class="breadcrumb-item">Product</li>
+                <li class="breadcrumb-item">Brand</li>
                 <li class="breadcrumb-item active" aria-current="page">{{ ucfirst($page) }}</li>
             </ol>
         </nav>
         <div class="card-wrapper container">
+            <h3>Merk Kendaraan {{ ucfirst($page) }}</h3>
             <div class="row justify-content-md-start justify-content-around products-card-wrapper">
                 @php
-                if(empty($products[0]))
+                if(empty($brands))
                 {
                 echo '
                 <div class="col text-center">
-                    <h3>Belum ada product</h3>
+                    <h4>Produk tidak ditemukan</h4>
                 </div>';
                 }
-                foreach ($products as $k => $d) {
 
+                foreach ($brands as $k => $d) {
+                    // dd($d);
+                if($k > 4)
+                break;
                 @endphp
-                <a class="card products-card mx-1 col-md-3 col-sm-4"
-                    href="{{ url('products/') }}/{{ $d->short?$d->short:$d->id }}" data-type="{{ $d->type }}">
+                <a class="card brand-card mx-1 col-md-3 col-sm-4"
+                    href="{{ route('home.products.brand.type',['brand_id'=>$d->id,'type'=>$page]) }}/">
                     <div class="card-img">
-                        <img src="{{ !empty($d->img[0]) ? $d->img[0] : '' }}">
+                        <img src="{{ @$d->img[0] }}">
                     </div>
                     <div class="card-header text-left">
-                        <h5 class="product-name font-light mb-1">{{ $d->brand }}</h5>
+                        <h5 class="product-name font-light mb-1">{{ @$d->brand->name }}</h5>
                         <h5 class="product-author">{{ $d->name }}</h5>
-                        <h5 class="products-type mb-2">
-                            @php
-                            if($d->type == "motor"){
-                            @endphp
-                            <i class="fas fa-motorcycle"></i>
-                            @php
-                            }
-                            else{
-                            @endphp
-                            <i class="fas fa-car"></i>
-                            @php
-                            }
-                            @endphp
-                        </h5>
-                        <h6 class="product-price font-bold text-blue">{{ formating($d->price,'price') }}</h5>
                     </div>
                 </a>
                 @php
-
                 }
                 @endphp
             </div>

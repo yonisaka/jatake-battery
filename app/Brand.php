@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 use League\Fractal\Pagination\Cursor;
+use App\Product;
 
 class Brand extends Model
 {
@@ -22,6 +23,16 @@ class Brand extends Model
             $data = $q->like('name',$search)->likeOr('desc',$search)->paginate($perPage);
         }
         return $data;
+    }
+
+    public function getBrandByType($type)
+    {
+        $data = Product::get(['brand_id','type'])->where('type',\strtoupper($type))->toArray();
+        // dd($data);
+        $data = array_map(function($val){
+            return $val['brand_id'];
+        },$data);
+        return Brand::find($data);
     }
 
     public  function scopeLike($query, $field, $value){

@@ -73,14 +73,14 @@
                                             </div>
                                             <div class="list-group-item {{ $page=="motor"? 'active' : null }}">
                                                 <div class="nav-link">
-                                                    <a href="{{ url('/motor') }}" data-type='motor'>
+                                                    <a href="{{ route('home.brands.type',['type'=>'motor']) }}" data-type='motor'>
                                                         Motor
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="list-group-item {{ $page=="mobil"? 'active' : null }}">
                                                 <div class="nav-link">
-                                                    <a href="{{ url('/mobil') }}" data-type='mobil'>
+                                                    <a href="{{ route('home.brands.type',['type'=>'mobil']) }}" data-type='mobil'>
                                                         Mobil
                                                     </a>
                                                 </div>
@@ -137,7 +137,7 @@
 
                                     <ul class="list-unstyled">
                                         <li>
-                                            <a href="https://goo.gl/maps/frLfpp1cpPZJsbaQ6" target="_blank">
+                                            <a href="https://goo.gl/maps/vfpViuKTKqmjyRRY7" target="_blank">
                                                 Jl. Raya Gatot Subroto Km. 8 (sebelah indomaret)
                                                 Kec. Jatiuwung, Kota/Kab. Tangerang
                                                 Banten, 15134
@@ -149,7 +149,7 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <a class="map" href="https://goo.gl/maps/frLfpp1cpPZJsbaQ6" target="_blank">
+                            <a class="map" href="https://goo.gl/maps/vfpViuKTKqmjyRRY7" target="_blank">
                                 <img src="{{ asset('img/maps.PNG') }}" alt="" srcset="">
                             </a>
                         </div>

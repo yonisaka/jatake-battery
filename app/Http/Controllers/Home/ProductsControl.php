@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Home;
 
+use App\Brand;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Product;
@@ -16,20 +17,7 @@ class ProductsControl extends Controller
     {
         $this->lib = new Libs();
         $this->products = new Product();
-        $this->middleware(function($req,$next){
-            if(!$req->expectsJson())
-                return Responder::error("unauthorized","unauthorized")->respond(401);
-            if(!empty(session('admin_token')))
-            {
-                $this->token = session('admin_token');
-                $this->products = new Product(['token'=>$this->token,]);
-            }
-            else
-            {
-                return redirect(route('admin.login'));
-            }
-            return $next($req);
-        })->except(['show','index']);
+        $this->brand = new Brand();
     }
 
     public function index(Request $req)
@@ -52,6 +40,46 @@ class ProductsControl extends Controller
         catch (\Exception $e)
         {
             // throwing previous error
+            throw $e;
+        }
+    }
+
+    public function showProductByBrandAndType(Request $req, $brand_id, $type)
+    {
+        $param = arr2obj($req->all());
+        $products = function() use ($param,$brand_id,$type)
+        {
+            return $this->products->where(['brand_id'=>$brand_id,'type'=>$type])->get()->all();
+        };
+        try
+        {
+            $data['brand'] = $this->brand->find($brand_id);
+            $data['products'] = $products();
+            $data['page'] = $type;
+            return view("Public.product-show-brand-type",$data);
+        }
+        catch(\Exception $e)
+        {
+            throw $e;
+        }
+    }
+
+    public function showProductByBrand(Request $req, $brand_id)
+    {
+        $param = arr2obj($req->all());
+        $products = function() use ($param,$brand_id)
+        {
+            return $this->products->where(['brand_id'=>$brand_id])->get()->all();
+        };
+        try
+        {
+            $data['brand'] = $this->brand->find($brand_id);
+            $data['products'] = $products();
+            $data['page'] = "";
+            return view("Public.product-show-brand-type",$data);
+        }
+        catch(\Exception $e)
+        {
             throw $e;
         }
     }

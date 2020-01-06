@@ -3,11 +3,19 @@
 namespace App\Http\Controllers\Home;
 
 use App\Brand;
+use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class BrandsControl extends Controller
 {
+
+    public function __construct()
+    {
+        $this->brand = new Brand();
+        $this->products = new Product();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -40,10 +48,28 @@ class BrandsControl extends Controller
     {
         //
         $data['brand'] = $brand;
-        $data['motor'] = $brand->productsFilterType('motor')->get()->all();
-        $data['mobil'] = $brand->productsFilterType('mobil')->get()->all();
+        $data['products'] = $brand->products()->get()->all();
         $data['page'] = 'Brand';
         return view("Public.brand-show",$data);
+    }
+
+    public function showBrandByType(Request $req, $type)
+    {
+        $param = arr2obj($req->all());
+        $brand = function() use ($param,$type)
+        {
+            return $this->brand->getBrandByType($type);
+        };
+        try
+        {
+            $data['brands'] = $brand();
+            $data['page'] = $type;
+            return view("Public.brand-show-type",$data);
+        }
+        catch(\Exception $e)
+        {
+            throw $e;
+        }
     }
 
     /**

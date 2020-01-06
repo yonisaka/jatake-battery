@@ -13,19 +13,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/motor', 'HomeController@motor');
-Route::get('/mobil', 'HomeController@mobil');
+// Route::get('/mobil', 'HomeController@showProductByType');
 Route::get('/search', 'HomeController@search');
 
 Route::prefix('/')->name('home.')->group(function()
 {
     Route::prefix('brands')->name('brands.')->group(function(){
+        Route::get('{type}', 'Home\BrandsControl@showBrandByType')->name('type');
         Route::post('create','Home\BrandsControl@create')->name('create');
     });
 
     Route::apiResource('brands','Home\BrandsControl');
 
     Route::prefix('products')->name('products.')->group(function(){
+        Route::get('brand/{brand_id}/{type}', 'Home\ProductsControl@showProductByBrandAndType')->name('brand.type');
+        Route::get('brand/{brand_id}', 'Home\ProductsControl@showProductByBrand')->name('brand');
         Route::post('create','Home\ProductsControl@create')->name('create');
     });
 
