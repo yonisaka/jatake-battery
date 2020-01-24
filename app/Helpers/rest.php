@@ -21,7 +21,9 @@ class Rest
                 'Authorization' => 'Bearer '.$opt['token'],
                 'Accept' => 'application/json',
                 'Content-type' => 'application/json'
-        ]]);
+            ],
+            'verify' => false
+        ]);
     }
 
     protected function get($url='')

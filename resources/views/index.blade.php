@@ -27,7 +27,7 @@
 <div id="sc-products" class="container-fluid">
     <div class="container">
         <div class="card-wrapper container">
-            <h3>Merk Kendaraan</h3>
+            <h3>Brand Kendaraan</h3>
             <div class="row justify-content-md-start justify-content-around products-card-wrapper">
                 @php
                 if(empty($brands))
@@ -39,7 +39,7 @@
                 }
 
                 foreach ($brands as $k => $d) {
-                    // dd($d);
+                // dd($d);
                 if($k > 4)
                 break;
                 @endphp
@@ -66,7 +66,7 @@
         <div class="text-center">
             <h4 class="font-light">Bagaimana pendapat mereka tentang <b>Jatake Battery</b>?</h4>
         </div>
-        <div class="card-wrapper slider-wrapper container mt-5">
+        <div class="card-wrapper slider-wrapper container my-5">
             <div class="home-slider">
                 <div class="card">
                     <div class="card-body">
@@ -255,4 +255,5 @@
 
     })
 </script>
+<script src="http://portofolio.local/assets/v2/js/modules/newsletter-bundle.js"></script>
 @endsection

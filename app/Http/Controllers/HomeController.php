@@ -41,7 +41,21 @@ class HomeController extends Controller
 
     public function search(Request $req)
     {
-        abort(404);
-        return view("Public.result");
+        $param = arr2obj($req->all());
+        $products = function() use ($param)
+        {
+            return $this->products->like('name',$param->s)->likeOr('desc',$param->s)->get()->all();
+        };
+        try
+        {
+            $data['products'] = $products();
+            $data['page'] = $param->s;
+            return view("Public.product-search",$data);
+        }
+        catch(\Exception $e)
+        {
+            throw $e;
+        }
+
     }
 }

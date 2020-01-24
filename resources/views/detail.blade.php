@@ -61,7 +61,8 @@ $product->img = !empty($product->img) ? $product->img : [];
                         <div class="float-right">
                             <small><i class="fas fa-eye"></i> Telah dilihat {{ $product->views }} kali</small>
                         </div>
-                        <p class="card-title text-muted" style="font-display: montserrat">{{ $product->brand->name }}</p>
+                        <p class="card-title text-muted" style="font-display: montserrat">{{ $product->brand->name }}
+                        </p>
                         <h4 class="card-text pb-3 text-muted">
                             {{ $product->name }}</h4>
                     </div>
@@ -127,6 +128,9 @@ $product->img = !empty($product->img) ? $product->img : [];
             </div>
 
             <div class="row mt-4" id="product-shortlink">
+                <label for=""><span>
+                        <h5>Share produk ini ke temanmu!</h5>
+                    </span></label>
                 <div class="input-group">
                     <input id="product-link" type="text" class="form-control" placeholder="Link"
                         value="{{ !empty($product->short) ? url('products/'.$product->short) : url('products/'.$product->id) }}">

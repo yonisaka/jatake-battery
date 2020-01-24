@@ -82,6 +82,14 @@ function isFunction(functionToCheck) {
     return functionToCheck && {}.toString.call(functionToCheck) === '[object Function]';
 }
 
+/**
+ * Function for helping limit string with js
+ *
+ * Author: Fatih Aziz
+ * date: 14 Jan 2020
+ * https://github.com/fatih-aziz
+ */
+
 function strLimit($str, $limit) {
 
     if (!$str)
@@ -93,8 +101,20 @@ function strLimit($str, $limit) {
     return trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" "))) + " ..."
 }
 
+/**
+ *
+ * Class for helping collect data as object
+ *
+ * Author: Fatih Aziz
+ * date: 14 Jan 2020
+ * https://github.com/fatih-aziz
+ */
+
 var formHelper = {
-    // initialize form helper like autonumeric and select2
+    /**
+     * initialize formHelper
+     * @param  {} $reInit=false
+     */
     init: ($reInit = false) => {
         let priceConfig = {
             currencySymbol: 'Rp ',
@@ -112,6 +132,13 @@ var formHelper = {
         if (formHelper.initCallback && isFunction(formHelper.initCallback))
             formHelper.initCallback()
     },
+    /**
+     *
+     * formHelper that put values from json to form
+     *
+     * @param  {} $data
+     * @param  {} $form
+     */
     edit: ($data, $form) => {
         if (!$data)
             return false
@@ -145,6 +172,13 @@ var formHelper = {
             }
         })
     },
+
+    /**
+     *
+     * get form data to object
+     *
+     * @param  {} $form
+     */
     getData: ($form) => {
         $form = $($form).prop("tagName") == "form" ? $($form) : $($form).find('form');
         let $formData = $form.serializeArray();
@@ -195,8 +229,25 @@ var formHelper = {
         //         : (arr.value.length == 0) ? arr.value = "" : null
         //     return arr
         // })
-        return objectifyForm($formData);
+        return formHelper.objectifyForm($formData);
     },
+
+    /**
+     *
+     * objectify array
+     *
+     * @param  {} formArray
+     */
+    objectifyForm: (formArray) => { //serialize data function
+        if (!formArray instanceof Array) {
+            return false
+        }
+        var returnArray = {};
+        for (var i = 0; i < formArray.length; i++) {
+            returnArray[formArray[i]['name']] = formArray[i]['value'];
+        }
+        return returnArray;
+    }
 }
 
 $(() => {
