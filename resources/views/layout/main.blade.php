@@ -34,7 +34,8 @@
                         <div class="container">
                             <div class="col">
                                 <div class="float-right">
-                                    <a href="#" class="text-white">Hubungi 08123456789 <i
+                                    <a href="https://wa.me/681222103956?text=Saya%20berkunjung%20ke%20website%20Anda%2c%20dan%20saya%20tertarik%20untuk%20bertanya."
+                                        target="_blank" class="text-white">Hubungi 081222103956 <i
                                             class=" fab fa-whatsapp"></i></a>
                                 </div>
                             </div>
@@ -127,10 +128,16 @@
                                         </h4>
                                         <ul class="list-unstyled">
                                             <li>
-                                                email : email@gmail.com
+                                                Email : jatakebusiness@gmail.com
                                             </li>
                                             <li>
-                                                <a href="#" onclick="showTermCond(false)">
+                                                WA: <a
+                                                    href="https://wa.me/681222103956?text=Saya%20berkunjung%20ke%20website%20Anda%2c%20dan%20saya%20tertarik%20untuk%20bertanya."
+                                                    target="_blank" class="text-white">081222103956 <i
+                                                        class=" fab fa-whatsapp"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#" onclick="showTermCond(null,false)">
                                                     Syarat & Ketentuan
                                                 </a>
                                             </li>
@@ -181,7 +188,7 @@
                         <h5 class="modal-title">Syarat Ketentuan</h5>
                     </div>
                     <div class="modal-body">
-                        @include('term-cond')
+                        @include('term-cond-include')
                     </div>
                     <div class="modal-footer">
                         <div class="d-flex align-items-center">

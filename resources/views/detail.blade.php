@@ -169,7 +169,7 @@ $product->img = !empty($product->img) ? $product->img : [];
                         </div>
                     </div>
                     <div class="tab-pane fade" id="detail-review">
-                        <div class="p-4">
+                        <div class="p-4 d-none">
                             <div>
                                 Belum ada review
                             </div>
@@ -180,6 +180,146 @@ $product->img = !empty($product->img) ? $product->img : [];
                                     produk ini?</span>
                                 <div class="mt-3">
                                     <button class="btn btn-primary">Tulis Ulasan</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="reviews-wrapper container">
+                            <div class="row mt-2 mb-4">
+                                <div class="container">
+                                    <h4 class="font-weight-bold">Ulasan Pembeli:</h4>
+                                </div>
+                            </div>
+                            <div class="row my-4 reviews mx-3">
+                                <div class="col-1">
+                                    <img src="" alt="" srcset="">
+                                </div>
+                                <div class="col-11">
+                                    <div class="stars text-warning">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                    <span class="text-secondary text-muted small font-weight-lighter">
+                                        Oleh [Nama], 01 February 2020, pukul 00:00
+                                    </span>
+                                    <p>
+                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. A beatae ad qui rerum
+                                        temporibus ab et ducimus recusandae necessitatibus? Obcaecati, autem soluta
+                                        alias non temporibus porro laborum? Maiores, tempora. Rerum.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row my-4 reviews mx-3">
+                                <div class="col-1">
+                                    <img src="" alt="" srcset="">
+                                </div>
+                                <div class="col-11">
+                                    <div class="stars text-warning">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                    <span class="text-secondary text-muted small font-weight-lighter">
+                                        Oleh [Nama], 01 February 2020, pukul 00:00
+                                    </span>
+                                    <p>
+                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. A beatae ad qui rerum
+                                        temporibus ab et ducimus recusandae necessitatibus? Obcaecati, autem soluta
+                                        alias non temporibus porro laborum? Maiores, tempora. Rerum.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row my-4 reviews mx-3">
+                                <div class="col-1">
+                                    <img src="" alt="" srcset="">
+                                </div>
+                                <div class="col-11">
+                                    <div class="stars text-warning">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                    <span class="text-secondary text-muted small font-weight-lighter">
+                                        Oleh [Nama], 01 February 2020, pukul 00:00
+                                    </span>
+                                    <p>
+                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. A beatae ad qui rerum
+                                        temporibus ab et ducimus recusandae necessitatibus? Obcaecati, autem soluta
+                                        alias non temporibus porro laborum? Maiores, tempora. Rerum.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row my-4 reviews mx-3">
+                                <div class="col-1">
+                                    <img src="" alt="" srcset="">
+                                </div>
+                                <div class="col-11">
+                                    <div class="stars text-warning">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                    <span class="text-secondary text-muted small font-weight-lighter">
+                                        Oleh [Nama], 01 February 2020, pukul 00:00
+                                    </span>
+                                    <p>
+                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. A beatae ad qui rerum
+                                        temporibus ab et ducimus recusandae necessitatibus? Obcaecati, autem soluta
+                                        alias non temporibus porro laborum? Maiores, tempora. Rerum.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row my-4 reviews mx-3">
+                                <div class="col-1">
+                                    <img src="" alt="" srcset="">
+                                </div>
+                                <div class="col-11">
+                                    <div class="stars text-warning">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                    <span class="text-secondary text-muted small font-weight-lighter">
+                                        Oleh [Nama], 01 February 2020, pukul 00:00
+                                    </span>
+                                    <p>
+                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. A beatae ad qui rerum
+                                        temporibus ab et ducimus recusandae necessitatibus? Obcaecati, autem soluta
+                                        alias non temporibus porro laborum? Maiores, tempora. Rerum.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row my-4 reviews mx-3">
+                                <div class="col-1">
+                                    <img src="" alt="" srcset="">
+                                </div>
+                                <div class="col-11">
+                                    <div class="stars text-warning">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                    <span class="text-secondary text-muted small font-weight-lighter">
+                                        Oleh [Nama], 01 February 2020, pukul 00:00
+                                    </span>
+                                    <p>
+                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. A beatae ad qui rerum
+                                        temporibus ab et ducimus recusandae necessitatibus? Obcaecati, autem soluta
+                                        alias non temporibus porro laborum? Maiores, tempora. Rerum.
+                                    </p>
                                 </div>
                             </div>
                         </div>

@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/term-condition', 'HomeController@term_condition')->name('home');
 // Route::get('/mobil', 'HomeController@showProductByType');
 Route::get('/search', 'HomeController@search');
 

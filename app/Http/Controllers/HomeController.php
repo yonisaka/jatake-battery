@@ -58,4 +58,9 @@ class HomeController extends Controller
         }
 
     }
+
+    public function term_condition(Request $req){
+        $data['page'] = 'term-condition';
+        return view("term-cond",$data);
+    }
 }
