@@ -29,7 +29,8 @@ Route::prefix('/')->name('home.')->group(function()
     Route::prefix('products')->name('products.')->group(function(){
         Route::get('brand/{brand_id}/{type}', 'Home\ProductsControl@showProductByBrandAndType')->name('brand.type');
         Route::get('brand/{brand_id}', 'Home\ProductsControl@showProductByBrand')->name('brand');
-        Route::post('create','Home\ProductsControl@create')->name('create');
+        // Route::post('create','Home\ProductsControl@create')->name('create');
+        Route::post('store_reviews','Home\ProductsControl@storeReviews')->name('store-reviews');
     });
 
     Route::apiResource('products','Home\ProductsControl');

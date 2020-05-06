@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Home;
 
 use App\Brand;
+use App\Reviews;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Library\Libs;
 use Exception;
 use Responder;
+use Carbon\Carbon;
+
 class ProductsControl extends Controller
 {
     //
@@ -29,11 +32,13 @@ class ProductsControl extends Controller
     {
         try {
             $resp = Product::detail($id)->firstOrFail();
+            $reviews = Reviews::where('product_id', $id)->paginate(5);
             $data['page'] = 'detail';
             $recomend = Product::orderBy('views')->get()->toArray();
             $recomend = array_slice($recomend, 0, 4);
             $data['recomends'] = arr2Obj($recomend);
             $data['product']=$resp;
+            $data['reviews']=$reviews;
             // dd($data);
             return view('detail',$data);
         }
@@ -91,6 +96,7 @@ class ProductsControl extends Controller
             $data = $req->all();
             $product = new Product($data);
             $product->save();
+            dd($product);
             return Responder::success($product)->respond(201);
         }
         catch(Exception $e)
@@ -100,6 +106,19 @@ class ProductsControl extends Controller
 
     }
 
+    public function storeReviews(Request $req){
+        try
+        {
+            $data = $req->all();
+            $reviews = new Reviews($data);
+            $reviews->save();
+            return Responder::success($reviews)->respond(201);
+        }
+        catch(Exception $e)
+        {
+            Responder::error("product_create_fail","Fail to Add reviews")->data($e)->respond();
+        }
+    }
     public function update(Request $req, $id)
     {
         try

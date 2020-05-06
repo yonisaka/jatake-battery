@@ -62,7 +62,7 @@
         ],
         "fresh-migrate": [
             "php artisan migrate:fresh",
-            "php artisan passport:install",
+            "php artisan passport:install --force",
             "php artisan migrate --seed"
         ],
         "post-install-cmd": [

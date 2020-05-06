@@ -12,9 +12,9 @@
             <div class="col-12 p-0">
                 <div class="slider-wrapper">
                     <div class="home-slider" id="home-banner">
-                        <img src="{{ asset('img/banner.png') }}" class="col-12 p-0" alt="" srcset="">
-                        <img src="{{ asset('img/banner.png') }}" class="col-12 p-0" alt="" srcset="">
-                        <img src="{{ asset('img/banner.png') }}" class="col-12 p-0" alt="" srcset="">
+                        <img src="{{ asset('img/BANNER.jpg') }}" class="col-12 p-0" alt="" srcset="">
+                        <img src="{{ asset('img/BANNER.jpg') }}" class="col-12 p-0" alt="" srcset="">
+                        <img src="{{ asset('img/BANNER.jpg') }}" class="col-12 p-0" alt="" srcset="">
                     </div>
                     <div class="home-banner-nav">
                     </div>

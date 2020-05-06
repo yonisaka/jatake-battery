@@ -13,7 +13,8 @@
         <link href="{{ asset('css/main.css') }}" type="text/css" rel="stylesheet">
         <link href="{{ asset('modules/slick/slick.css') }}" type="text/css" rel="stylesheet">
         <link href="{{ asset('modules/slick/slick-theme.css') }}" type="text/css" rel="stylesheet">
-
+        <link href="{{ asset('/plugins/swal2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
+        
         {{-- Scripts --}}
         <script src="{{ asset('modules/jquery-3.4.1/jquery-3.4.1.min.js') }}"></script>
         <script src="{{ asset('modules/bootstrap-4.3.1/js/bootstrap.min.js') }}" async></script>
@@ -21,6 +22,7 @@
         <script src="{{ asset('modules/fontawesome/js/all.min.js') }}" async></script>
         <script src="{{ asset('modules/slick/slick.min.js') }}" async></script>
         <script src="{{ asset('js/main.js') }}" async></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.min.js"></script>
         @yield('head')
     </head>
     {{ empty($page)?$page='':null }}
@@ -206,6 +208,9 @@
                 </div>
             </div>
         </div>
-    </body>
 
+    </body>
+    <!-- <script src="{{ asset('js/main.js') }}"></script>
+
+-->
 </html>
